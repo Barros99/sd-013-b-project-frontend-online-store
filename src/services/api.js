@@ -3,7 +3,7 @@ export async function getCategories() {
   const categories = await result.json();
   return categories;
 }
-
+// comentario legal
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
   const result = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`);
   const products = await result.json();
