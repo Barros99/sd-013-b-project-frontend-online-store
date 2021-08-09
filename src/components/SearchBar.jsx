@@ -15,12 +15,12 @@ export default class SearchBar extends Component {
     };
   }
 
-  componentDidMount() {
-    api.getProductsFromCategoryAndQuery()
-      .then((products) => {
-        this.setState({ products: products.results });
-      });
-  }
+  // async componentDidMount() {
+  //   const products = await api.getProductsFromCategoryAndQuery();
+  //   updateState(products);
+  // }
+
+  // updateState = (products) => this.setState({ products: products.results });
 
   handleClick = () => {
     console.log('passei aqui');
