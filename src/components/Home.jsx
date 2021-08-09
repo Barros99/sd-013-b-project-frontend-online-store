@@ -10,7 +10,6 @@ class Home extends React.Component {
     this.state = {
       search: '',
       results: [],
-      showCard: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -21,17 +20,17 @@ class Home extends React.Component {
     const { results } = await getProductsFromCategoryAndQuery('', search);
     this.setState({
       results,
-      showCard: true,
     });
+    console.log(results);
   }
 
   render() {
-    const { results, showCard } = this.state;
+    const { results } = this.state;
     return (
       <div>
-        <Search onClick={ this.handleClick } />
+        <Search onClick={this.handleClick} />
         <CartButton />
-        { (showCard && <ProductCard results={ results } />) }
+        <ProductCard results={results} />
       </div>
     );
   }
