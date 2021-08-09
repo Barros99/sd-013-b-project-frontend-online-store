@@ -8,11 +8,18 @@ export default class Sidebar extends React.Component {
 
     this.state = {
       categories: [],
+      selected: undefined,
     };
+
+    this.captureValue = this.captureValue.bind(this);
   }
 
   componentDidMount() {
     this.fetchData();
+  }
+
+  captureValue(event) {
+    this.setState({ selected: event.target.value });
   }
 
   async fetchData() {
@@ -23,7 +30,7 @@ export default class Sidebar extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <form>
+      <form onChange={ this.captureValue }>
         {
           categories.map((category) => (
             <Categories key={ category.id } categories={ category } />
