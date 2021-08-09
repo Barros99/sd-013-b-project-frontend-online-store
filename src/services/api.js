@@ -1,5 +1,6 @@
 export async function getCategories() {
-  // Implemente aqui
+  // Implemente aqui o seu código!
+  const requestCategory = await fetch();
 }
 
 export async function getProductsFromCategoryAndQuery(/* categoryId, query */) {
