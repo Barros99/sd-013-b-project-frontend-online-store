@@ -44,8 +44,7 @@ class App extends Component {
                 <li data-testid="category" key={ category.id }>
                   { category.name }
                 </li>
-              ),
-            )};
+              ))}
             </ul>
           </div>
         </BrowserRouter>
