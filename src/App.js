@@ -1,12 +1,16 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import MainScreen from './components/MainScreen';
 
 function App() {
   return (
-    <div className="App">
-      <MainScreen />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <MainScreen />
+      </div>
+    </BrowserRouter>
+
   );
 }
 
