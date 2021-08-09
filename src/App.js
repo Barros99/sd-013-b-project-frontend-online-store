@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -22,3 +22,25 @@ function App() {
 }
 
 export default App;
+*/
+
+import React, { Component } from 'react';
+import * as api from './services/api';
+
+export default class App extends Component {
+  componentDidMount() {
+    api.getCategories()
+      .then((data) => console.log(data));
+
+    api.getProductsFromCategoryAndQuery('MLB5672', 'computador')
+      .then((data) => console.log(data));
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>hello</h1>
+      </div>
+    );
+  }
+}
