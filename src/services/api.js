@@ -1,5 +1,4 @@
 export async function getCategories() {
-  // Implemente aqui
   try {
     const endPoint = 'https://api.mercadolibre.com/sites/MLB/categories';
     const response = await fetch(endPoint);
@@ -11,7 +10,6 @@ export async function getCategories() {
 }
 
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
-  // Implemente aqui! Quando o fizer, descomente os parâmetros que essa função recebe
   try {
     const endPoint = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`;
     const response = await fetch(endPoint);

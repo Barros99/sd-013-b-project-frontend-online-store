@@ -1,14 +1,19 @@
 import React from 'react';
-import SearchBar from './components/SearchBar';
-import Category from './components/Category';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ShoppingKart from './pages/ShoppingKart';
 import './App.css';
+
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <SearchBar />
-      <Category />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route exact path="/shoppingKart" component={ ShoppingKart } />
+        {/* <Route component={ NotFound } /> */}
+      </Switch>
+    </Router>
   );
 }
 
