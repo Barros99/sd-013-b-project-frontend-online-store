@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchBar from '../components/SearchBar';
+import CategoryList from '../components/CategoryList';
 
 import * as api from '../services/api';
 
@@ -11,7 +12,7 @@ class ProductList extends React.Component {
     this.state = {
       productList: [],
       searchTerm: '',
-      // category: '',
+      selectedCategory: '',
     };
   }
 
@@ -39,8 +40,14 @@ class ProductList extends React.Component {
     });
   }
 
+  handleCategoryChange = ({ target }) => {
+    this.setState({
+      selectedCategory: target.value,
+    });
+  };
+
   render() {
-    const { searchTerm, productList } = this.state;
+    const { searchTerm, productList, selectedCategory } = this.state;
 
     return (
       <div>
@@ -48,6 +55,10 @@ class ProductList extends React.Component {
           searchTerm={ searchTerm }
           onChange={ this.handleSearchTermChange }
           onClick={ this.listProducts }
+        />
+        <CategoryList
+          selectedCategory={ selectedCategory }
+          onChange={ this.handleCategoryChange }
         />
         {productList.length ? (
           productList.map((element) => element)
