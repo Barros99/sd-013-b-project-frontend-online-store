@@ -8,11 +8,8 @@ class BarSearch extends Component {
           type="text"
           placeholder="Digite algum termo de pesquisa ou escolha uma categoria."
         />
-        <p
-          data-testid="home-initial-message"
-        >
+        <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-
         </p>
       </form>
     );
