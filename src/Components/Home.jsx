@@ -11,13 +11,19 @@ export default class Home extends React.Component {
   }
 
   componentDidMount = () => {
-    getCategories();
+    getCategories().then((value) => this.setState({ categories: value }));
   }
 
   render() {
     const { categories } = this.state;
     return (
-      <h1>{ categories }</h1>
+      <ul>
+        { categories.map((categorie) => (
+          <li key={ categorie.id }>
+            { categorie.name }
+          </li>
+        )) }
+      </ul>
     );
   }
 }
