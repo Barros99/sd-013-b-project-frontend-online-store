@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { getCategories } from '../services/api';
-import CategoryRadios from './ScreensComponents/CategoryRadios';
+// import CategoryRadios from './ScreensComponents/CategoryRadios';
 
 class CategoryList extends React.Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class CategoryList extends React.Component {
 
   render() {
     const { categories, loading } = this.state;
-    console.log(categories);
+    console.log(loading);
     return (
       <form>
         { categories.map((category, index) => (
