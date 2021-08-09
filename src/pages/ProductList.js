@@ -3,7 +3,7 @@ import React from 'react';
 import SearchBar from '../components/SearchBar';
 import CategoryList from '../components/CategoryList';
 
-// import * as api from '../services/api';
+import * as api from '../services/api';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -26,6 +26,20 @@ class ProductList extends React.Component {
     });
   };
 
+  listProducts = async (category, query) => {
+    const response = await api.getProductsFromCategoryAndQuery(category, query);
+    const list = response.results.map((element) => (
+      <div data-testid="product" key={ element.id }>
+        <h2>{ element.title }</h2>
+        <img src={ element.thumbnail } alt={ `imagem de ${element.title}` } />
+        <p>{ element.price }</p>
+      </div>
+    ));
+    this.setState({
+      productList: list,
+    });
+  }
+
   handleCategoryChange = ({ target }) => {
     this.setState({
       selectedCategory: target.value,
@@ -40,13 +54,14 @@ class ProductList extends React.Component {
         <SearchBar
           searchTerm={ searchTerm }
           onChange={ this.handleSearchTermChange }
+          onClick={ this.listProducts }
         />
         <CategoryList
           selectedCategory={ selectedCategory }
           onChange={ this.handleCategoryChange }
         />
         {productList.length ? (
-          <p>Tem produtos</p>
+          productList.map((element) => element)
         ) : (
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
