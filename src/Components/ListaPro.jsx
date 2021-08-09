@@ -12,8 +12,14 @@ class ListaPro extends React.Component {
   }
 
   componentDidMount() {
-    const categories = getCategories();
-    
+    categoria();
+  }
+
+  categoria() {
+    const acessandoCat = getCategories();
+    this.setState({
+      categories: acessandoCat.value,
+    });
   }
 
   render() {
