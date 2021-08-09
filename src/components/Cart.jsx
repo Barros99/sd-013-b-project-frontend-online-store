@@ -5,7 +5,12 @@ export default class Cart extends React.Component {
   constructor() {
     super();
 
-    this.state = { empty: true };
+    this.renderList = this.renderList.bind(this);
+
+    this.state = {
+      empty: true,
+      list: [],
+    };
   }
 
   renderEmpty() {
@@ -17,13 +22,12 @@ export default class Cart extends React.Component {
   }
 
   renderList() {
-    this.setState({ empty: false });
     const { list } = this.state;
     return (
       <div>
         <Link to="/">Voltar</Link>
         { list.map((item) => (
-          <li>
+          <li key={ item.id }>
             { item.title }
           </li>
         )) }
@@ -36,7 +40,7 @@ export default class Cart extends React.Component {
     return (
       <section>
         { (empty && this.renderEmpty()) }
-        { this.renderLisy() }
+        { this.renderList() }
       </section>
     );
   }
