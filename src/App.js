@@ -1,10 +1,6 @@
 import React from 'react';
-
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import ListaPro from './Components/ListaPro';
-
-
 import SearchField from './components/SearchField';
 
 class App extends React.Component {
