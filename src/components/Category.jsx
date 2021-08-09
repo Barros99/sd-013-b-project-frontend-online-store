@@ -21,13 +21,14 @@ export default class Category extends Component {
 
       <div>
         {categories.map(({ name, id }) => (
-          <label htmlFor="check">
+          <label key={ id } htmlFor="check">
             <input
-            name="check"
-            data-testid="category"
-            type="radio"
-            value={ id }
-            key={ id } />{name}
+              name="check"
+              data-testid="category"
+              type="radio"
+              value={ id }
+            />
+            {name}
           </label>
         ))}
       </div>
