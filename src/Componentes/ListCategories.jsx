@@ -27,10 +27,6 @@ class ListCategories extends Component {
     const { handleChange } = this.props;
     return (
       <div>
-        <h2 data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma
-          categoria.
-        </h2>
         <select onChange={ handleChange } name="category">
           { categories.map(({ name, id }) => (
             <option
