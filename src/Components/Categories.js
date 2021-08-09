@@ -1,19 +1,36 @@
-import React from 'react';
-import api, { getCategories } from '../services/api';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class Categories extends React.Component {
+class Categorie extends Component {
   render() {
-    const { categories } = this.state;
     const { categorie, checked, onChange } = this.props;
+    const { id, name } = categorie;
+
     return (
-      // <nav>
-      //   {/* <Link to="https://api.mercadolibre.com/sites/MLB/categories"></Link> */}
-      //   { categories.map((categorie) => ) }
-      // </nav>
-      <input data-testid="home-initial-message" />
+      <li className="category" data-testid="category">
+        <label htmlFor={ id }>
+          <input
+            type="radio"
+            value={ id }
+            id={ id }
+            className="category-radio"
+            checked={ checked === id }
+            onChange={ onChange }
+          />
+          { name }
+        </label>
+      </li>
     );
   }
 }
 
-export default Categories;
+Categorie.propTypes = {
+  categorie: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+  }).isRequired,
+  checked: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default Categorie;
