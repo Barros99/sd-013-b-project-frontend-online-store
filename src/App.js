@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Link to="/shopping-cart" data-testid="shopping-cart-button" />
+        <Link to="/shopping-cart" data-testid="shopping-cart-button">carrinho</Link>
         <Switch>
           <Route exact path="/" render={ () => <ProductList /> } />
           <Route path="/shopping-cart" render={ () => <ShoppingCart /> } />
