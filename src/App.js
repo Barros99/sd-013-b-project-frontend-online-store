@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import * as api from './services/api';
 
 function App() {
+  api.getProductsFromCategoryAndQuery();
   return (
     <div className="App">
       <header className="App-header">
@@ -20,5 +22,7 @@ function App() {
     </div>
   );
 }
+
+//  pra pull request
 
 export default App;
