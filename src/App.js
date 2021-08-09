@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-// import * as api from './services/api';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <p>Iniciando o projeto</p>
+      <div>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
       </div>
     );
   }
