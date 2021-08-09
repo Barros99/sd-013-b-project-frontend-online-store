@@ -1,4 +1,5 @@
 import React from 'react';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 
 class ProductList extends React.Component {
   render() {
@@ -6,9 +7,10 @@ class ProductList extends React.Component {
       <div>
         <section>
           <input type="text" />
-          <h1 data-testid="home-initial-message">
+          <ShoppingCartButton />
+          <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
-          </h1>
+          </p>
         </section>
       </div>
     );
