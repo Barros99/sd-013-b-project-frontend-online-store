@@ -7,13 +7,13 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <div >
-     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ Home } />
-        <Route exact path="/shoppingcart" component={ ShoppingCart } />
-      </Switch>
-     </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ Home } />
+          <Route exact path="/shoppingcart" component={ ShoppingCart } />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
