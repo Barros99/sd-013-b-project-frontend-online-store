@@ -9,8 +9,8 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" />
-          <Route path="/carrinho" component={ Cart } />
+          <Route exact path="/" />
+          <Route exact path="/carrinho" component={ Cart } />
         </Switch>
         <ProductList />
         <Link
