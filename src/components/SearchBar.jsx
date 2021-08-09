@@ -5,7 +5,7 @@ export default class SearchBar extends Component {
     super();
     this.state = {
       searchText: '',
-      searchResult: 'Digite algum termo de pesquisa ou escolha uma categoria.',
+      // searchResult: '',
     };
   }
 
