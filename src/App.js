@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './page/Home';
-import * as api from './services/api';
+// import * as api from './services/api';
 
 function App() {
   return (
