@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MainScreen extends React.Component {
   render() {
@@ -12,6 +13,12 @@ class MainScreen extends React.Component {
             name="searchBar"
           />
         </label>
+        <Link
+          to="/ShoppCart"
+          data-testid="shopping-cart-button"
+        >
+          Carrinho
+        </Link>
 
       </div>
     );
