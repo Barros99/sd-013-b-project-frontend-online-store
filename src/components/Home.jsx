@@ -1,6 +1,7 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Categories from './Categories';
 
 class Home extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class Home extends React.Component {
           <br />
           {/* <FontAwesomeIcon to="/shoppingcart" icon="fa-solid fa-cart-shopping" /> */}
           <Link data-testid="shopping-cart-button" to="/shoppingcart">Carrinho</Link>
+          <Categories />
         </label>
       </div>
     );
