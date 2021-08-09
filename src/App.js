@@ -1,11 +1,20 @@
 import React from 'react';
+import SearchBar from './pages/SearchBar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+
 
 function App() {
   return (
-    <div>
-      <p>aaaaaa</p>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={ SearchBar }
+        />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
