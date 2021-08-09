@@ -5,9 +5,11 @@ class SearchBar extends React.Component {
     return (
       <div>
         <input
-        type="text"
+          type="text"
         />
-      <h3 data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</h3>
+        <h3 data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </h3>
       </div>
     );
   }
