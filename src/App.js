@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { getCategories } from './services/api';
 import ShoppingCart from './components/ShoppingCart';
-import CartButton from './components/CartButton';
+import Home from './components/Home';
 
 class App extends Component {
   constructor() {
@@ -32,12 +32,9 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={ CartButton } />
+            <Route exact path="/" component={ Home } />
             <Route exact path="/shoppingcart" component={ ShoppingCart } />
           </Switch>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
           <div>
             <ul>
               {categoriesList.map((category) => (
