@@ -9,26 +9,26 @@ class ListaPro extends React.Component {
     this.state = {
       categories: [],
     };
+    this.categoria = this.categoria.bind(this);
   }
 
   componentDidMount() {
-    categoria();
+    this.categoria();
   }
 
-  categoria() {
-    const acessandoCat = getCategories();
+  async categoria() {
+    const acessandoCat = await getCategories();
     this.setState({
-      categories: acessandoCat.value,
+      categories: acessandoCat,
     });
   }
 
   render() {
     const { categories } = this.state;
-    console.log(getCategories);
     return (
       <div>
         <ul>
-          { categories.map(({ categorie }) => (
+          { categories.map((categorie) => (
             <li
               data-testid="category"
               key={ categorie.name }
