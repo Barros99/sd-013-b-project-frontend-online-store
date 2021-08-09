@@ -30,10 +30,12 @@ class ProductList extends React.Component {
 
     return (
       <div>
-        <SearchBar
-          searchTerm={ searchTerm }
-          onChange={ this.handleSearchTermChange }
-        />
+        <div className="header">
+          <SearchBar
+            searchTerm={ searchTerm }
+            onChange={ this.handleSearchTermChange }
+          />
+        </div>
         {productList.length ? (
           <p>Tem produtos</p>
         ) : (
