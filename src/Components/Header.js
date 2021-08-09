@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   render() {
+    const { change, search } = this.props;
+
     return (
       <div>
-        <input type="text" />
+        <input
+          type="text"
+          onChange={ change }
+          data-testid="query-input"
+        />
+
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ search }
+        >
+          Search
+        </button>
 
         <Link
           to="/cart"
@@ -22,5 +37,10 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  change: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+};
 
 export default Header;
