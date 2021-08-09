@@ -25,6 +25,8 @@ export default App;
 */
 
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import MainPage from './Components/MainPage';
 import * as api from './services/api';
 
 export default class App extends Component {
@@ -38,9 +40,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>hello</h1>
-      </div>
+      <BrowserRouter>
+        <Route path="/" component={ MainPage } />
+      </BrowserRouter>
     );
   }
 }
