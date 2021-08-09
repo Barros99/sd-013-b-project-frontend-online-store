@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Link to="/you-cart" data-testid="shopping-cart-button"> Carrinho </Link>
+        <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
         <Switch>
           <Route exact path="/" component={ ProductList } />
           <Route exact path="/cart" component={ Cart } />
