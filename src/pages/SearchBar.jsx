@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HomeFilter from '../Componentes/HomeFilter';
 
 class SearchBar extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class SearchBar extends React.Component {
         <Link to="ShoppingCart" data-testid="shopping-cart-button">
           Carrinho
         </Link>
+        <HomeFilter />
       </label>
     );
   }
