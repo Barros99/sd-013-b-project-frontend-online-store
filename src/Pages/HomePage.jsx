@@ -1,6 +1,8 @@
 import React from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import Card from '../Components/Card';
+import { Link } from 'react-router-dom';
+
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -91,6 +93,18 @@ render() {
         >
           Buscar
         </button>
+        <p>
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
+        <Link
+          to="/cart"
+          data-testid="shopping-cart-button"
+        >
+          Carrinho
+        </Link>
+        <ul>
+          { categorysLoaded ? categorys : <h2>Carregando...</h2> }
+        </ul>
       </div>
       { productsLoad ? products : <h2>Carregando...</h2> }
     </div>
