@@ -30,8 +30,10 @@ class Initial extends Component {
         {
           categories.map(({ name, id }) => (
             <div key={ id } data-testid="category">
-              <input type="radio" />
-              { name }
+              <label htmlFor={ id }>
+                <input type="radio" name="category" id={ id } />
+                { name }
+              </label>
             </div>
           ))
         }
