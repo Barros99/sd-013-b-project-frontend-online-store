@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import RenderCard from './RenderCard';
+import Category from './Category';
 
 const api = require('../services/api');
 
@@ -63,6 +65,10 @@ export default class SearchBar extends Component {
             Pesquisar
           </button>
         </label>
+        <Link to="shoppingcart" data-testid="shopping-cart-button">
+          Carrinho
+        </Link>
+        <Category />
         <RenderCard products={ products } />
       </main>
     );
