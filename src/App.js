@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import SearchField from './components/SearchField';
 import Cart from './components/Cart';
 import NotFound from './components/NotFound';
 
