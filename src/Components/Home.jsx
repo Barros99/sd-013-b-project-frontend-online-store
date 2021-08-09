@@ -6,7 +6,7 @@ export default class Home extends React.Component {
     super();
 
     this.state = {
-      
+      categories: [],
     };
   }
 
@@ -15,8 +15,9 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const { categories } = this.state;
     return (
-      <h1>hello</h1>
+      <h1>{ categories }</h1>
     );
   }
 }

@@ -10,13 +10,12 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route path='/' component={ Home }></Route>
+            <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
       </div>
     );
   }
-
 }
 
 export default App;
