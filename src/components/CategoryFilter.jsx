@@ -25,7 +25,10 @@ export default class CategoryFilter extends React.Component {
     const { categories } = this.state;
     return (
       <div>
-        {categories.map((category) => (<p key={ category.id }>{category.name}</p>))}
+        {categories
+          .map((category) => (
+            <p data-testid="category" key={ category.id }>{category.name}</p>
+          ))}
       </div>
     );
   }
