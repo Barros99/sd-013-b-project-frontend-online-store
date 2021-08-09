@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../services/api';
 
 class HomePage extends React.Component {
@@ -39,6 +40,12 @@ class HomePage extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <Link
+          to="/cart"
+          data-testid="shopping-cart-button"
+        >
+          Carrinho
+        </Link>
         <ul>
           { categorysLoaded ? categorys : <h2>Carregando...</h2> }
         </ul>
