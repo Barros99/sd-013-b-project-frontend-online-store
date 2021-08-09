@@ -12,7 +12,7 @@ function App() {
         <Link to="/you-cart" data-testid="shopping-cart-button"> Carrinho </Link>
         <Switch>
           <Route exact path="/" component={ ProductList } />
-          <Route exact path="/you-cart" component={ Cart } />
+          <Route exact path="/cart" component={ Cart } />
         </Switch>
       </div>
     </BrowserRouter>
