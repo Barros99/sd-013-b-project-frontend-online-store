@@ -1,3 +1,5 @@
+const urlBase = 'https://api.mercadolibre.com/sites/MLB/search?';
+
 export async function getCategories() {
   // Implemente aqui
   const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
