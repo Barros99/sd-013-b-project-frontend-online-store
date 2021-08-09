@@ -8,7 +8,7 @@ class Initial extends Component {
     super();
     this.state = {
       categories: [],
-      categoryId: '',
+      categoryId: 'MLB5672',
       query: '',
       products: [],
     };
@@ -20,6 +20,7 @@ class Initial extends Component {
 
   componentDidMount() {
     this.fetchCategories();
+    this.fetchProducts();
   }
 
   handleChange(event) {
@@ -29,11 +30,16 @@ class Initial extends Component {
     });
   }
 
-  handleChangeOnInput(event) {
+  async handleChangeOnInput(event) {
     const { value } = event.target;
-    this.setState({
+    const { query } = this.state;
+    await this.setState({
       categoryId: value,
     });
+
+    if (!query) {
+      this.fetchProducts();
+    }
   }
 
   async fetchCategories() {
@@ -46,6 +52,7 @@ class Initial extends Component {
   async fetchProducts() {
     const { categoryId, query } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(categoryId, query);
+    if (!products) return;
     const { results } = products;
     this.setState({
       products: results,
@@ -69,7 +76,7 @@ class Initial extends Component {
                     value={ id }
                     onChange={ this.handleChangeOnInput }
                   />
-                  { name }
+                  {name}
                 </label>
               </div>
             ))
