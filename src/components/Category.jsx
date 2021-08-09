@@ -18,10 +18,12 @@ export default class Category extends Component {
   render() {
     const { categories } = this.state;
     return (
-
       <div>
         {categories.map(({ name, id }) => (
-          <p data-testid="category" key={ id }>{name}</p>
+          <label key={ id } htmlFor="categories">
+            <input type="radio" value={ name } name="categories" />
+            {name}
+          </label>
         ))}
       </div>
     );
