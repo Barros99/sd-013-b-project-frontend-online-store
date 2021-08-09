@@ -13,6 +13,9 @@ function App() {
         <Route exact path="/" component={ CartButton } />
         <Route exact path="/shoppingcart" component={ ShoppingCart } />
       </Switch>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
      </BrowserRouter>
     </div>
   );
