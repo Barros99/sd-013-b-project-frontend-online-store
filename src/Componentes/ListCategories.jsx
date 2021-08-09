@@ -25,11 +25,11 @@ class ListCategories extends Component {
   render() {
     const { categories } = this.state;
     const { handleChange } = this.props;
-    return(
+    return (
       <div>
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma
-      categoria.
+          categoria.
         </h2>
         <select onChange={ handleChange } name="category">
           { categories.map(({ name, id }) => (
