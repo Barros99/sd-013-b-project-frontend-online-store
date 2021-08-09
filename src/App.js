@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import SearchField from './components/SearchField';
@@ -20,13 +20,15 @@ export default class App extends Component {
     return (
       <div className="">
         <BrowserRouter>
-          <Route path="/" component={ SearchField } />
-          <Route
-            exact
-            path="/cart"
-            render={ ((props) => <Cart { ...props } list={ cartList } />) }
-          />
-          <Route component={ NotFound } />
+          <Switch>
+            <Route exact path="/" component={ SearchField } />
+            <Route
+              exact
+              path="/cart"
+              render={ ((props) => <Cart { ...props } list={ cartList } />) }
+            />
+            <Route component={ NotFound } />
+          </Switch>
         </BrowserRouter>
       </div>
     );
