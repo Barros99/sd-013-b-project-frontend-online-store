@@ -7,6 +7,7 @@ class App extends React.Component {
         <h3 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma
           categoria.
+          {/* teste */}
         </h3>
       </div>
     );
