@@ -10,7 +10,7 @@ import CategoryList from './CategoryList';
 
 export default class SearchBar extends React.Component {
   render() {
-    const { onChange, value } = this.props;
+    const { onChange, value, handleClick } = this.props;
     return (
       <div>
         <div className="input-container">
@@ -19,7 +19,15 @@ export default class SearchBar extends React.Component {
             value={ value }
             type="text"
             className="div-input"
+            data-testid="query-input"
           />
+          <button
+            type="button"
+            onClick={ handleClick }
+            data-testid="query-button"
+          >
+            Pesquisar
+          </button>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">
             <ShoppingCartIcon style={ { color: '#22ba24' } } fontSize="large" />
           </Link>
@@ -36,4 +44,5 @@ export default class SearchBar extends React.Component {
 SearchBar.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
