@@ -8,9 +8,12 @@ export default class CategoriesList extends React.Component {
       <ul>
         {
           categories.map((categorie) => (
-            <li key={ categorie.id } data-testid="category">
-              { categorie.name }
-            </li>
+            <div key={ categorie.id }>
+              <label htmlFor={ categorie.id }>
+                <input id={ categorie.id } type="radio" data-testid="category" />
+                { categorie.name }
+              </label>
+            </div>
           ))
         }
       </ul>
