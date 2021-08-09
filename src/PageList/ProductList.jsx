@@ -27,13 +27,12 @@ export default class ProductList extends React.Component {
   render() {
     const { loading, categories } = this.state;
     const loadingComp = <h1>loading</h1>;
-    if (loading) return loadingComp;
     return (
       <>
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
-        <Categories categories={ categories } />
+        { loading ? loadingComp : <Categories categories={ categories } /> }
       </>
     );
   }
