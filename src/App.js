@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './Components/Home';
 
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import SearchBar from './SearchBar';
+import Home from './Components/Home';
 
 class App extends React.Component {
   render() {
@@ -13,6 +13,7 @@ class App extends React.Component {
             <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
+        <SearchBar />
       </div>
     );
   }
