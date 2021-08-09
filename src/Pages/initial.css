@@ -1,0 +1,14 @@
+.main-content {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+}
+
+.category {
+  border: 1px solid black;
+  width: 30vw;
+}
