@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search';
+import ProductCard from './ProductCard';
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,7 +10,13 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Search />
+      <div className="main-div">
+        <Search />
+        <h2 data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </h2>
+        <ProductCard />
+      </div>
     );
   }
 }

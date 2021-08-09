@@ -10,8 +10,7 @@ class Search extends React.Component {
     return (
       <form>
         <fieldset>
-          <label data-testid="home-initial-message" htmlFor="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
+          <label htmlFor="home-initial-message">
             <input
               placeholder="Digite algum termo"
               type="text"
