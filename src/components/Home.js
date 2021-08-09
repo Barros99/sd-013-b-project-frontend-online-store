@@ -6,6 +6,10 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+        <div>
+          <input type="text" data-testid="query-input" />
+          <button type="submit" data-testid="query-button" onClick="">Pesquisar</button>
+        </div>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>

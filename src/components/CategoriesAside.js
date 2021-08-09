@@ -27,10 +27,17 @@ class CategoriesAside extends React.Component {
     const { categories } = this.state;
     return (
       <div>
+        <p>Categorias</p>
         {categories.map(({ id, name }) => (
           <label key={ id } htmlFor="category">
             { name }
-            <input data-testid="category" key={ id } type="radio" value={ name } />
+            <input
+              data-testid="category"
+              key={ id }
+              type="radio"
+              value={ name }
+              name="category"
+            />
           </label>
         ))}
       </div>
