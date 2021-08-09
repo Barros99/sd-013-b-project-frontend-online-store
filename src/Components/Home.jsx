@@ -8,11 +8,8 @@ class Home extends Component {
     return (
       <main>
         <BarSearch />
-<<<<<<< HEAD:src/Components/RenderApp.jsx
         <Category />
-=======
         <Link data-testid="shopping-cart-button" to="cart/">Cart</Link>
->>>>>>> main-group-16-requirement-3:src/Components/Home.jsx
       </main>
     );
   }
