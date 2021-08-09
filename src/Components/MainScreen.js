@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CategoryList from './CategoryList';
 
 class MainScreen extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class MainScreen extends React.Component {
         >
           Carrinho
         </Link>
+        <CategoryList />
 
       </div>
     );
