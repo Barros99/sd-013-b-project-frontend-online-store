@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CategoriesAside from './CategoriesAside';
 
 class Home extends React.Component {
   render() {
@@ -16,6 +17,9 @@ class Home extends React.Component {
             Adicionar Carrinho
           </button>
         </Link>
+        <aside>
+          <CategoriesAside />
+        </aside>
       </div>
     );
   }
