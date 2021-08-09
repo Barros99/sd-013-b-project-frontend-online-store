@@ -1,20 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Router, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import * as api from './services/api';
+import ProductList from './components/ProductList';
+/* import * as api from './services/api'; */
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-{/*         <button
-          onClick={ api.getProductsFromCategoryAndQuery }
-        >
-          A
-        </button> */}
-      </header>
-    </div>
+    <BrowserRouter>
+      <main>
+        <Switch>
+          <Route exact path="/" component={ ProductList } />
+        </Switch>
+      </main>
+    </BrowserRouter>
   );
 }
 
