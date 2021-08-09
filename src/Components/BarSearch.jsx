@@ -27,7 +27,8 @@ class BarSearch extends Component {
   }
 
   render() {
-    const { searchText } = this.state;
+    const { searchText, products } = this.state;
+    console.log(products);
     return (
       <form>
         <input
