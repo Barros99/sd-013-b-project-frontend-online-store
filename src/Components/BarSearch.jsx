@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import PropTypes from 'prop-types';
 
 class BarSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchText: '',
-      products: [],
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handlebtn = this.handlebtn.bind(this);
   }
 
   handleChange(event) {
@@ -19,16 +17,9 @@ class BarSearch extends Component {
     });
   }
 
-  async handlebtn() {
-    const { searchText } = this.state;
-    const items = await getProductsFromCategoryAndQuery(undefined, searchText)
-      .then((result) => result.results);
-    this.setState({ products: items });
-  }
-
   render() {
-    const { searchText, products } = this.state;
-    console.log(products);
+    const { searchText } = this.state;
+    const { getProducts } = this.props;
     return (
       <form>
         <input
@@ -42,10 +33,19 @@ class BarSearch extends Component {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <input type="button" name="" onClick={ this.handlebtn } />
+        <input
+          data-testid="query-button"
+          type="button"
+          name=""
+          onClick={ () => getProducts(searchText) }
+        />
       </form>
     );
   }
 }
+
+BarSearch.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+};
 
 export default BarSearch;
