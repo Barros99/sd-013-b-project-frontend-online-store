@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import BarSearch from './BarSearch';
 
-class RenderApp extends Component {
+class Home extends Component {
   render() {
     return (
       <main>
         <BarSearch />
+        <Link data-testid="shopping-cart-button" to="cart/">Cart</Link>
       </main>
     );
   }
 }
-export default RenderApp;
+
+export default Home;
