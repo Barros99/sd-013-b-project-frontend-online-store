@@ -12,7 +12,7 @@ class Category extends Component {
 
   componentDidMount() {
     getCategories().then((response) => {
-      const categories = response.map((categories) => categories);
+      const categories = response.map((category) => category);
       this.setState({ categories });
     });
   }

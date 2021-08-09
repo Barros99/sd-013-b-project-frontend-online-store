@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ComponentRadio extends Component {
   render() {
@@ -13,3 +14,8 @@ class ComponentRadio extends Component {
 }
 
 export default ComponentRadio;
+
+ComponentRadio.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
