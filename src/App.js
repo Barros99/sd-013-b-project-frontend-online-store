@@ -1,19 +1,20 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ShoppingCart from './components/ShoppingCart';
+import Home from './components/Home';
 import Categories from './components/Categories';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ Home } />
+          <Route path="/shoppingcart" render={ () => <ShoppingCart /> } />
+        </Switch>
+      </BrowserRouter>
         <Categories />
-        <div>
-          <label htmlFor="input-search" data-testid="home-initial-message">
-            <input type="text" name="search" id="input-search" />
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </label>
-        </div>
-      </div>
     );
   }
 }
