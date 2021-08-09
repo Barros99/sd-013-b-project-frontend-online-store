@@ -2,10 +2,11 @@ import React from 'react';
 
 import SearchBar from '../components/SearchBar';
 import CategoryList from '../components/CategoryList';
+import ProductList from '../components/ProductList';
 
 import * as api from '../services/api';
 
-class ProductList extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,13 +29,14 @@ class ProductList extends React.Component {
 
   listProducts = async (category, query) => {
     const response = await api.getProductsFromCategoryAndQuery(category, query);
-    const list = response.results.map((element) => (
-      <div data-testid="product" key={ element.id }>
-        <h2>{ element.title }</h2>
-        <img src={ element.thumbnail } alt={ `imagem de ${element.title}` } />
-        <p>{ element.price }</p>
-      </div>
-    ));
+
+    const list = response.results.map((element) => ({
+      id: element.id,
+      title: element.title,
+      thumbnail: element.thumbnail,
+      price: element.price,
+    }));
+
     this.setState({
       productList: list,
     });
@@ -60,16 +62,10 @@ class ProductList extends React.Component {
           selectedCategory={ selectedCategory }
           onChange={ this.handleCategoryChange }
         />
-        {productList.length ? (
-          productList.map((element) => element)
-        ) : (
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-        )}
+        <ProductList productList={ productList } />
       </div>
     );
   }
 }
 
-export default ProductList;
+export default Home;
