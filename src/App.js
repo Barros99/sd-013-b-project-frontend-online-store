@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import MainScreen from './components/MainScreen';
-import ShoppCart from './components/ShoppCart';
+import MainScreen from './Components/MainScreen';
+import ShoppCart from './Components/ShoppCart';
 
 function App() {
   return (
