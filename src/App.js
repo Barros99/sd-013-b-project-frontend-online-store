@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ShoppingCart from './components/ShoppingCart';
 
 import SearchBar from './components/SearchBar';
 
@@ -24,6 +25,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route path="/shopping-cart" component={ ShoppingCart } />
           <Route
             path="/"
             render={ () => <SearchBar value={ value } onChange={ this.handleChange } /> }
