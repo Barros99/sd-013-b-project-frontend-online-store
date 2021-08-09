@@ -8,7 +8,17 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>q</div>
+      <form>
+        <fieldset>
+          <label data-testid="home-initial-message" htmlFor="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+            <input
+              placeholder="Digite algum termo"
+              type="text"
+            />
+          </label>
+        </fieldset>
+      </form>
     );
   }
 }
