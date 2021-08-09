@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Cart from './components/Cart';
 import NotFound from './components/NotFound';
 
@@ -19,6 +20,7 @@ export default class App extends Component {
     return (
       <div className="">
         <BrowserRouter>
+          <Route path="/" component={ SearchField } />
           <Route
             exact
             path="/cart"
