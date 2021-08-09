@@ -5,7 +5,7 @@ import * as api from './services/api';
 import Home from './components/initial/Home';
 
 api.getCategories();
-// Status: Requisito 1 e 2 Prontos.
+api.getProductsFromCategoryAndQuery('veiculo', 'monza');
 function App() {
   return (
     <BrowserRouter>
