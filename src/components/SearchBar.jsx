@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import '../css/SearchBar.css';
+import CategoryList from './CategoryList';
 
 export default class SearchBar extends React.Component {
   render() {
@@ -26,6 +27,7 @@ export default class SearchBar extends React.Component {
         <p data-testid="home-initial-message" className="title">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <CategoryList />
       </div>
     );
   }
