@@ -16,6 +16,7 @@ class Initial extends Component {
           <img
             src="https://i.pinimg.com/originals/4b/a7/d8/4ba7d8d3c62e961494a50de2f61b2cc8.jpg"
             alt="Shopping Cart"
+            height="60px"
           />
         </Link>
       </div>
