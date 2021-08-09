@@ -14,11 +14,7 @@ class App extends React.Component {
             path="/"
             render={ () => (<SearchBar />) }
           />
-          <Route
-            exact
-            path="/shoppingCart"
-            component={ ShoppingCart }
-          />
+          <Route exact path="/shoppingCart" component={ ShoppingCart } />
         </Switch>
       </BrowserRouter>
     );
