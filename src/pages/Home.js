@@ -1,7 +1,6 @@
 import React from 'react';
 import * as api from '../services/api';
 
-import Loading from '../components/Loading';
 import SearchBar from '../components/SearchBar';
 import CategoriesList from '../components/CategoriesList';
 
