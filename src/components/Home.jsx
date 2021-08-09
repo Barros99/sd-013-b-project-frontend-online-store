@@ -1,7 +1,7 @@
 import React from 'react';
-import Search from './Search';
-import logo from '../images/shopping-cart-svgrepo-com.svg';
 import { Link } from 'react-router-dom';
+import shoppingCart from '../images/shopping-cart-svgrepo-com.svg';
+import Search from './Search';
 import ProductCard from './ProductCard';
 
 class Home extends React.Component {
@@ -18,7 +18,9 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </div>
         <ProductCard />
-        <Link to="/cart" data-testid="shopping-cart-button"> <img src={logo} alt="cart icon" width="50" height="50" /> </Link>
+        <Link to="/cart" data-testid="shopping-cart-button">
+          <img src={ shoppingCart } alt="cart icon" width="50" height="50" />
+        </Link>
       </div>
     );
   }
