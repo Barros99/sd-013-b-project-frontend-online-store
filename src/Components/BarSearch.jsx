@@ -39,9 +39,7 @@ class BarSearch extends Component {
           value={ searchText }
           onChange={ this.handleChange }
         />
-        <p
-          data-testid="home-initial-message"
-        >
+        <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <input type="button" name="" onClick={ this.handlebtn } />
