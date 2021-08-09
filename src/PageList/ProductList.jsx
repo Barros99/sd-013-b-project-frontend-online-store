@@ -5,7 +5,7 @@ import { getCategories } from '../services/api';
 export default class ProductList extends React.Component {
   constructor() {
     super();
-    this.categoiresFetch = this.categoiresFetch.bind(this);
+    this.categoriesFetch = this.categoriesFetch.bind(this);
 
     this.state = {
       loading: true,
@@ -14,10 +14,10 @@ export default class ProductList extends React.Component {
   }
 
   componentDidMount() {
-    this.categoiresFetch();
+    this.categoriesFetch();
   }
 
-  categoiresFetch() {
+  categoriesFetch() {
     this.setState({ loading: true }, async () => {
       const categories = await getCategories();
       this.setState({ loading: false, categories });
