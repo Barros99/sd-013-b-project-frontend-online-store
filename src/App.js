@@ -4,7 +4,6 @@ import SearchBar from './pages/SearchBar';
 import './App.css';
 import ShoppingCart from './pages/ShoppingCart';
 
-
 function App() {
   return (
     <div>

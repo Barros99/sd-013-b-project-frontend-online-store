@@ -1,6 +1,6 @@
 import React from 'react';
-import HomeFilter from '../Componentes/HomeFilter';
 import { Link } from 'react-router-dom';
+import HomeFilter from '../Componentes/HomeFilter';
 
 class SearchBar extends React.Component {
   render() {
