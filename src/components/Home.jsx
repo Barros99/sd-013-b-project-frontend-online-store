@@ -18,7 +18,7 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </div>
         <ProductCard />
-        <Link to="/cart"> <img src={logo} alt="cart icon" width="50" height="50" /> </Link>
+        <Link to="/cart" data-testid="shopping-cart-button"> <img src={logo} alt="cart icon" width="50" height="50" /> </Link>
       </div>
     );
   }
