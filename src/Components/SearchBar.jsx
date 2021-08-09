@@ -13,3 +13,4 @@ export default class SearchBar extends Component {
     );
   }
 }
+// Corrigindo
