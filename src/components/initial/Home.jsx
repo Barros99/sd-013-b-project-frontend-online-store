@@ -6,32 +6,50 @@ class Home extends Component {
     super();
 
     this.state = {
-      catId: 'veiculo',
+      catId: '',
       input: '',
-    }
+      send: '',
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.submitQuery = this.submitQuery.bind(this);
   }
 
   handleChange({ target }) {
     const { value, name } = target;
-    
     this.setState({
-        [name]: value,
-      });
-    } 
+      [name]: value,
+    });
+  }
+
+  submitQuery() {
+    const { input } = this.state;
+    this.setState({ send: input });
+  }
 
   render() {
-    const { input, catId } = this.state;
+    const { catId, send } = this.state;
 
     return (
       <>
-        <input type="text" placeholder="Digite o nome do produto" onChange={ this.handleChange } name="input" />
-        <button type="button">Buscar</button>
+        <input
+          type="text"
+          placeholder="Digite o nome do produto"
+          data-testid="query-input"
+          onChange={ this.handleChange }
+          name="input"
+        />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.submitQuery }
+        >
+          Buscar
+        </button>
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
         <section>
-          <ProductList query={ input } catId={ catId } />
+          <ProductList query={ send } catId={ catId } />
         </section>
       </>
     );

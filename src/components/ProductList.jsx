@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import * as api from "../services/api";
-import ProductCard from "./ProductCard";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import * as api from '../services/api';
+import ProductCard from './ProductCard';
 
 class ProductList extends Component {
   constructor(props) {
@@ -11,25 +12,22 @@ class ProductList extends Component {
     };
   }
 
-  async fetchProducts() {
-    const { query, catId } = this.props;
-    //const results = await api.getCategories();
-    const fetch = await api.getProductsFromCategoryAndQuery(catId, query);
-    const results = await fetch.results;
-    console.log(results);
-    this.setState({ products: results });
-  }
-
   componentDidMount() {
     this.fetchProducts();
   }
 
-  componentDidUpdate(prevProp, prevState) {
-    if (prevState.products !== this.state.products) {
-      //this.fetchProducts();
-      console.log(this.state.products);
-      console.log(prevState.products);
+  componentDidUpdate(prevProp) {
+    const { query } = this.props;
+    if (prevProp.query !== query) {
+      this.fetchProducts();
     }
+  }
+
+  async fetchProducts() {
+    const { query, catId } = this.props;
+    const fetch = await api.getProductsFromCategoryAndQuery(catId, query);
+    const results = await fetch.results;
+    this.setState({ products: results });
   }
 
   render() {
@@ -39,11 +37,16 @@ class ProductList extends Component {
     return (
       <div>
         {products.map((prod) => (
-          <ProductCard key={prod.id} product={prod} />
+          <ProductCard key={ prod.id } product={ prod } />
         ))}
       </div>
     );
   }
 }
+
+ProductList.propTypes = {
+  query: PropTypes.string.isRequired,
+  catId: PropTypes.string.isRequired,
+};
 
 export default ProductList;

@@ -7,7 +7,7 @@ class ProductCard extends Component {
     const { title, thumbnail, price } = product;
 
     return (
-      <div data-testid="-card" className="">
+      <div data-testid="product" className="">
         Product Card
         <h4>{ title }</h4>
         <img src={ thumbnail } alt={ title } />
