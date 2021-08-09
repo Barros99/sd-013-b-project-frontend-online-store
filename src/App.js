@@ -13,7 +13,6 @@ class App extends React.Component {
             path="/"
             render={ () => (<SearchBar />) }
           />
-          {/* <Route path="/" render={ () => <RenderCard products={ products } /> } /> */}
         </Switch>
       </BrowserRouter>
     );
