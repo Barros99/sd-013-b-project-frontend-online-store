@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
+  handleClick = (event) => {
+    event.preventDefault();
+    const { searchTerm, onClick } = this.props;
+
+    onClick('', searchTerm);
+  }
+
   render() {
-    const { searchTerm, onChange, onClick } = this.props;
+    const { searchTerm, onChange } = this.props;
 
     return (
       <form>
@@ -15,7 +22,7 @@ class SearchBar extends React.Component {
         />
         <button
           type="submit"
-          onClick={ onClick('', searchTerm) }
+          onClick={ this.handleClick }
           data-testid="query-button"
         >
           Vai!
@@ -28,6 +35,7 @@ class SearchBar extends React.Component {
 SearchBar.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
