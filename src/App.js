@@ -1,24 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>Edit src/App.js and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SearchBar from './components/SearchBar';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { value } = target;
+    this.setState({
+      value,
+    });
+  }
+
+  render() {
+    const { value } = this.state;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route
+            path="/"
+            render={ () => <SearchBar value={ value } onChange={ this.handleChange } /> }
+          />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
