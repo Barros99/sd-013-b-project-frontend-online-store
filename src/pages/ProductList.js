@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchBar from '../components/SearchBar';
 
@@ -30,10 +31,12 @@ class ProductList extends React.Component {
 
     return (
       <div>
-        <SearchBar
-          searchTerm={ searchTerm }
-          onChange={ this.handleSearchTermChange }
-        />
+        <div className="header">
+          <SearchBar
+            searchTerm={ searchTerm }
+            onChange={ this.handleSearchTermChange }
+          />
+        </div>
         {productList.length ? (
           <p>Tem produtos</p>
         ) : (
