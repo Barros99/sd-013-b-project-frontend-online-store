@@ -12,9 +12,9 @@ class Home extends React.Component {
     return (
       <div className="main-div">
         <Search />
-        <h2 data-testid="home-initial-message">
+        <div data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-        </h2>
+        </div>
         <ProductCard />
       </div>
     );
