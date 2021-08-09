@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ProductList from '../ProductList';
+import { Link } from 'react-router-dom';
+import { RiShoppingCartLine } from 'react-icons/ri';
 
 class Home extends Component {
   constructor() {
@@ -51,6 +53,10 @@ class Home extends Component {
         <section>
           <ProductList query={ send } catId={ catId } />
         </section>
+        <Link to="/shop" data-testid="shopping-cart-button">
+          Carrinho de compras
+          <RiShoppingCartLine />
+        </Link>
       </>
     );
   }
