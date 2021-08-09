@@ -33,15 +33,13 @@ class Home extends React.Component {
   render() {
     const { categories, loading } = this.state;
 
-    if (loading) return <Loading />;
-
     return (
       <div>
         <SearchBar />
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
-        <CategoriesList categories={ categories } />
+        { !loading && <CategoriesList categories={ categories } /> }
       </div>
     );
   }
