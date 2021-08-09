@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as api from './services/api';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Iniciando o projeto</p>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    api.getCategories();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <p>Iniciando o projeto</p>
+      </div>
+    );
+  }
 }
 
 export default App;
