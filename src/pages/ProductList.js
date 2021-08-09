@@ -1,6 +1,8 @@
 import React from 'react';
 import { getProductsFromCategoryAndQuery as ApiProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
+import CategoryFilter from '../components/CategoryFilter';
+import CartButton from '../components/CartButton';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -53,6 +55,10 @@ class ProductList extends React.Component {
         <div>
           {products
             .map((product) => <ProductCard key={ product.id } product={ product } />)}
+        </div>
+        <div>
+          <CartButton />
+          <CategoryFilter />
         </div>
       </div>
     );
