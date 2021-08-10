@@ -39,13 +39,6 @@ export default class ProductList extends React.Component {
     });
   }
 
-  queryFetch(search) {
-    this.setState({ loading: true }, async () => {
-      const products = await getProductsFromCategoryAndQuery(undefined, search);
-      this.setState({ loading: false, products });
-    });
-  }
-
   render() {
     const { loading, categories, inputValue, products } = this.state;
     const loadingComp = <h1>loading</h1>;
@@ -54,7 +47,6 @@ export default class ProductList extends React.Component {
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
-        { loading ? loadingComp : <Categories categories={ categories } /> }
         <input
           data-testid="query-input"
           value={ inputValue }
@@ -65,9 +57,10 @@ export default class ProductList extends React.Component {
           data-testid="query-button"
           onClick={ this.clickChange }
         >
-          🔎
+          <span role="img" aria-label="lupa">🔎</span>
         </button>
         <Search product={ products } />
+        { loading ? loadingComp : <Categories categories={ categories } /> }
       </div>
     );
   }
