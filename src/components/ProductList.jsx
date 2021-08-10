@@ -1,16 +1,25 @@
 import React from 'react';
-import Categories from './Categories';
+import PropTypes from 'prop-types';
+// import FailResult from './FailResult';
 
 export default class ProductList extends React.Component {
   render() {
+    const { product } = this.props;
+    const { title, thumbnail, price } = product;
     return (
-      <div>
-        <label htmlFor="search" data-testid="home-initial-message">
-          <input type="text" name="search" id="search" />
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </label>
-        <Categories />
+      <div data-testid="product">
+        <span>{ title }</span>
+        <img src={ thumbnail } alt={ title } />
+        <span>{ price }</span>
       </div>
     );
   }
 }
+
+ProductList.propTypes = {
+  product: PropTypes.shape({
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
+};
