@@ -13,6 +13,7 @@ class Main extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.categoryClick = this.categoryClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -28,6 +29,13 @@ class Main extends React.Component {
     this.setState({ searchItemList: response.results });
   }
 
+  categoryClick(event) {
+    // console.log(event.target.value);
+    this.setState({
+      category: event.target.value,
+    });
+  }
+
   render() {
     const { value, searchItemList } = this.state;
     return (
@@ -36,6 +44,7 @@ class Main extends React.Component {
           value={ value }
           onChange={ this.handleChange }
           handleClick={ this.handleClick }
+          categoryClick={ this.categoryClick }
         />
         <ListItems items={ searchItemList } />
       </>

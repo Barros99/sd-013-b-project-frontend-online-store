@@ -10,7 +10,7 @@ import CategoryList from './CategoryList';
 
 export default class SearchBar extends React.Component {
   render() {
-    const { onChange, value, handleClick } = this.props;
+    const { onChange, value, handleClick, categoryClick } = this.props;
     return (
       <div>
         <div className="input-container">
@@ -35,7 +35,7 @@ export default class SearchBar extends React.Component {
         <p data-testid="home-initial-message" className="title">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <CategoryList />
+        <CategoryList categoryClick={ categoryClick } />
       </div>
     );
   }
@@ -45,4 +45,5 @@ SearchBar.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  categoryClick: PropTypes.func.isRequired,
 };

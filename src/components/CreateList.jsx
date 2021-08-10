@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CreateList extends React.Component {
   render() {
-    const { name } = this.props;
+    const { name, id, funcClick } = this.props;
     return (
       <label htmlFor="category">
         <input
@@ -11,6 +11,8 @@ class CreateList extends React.Component {
           name="category"
           type="radio"
           data-testid="category"
+          value={ id }
+          onClick={ funcClick }
         />
         {name}
       </label>
@@ -20,6 +22,8 @@ class CreateList extends React.Component {
 
 CreateList.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  funcClick: PropTypes.func.isRequired,
 };
 
 export default CreateList;
