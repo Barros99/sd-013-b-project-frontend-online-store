@@ -5,7 +5,7 @@ import Loading from './Loading';
 
 class MainPage extends Component {
   render() {
-    const { categories, loadingCategories } = this.props;
+    const { inputSearch, categories, loadingCategories, handleChange } = this.props;
     const loadingElement = <Loading />;
     return (
       <div className="main">
@@ -16,7 +16,13 @@ class MainPage extends Component {
         </div>
         <div className="search">
           <label htmlFor="input-search" data-testid="home-initial-message">
-            <input type="text" value="" id="input-search" />
+            <input
+              type="text"
+              value={ inputSearch }
+              name="inputSearch"
+              id="input-search"
+              onChange={ handleChange }
+            />
             Digite algum termo de pesquisa ou escolha uma categoria.
           </label>
         </div>
@@ -33,6 +39,8 @@ MainPage.propTypes = {
     }).isRequired,
   ).isRequired,
   loadingCategories: PropTypes.bool.isRequired,
+  inputSearch: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default MainPage;

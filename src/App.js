@@ -37,7 +37,9 @@ export default class App extends Component {
     this.state = {
       loadingCategories: true,
       categories: [],
+      inputSearch: '',
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -53,8 +55,14 @@ export default class App extends Component {
     //   .then((data) => console.log(data));
   }
 
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value,
+    });
+  }
+
   render() {
-    const { categories, loadingCategories } = this.state;
+    const { categories, loadingCategories, inputSearch } = this.state;
 
     return (
       <BrowserRouter>
@@ -64,6 +72,8 @@ export default class App extends Component {
             () => (<MainPage
               categories={ categories }
               loadingCategories={ loadingCategories }
+              handleChange={ this.handleChange }
+              inputSearch={ inputSearch }
             />)
           }
         />
