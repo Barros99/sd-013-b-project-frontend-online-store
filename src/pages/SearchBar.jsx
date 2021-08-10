@@ -1,13 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchByQuery from '../Componentes/SearchByQuery';
 import HomeFilter from '../Componentes/HomeFilter';
 
 class SearchBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+
+    };
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(event) {
+    const inputValue = event.target.value;
+    return inputValue;
+  }
+
   render() {
     return (
-      <label htmlFor="input-search-bar">
+      <div>
         <div>
-          <input type="text" />
+          <input data-testid="query-input" type="text" onChange={ this.handleInput } />
+          <button data-testid="query-button" type="button">Pesquisar</button>
           <h3 data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </h3>
@@ -15,8 +30,11 @@ class SearchBar extends React.Component {
         <Link to="ShoppingCart" data-testid="shopping-cart-button">
           Carrinho
         </Link>
+        <SearchByQuery
+          onChange={ this.handleInput }
+        />
         <HomeFilter />
-      </label>
+      </div>
     );
   }
 }
