@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductInCart from './ProductInCart';
 
 export default class ShoppingCart extends Component {
   render() {
@@ -11,13 +12,7 @@ export default class ShoppingCart extends Component {
         {localStorageCartList.map((jsonProduct) => {
           const product = JSON.parse(jsonProduct);
           return (
-            <div key={ product.id }>
-              <h1 data-testid="shopping-cart-product-name">{ product.title }</h1>
-              <p data-testid="shopping-cart-product-quantity">
-                Quantidade:
-                <span>1</span>
-              </p>
-            </div>
+            <ProductInCart key={ product.id } product={ product } />
           );
         })}
       </div>
