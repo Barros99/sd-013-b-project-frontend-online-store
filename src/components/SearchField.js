@@ -2,12 +2,13 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import ListaCat from '../Components/ListaCat';
+import ListItems from '../componentes/ListItems';
 
 class SearchField extends React.Component {
   render() {
     return (
       <div className="search">
-        <input type="text" />
+        <ListItems />
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
