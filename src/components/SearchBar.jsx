@@ -18,14 +18,14 @@ export default class SearchBar extends React.Component {
 
   render() {
     const { searchText } = this.state;
-    const { handleClick } = this.props;
+    const { getSearch } = this.props;
     return (
       <div>
         <input type="text" onChange={ this.captureValueText } data-testid="query-input" />
         <button
           type="button"
           data-testid="query-button"
-          onClick={ handleClick }
+          onClick={ getSearch }
           value={ searchText }
         >
           Pesquisar
