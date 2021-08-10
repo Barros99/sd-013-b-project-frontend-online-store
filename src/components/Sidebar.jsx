@@ -28,8 +28,8 @@ export default class Sidebar extends React.Component {
     const { captureValueSelect } = this.props;
 
     return (
-      <form 
-        onChange={ captureValueSelect } 
+      <form
+        onChange={ captureValueSelect }
         value={ captureValueSelect }
         className="category"
       >
