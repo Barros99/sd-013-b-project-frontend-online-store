@@ -6,7 +6,6 @@ export async function getCategories() {
     .then((response) => response);
 }
 
-/* DESESTRUTURAR OS PARÂMETROS */
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
   const endpoint = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`;
 
