@@ -36,6 +36,7 @@ class ListCategories extends Component {
                   id="category"
                   value={ id }
                   key={ id }
+                  data-testid="category"
                 />
                 { name }
               </label>
