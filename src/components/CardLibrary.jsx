@@ -8,6 +8,8 @@ export default class CardLibrary extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleClick = this.handleClick.bind(this);
+
     this.state = {
       searchText: undefined,
       selectedCategory: undefined,
@@ -20,6 +22,14 @@ export default class CardLibrary extends React.Component {
     if (searchText !== prevs.searchText || selectedCategory !== prevs.selectedCategory) {
       this.fetchData(selectedCategory, searchText);
     }
+  }
+
+  handleClick({ target }) {
+    this.setState({ searchText: target.value });
+  }
+
+  captureValueSelect({ target }) {
+    this.setState({ selectedCategory: target.value });
   }
 
   async fetchData() {

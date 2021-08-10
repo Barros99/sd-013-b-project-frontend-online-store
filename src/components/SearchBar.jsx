@@ -19,7 +19,7 @@ export default class SearchBar extends React.Component {
 
   render() {
     const { searchText } = this.state;
-    const { handleClick } = this.props;
+    const { getSearch } = this.props;
     return (
       <section>
         <div className="search-bar">
