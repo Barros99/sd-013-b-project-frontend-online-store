@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../services/api';
-import Categories from './Categories';
 
 export default class ProductList extends Component {
   constructor(props) {
@@ -60,7 +59,6 @@ export default class ProductList extends Component {
             </button>
           </label>
         </form>
-        <Categories />
         <div>
           {done ? results.map(({ title, price, thumbnail, id }) => (
             <div key={ id } data-testid="product">
