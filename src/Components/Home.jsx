@@ -9,6 +9,7 @@ export default class Home extends React.Component {
     this.state = {
       categories: [],
       searchText: '',
+      searchCheckbox: false,
     };
   }
 
@@ -17,24 +18,35 @@ export default class Home extends React.Component {
   }
 
   handleChange = ({ target }) => {
-    this.setState({ searchText: target.value });
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
-    const { categories, searchText } = this.state;
+    const { categories, searchText, searchCheckbox } = this.state;
     return (
       <div>
         <SearchBar
           searchText={ searchText }
           handleChange={ this.handleChange }
         />
-        <ul>
-          { categories.map(({ id, name }) => (
-            <li key={ id } data-testid="category">
+        { categories.map(({ id, name }) => (
+          <div key={ id } data-testid="category">
+            <label htmlFor="categories">
+              <input
+                type="checkbox"
+                name="searchCheckbox"
+                id="categories"
+                value={ searchCheckbox }
+                onChange={ this.handleChange }
+              />
               { name }
-            </li>
-          )) }
-        </ul>
+            </label>
+          </div>
+        )) }
       </div>
     );
   }

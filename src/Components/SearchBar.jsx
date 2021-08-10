@@ -6,14 +6,16 @@ class SearchBar extends React.Component {
     const { handleChange, searchText } = this.props;
     return (
       <div>
-        <h4 data-testid="home-initial-message">
+        <label htmlFor="category" data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-        </h4>
-        <input
-          type="text"
-          value={ searchText }
-          onChange={ handleChange }
-        />
+          <input
+            type="text"
+            name="searchText"
+            id="category"
+            value={ searchText }
+            onChange={ handleChange }
+          />
+        </label>
       </div>
     );
   }
