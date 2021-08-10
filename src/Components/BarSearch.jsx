@@ -6,6 +6,7 @@ class BarSearch extends Component {
     super(props);
     this.state = {
       searchText: '',
+
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -37,7 +38,7 @@ class BarSearch extends Component {
           data-testid="query-button"
           type="button"
           name=""
-          onClick={ () => getProducts(searchText) }
+          onClick={ () => getProducts(searchText || '$QUERY') }
         />
       </form>
     );
