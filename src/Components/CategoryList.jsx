@@ -9,7 +9,19 @@ class CategoryList extends Component {
         <ul>
           { categories
             .map((category) => (
-              <li data-testid="category" key={ category.id }>{ category.name }</li>
+              <div key={ category.id }>
+                <label
+                  htmlFor={ `category-${category.name}` }
+                  data-testid="category"
+                >
+                  <input
+                    type="radio"
+                    name="category"
+                    id={ `category-${category.name}` }
+                  />
+                  { category.name }
+                </label>
+              </div>
             ))}
         </ul>
       </div>

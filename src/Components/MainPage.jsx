@@ -10,6 +10,7 @@ class MainPage extends Component {
     return (
       <div className="main">
         <div className="category-list">
+          <h2 className="title-category-list">Categorias:</h2>
           {loadingCategories
             ? loadingElement
             : <CategoryList categories={ categories } />}
