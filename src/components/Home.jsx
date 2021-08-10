@@ -14,22 +14,29 @@ export default class Home extends React.Component {
 
     this.listner = this.listner.bind(this);
     this.cathProducts = this.cathProducts.bind(this);
+    this.categoryOnclick = this.categoryOnclick.bind(this);
   }
 
   listner({ target }) {
     this.setState({
       search: target.value,
     });
+    console.log(target.value);
+  }
+
+  categoryOnclick({ target }) {
+    this.setState({
+      categoryId: target.id,
+    }, () => this.cathProducts());
   }
 
   cathProducts() {
     const { categoryId, search } = this.state;
-    api.getProductsFromCategoryAndQuery(categoryId, search)
-      .then(({ results }) => (
-        this.setState({
-          resultList: results,
-        })
-      ));
+    api
+      .getProductsFromCategoryAndQuery(categoryId, search)
+      .then(({ results }) => this.setState({
+        resultList: results,
+      }));
   }
 
   render() {
@@ -53,13 +60,12 @@ export default class Home extends React.Component {
         >
           Search
         </button>
-        <Categories />
+        <Categories onClick={ this.categoryOnclick } />
 
         <div>
-          {
-            resultList
-              .map((product) => <ProductList key={ product.id } product={ product } />)
-          }
+          {resultList.map((product) => (
+            <ProductList key={ product.id } product={ product } />
+          ))}
         </div>
       </div>
     );
