@@ -8,7 +8,7 @@ class ProductList extends React.Component {
     return (
       <div>
         {/* requisito passou, precisamos apenas verificar esta condição.
-        Já inicia mostrando a mensagem de produto não encontrado */}
+        Já inicia mostrando a mensagem de produto não encontrado. */}
         { productList.length === 0 ? <p>Nenhum produto encontrado</p>
           : productList.map((product) => (
             <div key={ product.id } data-testid="product">
