@@ -10,8 +10,8 @@ class App extends React.Component {
       <main>
         <div className="App">
           <BrowserRouter>
-            <Home />
             <Switch>
+              <Route exact path="/" component={ Home } />
               <Route exact path="/shopping-cart" component={ ShoppingCart } />
             </Switch>
           </BrowserRouter>
