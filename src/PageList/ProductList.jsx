@@ -3,14 +3,12 @@ import Categories from '../Components/Categories';
 import Search from '../Components/Search';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
-
 export default class ProductList extends React.Component {
   constructor() {
     super();
     this.categoriesFetch = this.categoriesFetch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clickChange = this.clickChange.bind(this);
-
 
     this.state = {
       loading: true,
@@ -33,14 +31,14 @@ export default class ProductList extends React.Component {
     const returnFetch = await getProductsFromCategoryAndQuery(undefined, inputValue);
     this.setState({ products: returnFetch.results, inputValue: '' });
   }
-  
+
   categoriesFetch() {
     this.setState({ loading: true }, async () => {
       const categories = await getCategories();
       this.setState({ loading: false, categories });
     });
   }
-  
+
   queryFetch(search) {
     this.setState({ loading: true }, async () => {
       const products = await getProductsFromCategoryAndQuery(undefined, search);
@@ -52,9 +50,10 @@ export default class ProductList extends React.Component {
     const { loading, categories, inputValue, products } = this.state;
     const loadingComp = <h1>loading</h1>;
     return (
-          <h1 data-testid="home-initial-message">
+      <div>
+        <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-          </h1>
+        </h1>
         { loading ? loadingComp : <Categories categories={ categories } /> }
         <input
           data-testid="query-input"
@@ -69,7 +68,7 @@ export default class ProductList extends React.Component {
           🔎
         </button>
         <Search product={ products } />
-      
+      </div>
     );
   }
 }
