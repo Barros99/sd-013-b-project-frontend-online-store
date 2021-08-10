@@ -5,21 +5,28 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = (
-      { categories:[] }
+      { categories: [] }
     );
+    this.getCategoriesApi = this.getCategoriesApi.bind(this);
   }
-  async componentDidMount() {
-   await getCategoriesApi();
+
+  componentDidMount() {
+    this.getCategoriesApi();
   }
+
   async getCategoriesApi() {
     const list = await api.getCategories();
     this.setState({
-      categories : list,
-    })
+      categories: list,
+    });
   }
+
   render() {
+    const { categories } = this.state;
     return (
-      <div>q</div>
+      <ul>
+        {categories.map((category) => (<li key={ category.id } data-testid="category">{ category.name }</li>))}
+      </ul>
     );
   }
 }
