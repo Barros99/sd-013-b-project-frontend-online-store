@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { getProductsFromCategoryAndQuery } from '../services/api';
@@ -43,7 +44,7 @@ class Home extends Component {
   }
 
   render() {
-    const { products, card } = this.state;
+    const { products } = this.state;
     return (
       <>
         <header>
@@ -60,3 +61,7 @@ class Home extends Component {
 }
 
 export default Home;
+
+Home.propTypes = {
+  getItemCard: PropTypes.func.isRequired,
+};
