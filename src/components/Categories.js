@@ -48,7 +48,7 @@ class Categories extends React.Component {
         <div>
           {categorySelected}
           {productFiltered.map((element) => (
-            <span key={ element.id } data-testid="product"/>
+            <span key={ element.id } data-testid="product" />
           ))}
         </div>
       </div>
