@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CategoriesList from './Components/CategoriesList';
 import SearchBar from './Components/SearchBar';
 
 export default class App extends Component {
@@ -8,6 +9,9 @@ export default class App extends Component {
         <header>
           <SearchBar />
         </header>
+        <div>
+          <CategoriesList />
+        </div>
       </div>
     );
   }
