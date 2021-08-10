@@ -37,8 +37,6 @@ class ProductCard extends React.Component {
     return card;
   }
 
-
-
   render() {
     const { results } = this.state;
     return (
