@@ -10,6 +10,20 @@ class Product extends React.Component {
         <h2>{ product.title }</h2>
         <img src={ product.thumbnail } alt={ `imagem de ${product.title}` } />
         <p>{ product.price }</p>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ () => {
+            localStorage.setItem(product.id, JSON.stringify({
+              title: product.title,
+              price: product.price,
+              thumbnail: product.thumbnail,
+              amount: 1,
+            }));
+          } }
+        >
+          Adcionar ao Carrinho
+        </button>
       </div>
     );
   }
