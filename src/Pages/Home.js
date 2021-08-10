@@ -54,7 +54,13 @@ class Home extends Component {
             onChange={ this.handleInputChange }
           />
         </label>
-        <button type="button" data-testid="query-button" onClick={ this.fetchProducts }>Pesquisar</button>
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.fetchProducts }
+        >
+          Pesquisar
+        </button>
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma
           categoria.
@@ -63,8 +69,12 @@ class Home extends Component {
         <Categories />
         <div>
           {products.map((product) => (
-            <Card key={ product.id } title={ product.title } image={ product.thumbnail } price={ product.price } />
-
+            <Card
+              key={ product.id }
+              title={ product.title }
+              image={ product.thumbnail }
+              price={ product.price }
+            />
           ))}
         </div>
       </div>
