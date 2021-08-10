@@ -1,6 +1,8 @@
 import React from 'react';
 import CardList from './CardList';
 import SearchBar from './SearchBar';
+import Sidebar from './Sidebar';
+import * as api from '../services/api';
 
 export default class CardLibrary extends React.Component {
   constructor(props) {
@@ -8,27 +10,33 @@ export default class CardLibrary extends React.Component {
 
     this.state = {
       searchText: undefined,
-      category: undefined,
+      selectedCategory: undefined,
+      results: [],
     };
-
-    this.onSearchText = this.onSearchText.bind(this);
-    this.onCategory = this.onCategory.bind(this);
   }
 
-  onSearchText({ target }) {
-    this.setState({ searchText: target.value });
+  componentDidUpdate(prevs) {
+    const { searchText, selectedCategory } = this.state;
+    if (searchText !== prevs.searchText || selectedCategory !== prevs.selectedCategory) {
+      this.fetchData(selectedCategory, searchText);
+    }
   }
 
-  onCategory({ target }) {
-    this.setState({ category: target.checked });
+  async fetchData() {
+    const { searchText, selectedCategory } = this.state;
+    const data = await api.getProductsFromCategoryAndQuery(selectedCategory, searchText);
+    this.setState({
+      results: data.results,
+    });
   }
 
   render() {
-    const { searchText, category } = this.state;
+    const { results } = this.state;
     return (
       <div>
-        <SearchBar searchText={ searchText } category={ category } />
-        <CardList searchText={ searchText } category={ category } />
+        <SearchBar getSearch={ this.handleClick } />
+        <Sidebar captureValueSelect={ this.captureValueSelect } />
+        <CardList results={ results } />
       </div>
     );
   }

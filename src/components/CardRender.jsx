@@ -5,10 +5,9 @@ export default class CardRender extends React.Component {
   render() {
     const { results } = this.props;
     const { title, price, thumbnail } = results;
-    console.log(title);
     return (
       <div>
-        <img alt="imagem" src={ thumbnail } />
+        <img alt="imagem" src={ thumbnail } data-testid="product" />
         <div>
           <h4>{ title }</h4>
           <p>{ price }</p>
