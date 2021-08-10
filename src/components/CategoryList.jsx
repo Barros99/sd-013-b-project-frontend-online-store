@@ -1,6 +1,6 @@
 import React from 'react';
 import * as api from '../services/api';
-import '../styles/categoryList.css';
+import '../styles/home.css';
 
 class CategoryList extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class CategoryList extends React.Component {
 
   async getCategoriesApi() {
     const list = await api.getCategories();
+    console.log(list);
     this.setState({
       categories: list,
     });
@@ -27,7 +28,9 @@ class CategoryList extends React.Component {
     return (
       <ul className="list-content">
         {categories.map((category) => (
-          <li key={ category.id } data-testid="category">{ category.name }</li>))}
+          <li key={ category.id } data-testid="category">
+            { category.name }
+          </li>))}
       </ul>
     );
   }

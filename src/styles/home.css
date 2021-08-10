@@ -32,3 +32,55 @@
   display: flex;
   flex-flow: row;
 }
+
+/* nFound */
+
+.main-not-found {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+/* catagory-list */
+
+.list-content {
+  background-color: aliceblue;
+}
+
+/* Product-Card */
+
+.main-card-product {
+  align-items: center;
+  background-color: #858585;
+  border-radius: 1em;
+  box-shadow: 1px 1px 10px 3px black;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  margin: 20px;
+  transition: 0.2s;
+  width: 200px;
+}
+
+.main-card-product img {
+  transform: scale(0.95);
+  transition: 0.2s;
+  width: 100%;
+}
+
+.main-card-product img:hover {
+  transform: scale(0.97);
+  transition: 0.2s;
+  width: 100%;
+}
+
+/* Search */
+
+.form fieldset {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-style: none;
+}
+
