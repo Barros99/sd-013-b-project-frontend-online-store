@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { getCategories } from '../services/api';
+
 import ComponentRadio from './ComponentRadio';
 
 class Category extends Component {
@@ -36,5 +39,9 @@ class Category extends Component {
     );
   }
 }
+
+Category.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Category;
