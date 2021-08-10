@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Header from '../Components/Header';
 
 class ProductDetail extends Component {
   render() {
@@ -11,8 +12,10 @@ class ProductDetail extends Component {
         id,
       },
       handleChange } = this.props;
+    const quantity = 1;
     return (
       <div>
+        <Header />
         <p data-testid="product-detail-name">
           { title }
         </p>
@@ -22,8 +25,8 @@ class ProductDetail extends Component {
         <img alt={ title } src={ thumbnail } />
         <button
           type="button"
-          data-testid="product-add-to-cart"
-          onClick={ () => handleChange({ title, thumbnail, price, id }) }
+          data-testid="product-detail-add-to-cart"
+          onClick={ () => handleChange({ title, thumbnail, price, id, quantity }) }
         >
           Add to cart
         </button>

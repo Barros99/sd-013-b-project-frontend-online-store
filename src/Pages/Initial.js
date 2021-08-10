@@ -64,6 +64,7 @@ class Initial extends Component {
   render() {
     const { categories, products } = this.state;
     const { handleChangeOnCart } = this.props;
+    const quantity = 1;
     return (
       <div className="main-content">
 
@@ -115,7 +116,9 @@ class Initial extends Component {
                   <button
                     type="button"
                     data-testid="product-add-to-cart"
-                    onClick={ () => handleChangeOnCart({ title, thumbnail, price, id }) }
+                    onClick={ () => (
+                      handleChangeOnCart({ title, thumbnail, price, id, quantity })
+                    ) }
                   >
                     Add to cart
                   </button>

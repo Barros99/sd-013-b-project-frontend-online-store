@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 class ShoppingCart extends Component {
   render() {
     const { products } = this.props;
-
     if (products.length === 0) {
       return (
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
@@ -15,11 +14,14 @@ class ShoppingCart extends Component {
     return (
       <div>
         {
-          products.map(({ title, thumbnail, price, id }) => (
-            <div key={ id }>
-              <img alt={ title } src={ thumbnail } />
-              <p data-testid="shopping-cart-product-name">{ title }</p>
-              <p>{ price }</p>
+          Object.keys(products).map((id) => (
+            <div key={ products[id].id }>
+              <img alt={ products[id].title } src={ products[id].thumbnail } />
+              <p data-testid="shopping-cart-product-name">{ products[id].title }</p>
+              <p>{ products[id].price }</p>
+              <p data-testid="shopping-cart-product-quantity">
+                { products[id].quantity }
+              </p>
             </div>
           ))
         }
