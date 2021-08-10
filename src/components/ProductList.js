@@ -15,6 +15,12 @@ class ProductList extends React.Component {
               <p>{product.title}</p>
               <img src={ product.thumbnail } alt={ product.title } />
               <p>{ product.price }</p>
+              <button
+                type="button"
+                data-testid="product-add-to-cart"
+              >
+                Adicionar ao carrinho
+              </button>
             </div>
           ))}
       </div>
