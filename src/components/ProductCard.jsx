@@ -11,6 +11,17 @@ class ProductCard extends React.Component {
     this.showResults = this.showResults.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { results } = this.props;
+    if (results !== prevProps.results) {
+      this.updateState(results);
+    }
+  }
+
+  updateState = (results) => {
+    this.setState({ results });
+  }
+
   showResults() {
     const { results } = this.state;
     const card = results.map((result) => {
@@ -25,6 +36,8 @@ class ProductCard extends React.Component {
     });
     return card;
   }
+
+
 
   render() {
     const { results } = this.state;

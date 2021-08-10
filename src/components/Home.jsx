@@ -1,18 +1,37 @@
 import React from 'react';
+
+import { getProductsFromCategoryAndQuery } from '../services/api';
+
 import CartButton from './CartButton';
 import Search from './Search';
 import ProductCard from './ProductCard';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import CategoriesList from './CategoriesList';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
       results: [],
+      search: '',
+      showCard: false,
     };
 
+    this.handleCategoriesList = this.handleCategoriesList.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChange({ target }) {
+    this.setState({ search: target.value });
+  }
+
+  async handleCategoriesList({ target }) {
+    const { results } = await getProductsFromCategoryAndQuery(target.value, '');
+    console.log(results, target.value);
+    this.setState({
+      results,
+      showCard: true,
+    });
   }
 
   async handleClick() {
@@ -20,17 +39,18 @@ class Home extends React.Component {
     const { results } = await getProductsFromCategoryAndQuery('', search);
     this.setState({
       results,
+      showCard: true,
     });
-    console.log(results);
   }
 
   render() {
-    const { results } = this.state;
+    const { results, showCard } = this.state;
     return (
       <div>
-        <Search onClick={this.handleClick} />
+        <Search onClick={ this.handleClick } onChange={ this.handleChange } />
         <CartButton />
-        <ProductCard results={results} />
+        { (showCard && <ProductCard results={ results } />) }
+        <CategoriesList onClick={ this.handleCategoriesList } />
       </div>
     );
   }

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   render() {
-    const { onClick } = this.props;
+    const { onClick, onChange } = this.props;
     return (
       <section>
         <input
           type="text"
           data-testid="query-input"
+          onChange={ onChange }
         />
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
@@ -28,6 +29,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Search;
