@@ -1,25 +1,25 @@
 * {
-  padding: 0%;
   margin: 0%;
+  padding: 0%;
 }
 
 .Header {
-  background-color: #FFF159;
-  height: 5.5em;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
+  background-color: #fff159;
+  display: flex;
+  height: 5.5em;
+  justify-content: space-around;
 }
 
 .Body {
+  background-color: #ebebeb;
   display: flex;
-  background-color: #EBEBEB;
 }
 
 .sideBar {
   background-color: white;
-  width: 18%;
   padding: 1%;
+  width: 18%;
 }
 
 .productArea {
@@ -27,19 +27,19 @@
 }
 
 .searchBar {
-  display: flex;
   align-items: center;
+  display: flex;
   padding-top: 17px;
 }
 
-#pesquisar {
-  width: 100%;
+.pesquisar {
   height: 2em;
+  width: 100%;
 }
 
 h3 {
-  text-align: center;
   padding-bottom: 1em;
+  text-align: center;
 }
 
 .logotipo {
@@ -53,21 +53,21 @@ h3 {
 }
 
 .item {
-  width: 28%;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  height: 400px;
   background-color: white;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  height: 400px;
   justify-content: space-around;
+  margin: 10px;
+  padding: 10px;
+  width: 28%;
 }
 
 .divImg {
   display: flex;
-  justify-content: center;
   height: 300px;
+  justify-content: center;
 }
 
 .icon {

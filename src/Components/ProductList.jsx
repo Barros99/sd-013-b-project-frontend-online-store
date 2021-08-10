@@ -6,7 +6,7 @@ export default class ProductList extends Component {
       <div>
         <form>
           <label htmlFor="pesquisar">
-            <input type="text" name="pesquisar" id="pesquisar" />
+            <input type="text" name="pesquisar" id="pesquisar" className="pesquisar" />
           </label>
         </form>
         <h3 data-testid="home-initial-message">
