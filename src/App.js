@@ -10,7 +10,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      products: [],
+      products: {},
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,7 +18,11 @@ class App extends React.Component {
 
   handleChange(product) {
     const { products } = this.state;
-    products.push(product);
+    if (products[product.id]) {
+      products[product.id].quantity += 1;
+    } else {
+      products[product.id] = product;
+    }
     this.setState({
       products,
     });
@@ -26,7 +30,6 @@ class App extends React.Component {
 
   render() {
     const { products } = this.state;
-    console.log(products);
     return (
       <div className="App">
         <BrowserRouter>
