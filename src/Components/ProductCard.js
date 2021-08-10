@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ProdructCard extends React.Component {
   render() {
@@ -19,3 +20,11 @@ class ProdructCard extends React.Component {
 }
 
 export default ProdructCard;
+
+ProdructCard.propTypes = {
+  product: PropTypes.shapeOf({
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    price: PropTypes.string,
+  }).isRequired,
+};

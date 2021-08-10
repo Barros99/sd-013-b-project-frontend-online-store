@@ -7,7 +7,10 @@ class ProductList extends React.Component {
     const { products: { results } } = this.props;
     return (
       <div>
-        {results.map((product) => <ProdructCard key={ product.id } product={ product } />)}
+        {results.map((product) => (<ProdructCard
+          key={ product.id }
+          product={ product }
+        />))}
       </div>
     );
   }
@@ -16,11 +19,7 @@ class ProductList extends React.Component {
 export default ProductList;
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      query: PropTypes.string,
-    }),
-
-  ).isRequired,
+  products: PropTypes.shape({
+    results: PropTypes.arrayOf(),
+  }).isRequired,
 };
