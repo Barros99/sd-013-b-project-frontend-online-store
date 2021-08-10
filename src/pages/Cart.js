@@ -15,17 +15,14 @@ class Cart extends React.Component {
   }
 
   addProductToCart = () => {
-    this.setState({
-      cartItems: [],
-    });
-    const itemKeys = Object.keys(localStorage);
-    itemKeys.forEach((element) => {
-      const stringItem = localStorage.getItem(element);
-      const newItem = [JSON.parse(stringItem)];
-      this.setState((estadoAnterior) => ({
-        cartItems: [...estadoAnterior.cartItems, ...newItem],
-      }));
-    });
+    const itemsList = localStorage.getItem('cartItems');
+    console.log(itemsList);
+    if (itemsList) {
+      const parsedItems = JSON.parse(itemsList);
+      this.setState({
+        cartItems: [...parsedItems],
+      });
+    }
   }
 
   render() {

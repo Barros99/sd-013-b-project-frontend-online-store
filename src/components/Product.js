@@ -2,6 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
+  getItemsFromLocalStorage = () => {
+    const items = localStorage.getItem('cartItems');
+    if (items) {
+      return JSON.parse(items);
+    }
+    return [];
+  }
+
+  handleClick = () => {
+    const { product } = this.props;
+    const items = this.getItemsFromLocalStorage();
+    const newItems = [...items, { ...product, amount: 1 }];
+    localStorage.setItem('cartItems', JSON.stringify(newItems));
+  }
+
   render() {
     const { product } = this.props;
 
@@ -13,14 +28,7 @@ class Product extends React.Component {
         <button
           type="button"
           data-testid="product-add-to-cart"
-          onClick={ () => {
-            localStorage.setItem(product.id, JSON.stringify({
-              title: product.title,
-              price: product.price,
-              thumbnail: product.thumbnail,
-              amount: 1,
-            }));
-          } }
+          onClick={ this.handleClick }
         >
           Adcionar ao Carrinho
         </button>
