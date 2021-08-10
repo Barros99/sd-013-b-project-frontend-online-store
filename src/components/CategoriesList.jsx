@@ -1,9 +1,10 @@
 import React from 'react';
 import { getCategories } from '../services/api';
+import PropTypes from 'prop-types';
 
 export default class CategoriesList extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       products: [],
     };
@@ -14,8 +15,9 @@ export default class CategoriesList extends React.Component {
   }
 
   onHandleClick({ target }) {
+    const { onCategoryId } = this.props;
     const { value } = target;
-    console.log(value);
+    onCategoryId(value);
   }
 
   async getListCategories() {
@@ -45,3 +47,7 @@ export default class CategoriesList extends React.Component {
     );
   }
 }
+
+CategoriesList.propTypes = {
+  onCategoryId: PropTypes.func.isRequired,
+};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductList from './ProductList';
+import PropTypes from 'prop-types';
 
 class SearchField extends Component {
   constructor(props) {
@@ -8,7 +8,6 @@ class SearchField extends Component {
 
     this.state = {
       searchField: '',
-      products: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,13 +22,10 @@ class SearchField extends Component {
     });
   }
 
-  async handleClick() {
+  handleClick() {
+    const { onSearchText } = this.props;
     const { searchField } = this.state;
-    console.log(searchField);
-    const products = await getProductsFromCategoryAndQuery('MLB1196', searchField);
-    this.setState({
-      products: products.results,
-    });
+    onSearchText(searchField)
   }
 
   render() {
@@ -51,10 +47,13 @@ class SearchField extends Component {
           onChange={ this.handleChange }
           placeholder="Ex: produto xxx"
         />
-        <ProductList products={ products } />
       </div>
     );
   }
 }
+
+SearchField.propTypes = {
+  onSearchText: PropTypes.func.isRequired,
+};
 
 export default SearchField;
