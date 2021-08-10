@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import * as api from '../../services/api';
-import CategoriesList from '../CategoriesList';
 import { Link } from 'react-router-dom';
 import { RiShoppingCartLine } from 'react-icons/ri';
+import * as api from '../../services/api';
+import CategoriesList from '../CategoriesList';
 import ProductList from '../ProductList';
 
 class Home extends Component {
@@ -24,7 +24,7 @@ class Home extends Component {
   componentDidMount() {
     this.fetchCategoriesList();
   }
-  
+
   handleChange({ target }) {
     const { value, name } = target;
     this.setState({
@@ -45,7 +45,7 @@ class Home extends Component {
     });
   }
 
- render() {
+  render() {
     const { catId, send, categories } = this.state;
 
     return (
