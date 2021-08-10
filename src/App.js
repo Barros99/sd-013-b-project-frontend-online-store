@@ -9,5 +9,5 @@ function App() {
     </div>
   );
 }
-// commit erro lint
+// commit erro
 export default App;
