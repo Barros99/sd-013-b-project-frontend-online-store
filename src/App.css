@@ -40,3 +40,19 @@
     transform: rotate(360deg);
   }
 }
+
+.main-container {
+  display: flex;
+}
+
+.container-ul {
+  width: 20%;
+}
+
+.container-ul li {
+  list-style: none;
+}
+
+.container-searchbar {
+  width: 80%;
+}
