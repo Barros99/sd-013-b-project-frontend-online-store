@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     this.state = {
       categories: [],
       searchText: '',
-      searchCheckbox: false,
+      searchRadio: false,
     };
   }
 
@@ -19,34 +19,36 @@ export default class Home extends React.Component {
 
   handleChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'radio' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
   }
 
   render() {
-    const { categories, searchText, searchCheckbox } = this.state;
+    const { categories, searchText, searchRadio } = this.state;
     return (
       <div>
         <SearchBar
           searchText={ searchText }
           handleChange={ this.handleChange }
         />
-        { categories.map(({ id, name }) => (
-          <div key={ id } data-testid="category">
-            <label htmlFor="categories">
+        <section>
+          { categories.map(({ id, name }) => (
+            <div key={ id } data-testid="category">
+              {/* <label htmlFor="categories"> */}
               <input
-                type="checkbox"
-                name="searchCheckbox"
+                type="radio"
+                name="searchRadio"
                 id="categories"
-                value={ searchCheckbox }
+                value={ searchRadio }
                 onChange={ this.handleChange }
               />
               { name }
-            </label>
-          </div>
-        )) }
+              {/* </label> */}
+            </div>
+          )) }
+        </section>
       </div>
     );
   }

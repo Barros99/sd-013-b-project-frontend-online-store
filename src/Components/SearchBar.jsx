@@ -5,9 +5,11 @@ class SearchBar extends React.Component {
   render() {
     const { handleChange, searchText } = this.props;
     return (
-      <div>
+      <section>
         <label htmlFor="category" data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
+          <h4>
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </h4>
           <input
             type="text"
             name="searchText"
@@ -16,7 +18,7 @@ class SearchBar extends React.Component {
             onChange={ handleChange }
           />
         </label>
-      </div>
+      </section>
     );
   }
 }
