@@ -18,19 +18,31 @@ export default class CardLibrary extends React.Component {
     };
   }
 
+  componentDidMount() {
+
+  }
+  /*
   componentDidUpdate(prevs) {
     const { searchText, selectedCategory } = this.state;
     if (searchText !== prevs.searchText || selectedCategory !== prevs.selectedCategory) {
       this.fetchData(selectedCategory, searchText);
     }
   }
+  */
 
   handleClick({ target }) {
-    this.setState({ searchText: target.value });
+    const { searchText, selectedCategory } = this.state;
+    this.setState({ searchText: target.value }, () => {
+      this.fetchData(searchText, selectedCategory);
+    });
   }
 
   captureValueSelect({ target }) {
+    const { searchText, selectedCategory } = this.state;
     this.setState({ selectedCategory: target.id });
+    this.setState({ searchText: target.value }, () => {
+      this.fetchData(searchText, selectedCategory);
+    });
   }
 
   async fetchData() {
