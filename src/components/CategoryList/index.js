@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CategoryItem from './CategoryItem';
+import CategoryItem from '../CategoryItem';
 
-import * as api from '../services/api';
+import * as api from '../../services/api';
+
+// import './style.css';
 
 class CategoryList extends React.Component {
   constructor(props) {

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// import './style.css';
+
 class CategoryItem extends React.Component {
   render() {
     const { categoryName, categoryId, selectedCategory, onChange } = this.props;
@@ -8,14 +10,14 @@ class CategoryItem extends React.Component {
     return (
       <li>
         <input
-          id="category"
+          id={ categoryId }
           type="radio"
           name="category"
           value={ categoryId }
           checked={ selectedCategory === categoryId }
           onChange={ onChange }
         />
-        <label htmlFor="category" data-testid="category">
+        <label htmlFor={ categoryId } data-testid="category">
           {categoryName}
         </label>
       </li>
