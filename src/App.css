@@ -12,14 +12,14 @@ header {
 }
 
 .categories {
-  margin-top: 10px;
   border: 1px solid black;
+  margin-top: 10px;
   width: 30%;
 }
 
 .products {
-  display: flex;
   border: 1px solid black;
+  display: flex;
   flex-flow: row wrap;
   right: auto;
   width: 70%;
@@ -28,9 +28,9 @@ header {
 .card-product {
   display: flex;
   flex-flow: column;
+  border: 1px solid rgba(0, 0, 0, 0.404);
+  border-radius: 4px;
   margin: 5px;
   width: 25%;
-  border: 1px solid rgba(0, 0, 0, 0.404);
   padding: 10px;
-  border-radius: 4px;
 }
