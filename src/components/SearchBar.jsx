@@ -41,7 +41,7 @@ export default class SearchBar extends Component {
 
   handleChangeCategory(catego) {
     this.setState({ category: catego });
-    return api.getProductsFromCategoryAndQuery(category)
+    return api.getProductsFromCategoryAndQuery(catego)
       .then((products) => {
         this.setState({ products: products.results });
       });
