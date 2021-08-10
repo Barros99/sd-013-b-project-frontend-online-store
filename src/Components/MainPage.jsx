@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ShoppingCartIcon from '../Imgs/shopping-cart-solid.svg';
 import CategoryList from './CategoryList';
 import Loading from './Loading';
 
@@ -26,6 +28,12 @@ class MainPage extends Component {
             />
             Digite algum termo de pesquisa ou escolha uma categoria.
           </label>
+          <Link
+            to="/cart"
+            data-testid="shopping-cart-button"
+          >
+            <img className="cart-icon" alt="cart icon" src={ ShoppingCartIcon } />
+          </Link>
         </div>
       </div>
     );

@@ -7,3 +7,7 @@
 .main {
   display: flex;
 }
+
+.cart-icon {
+  width: 30px;
+}
