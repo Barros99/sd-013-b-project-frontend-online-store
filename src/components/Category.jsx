@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { getCategories } from '../services/api';
 
 export default class Category extends Component {
-  constructor(pro) {
-    super(pro);
+  constructor(props) {
+    super(props);
     this.state = {
       categories: [],
     };
@@ -21,7 +21,15 @@ export default class Category extends Component {
 
       <div>
         {categories.map(({ name, id }) => (
-          <p data-testid="category" key={ id }>{name}</p>
+          <label key={ id } htmlFor="check">
+            <input
+              name="check"
+              data-testid="category"
+              type="radio"
+              value={ id }
+            />
+            {name}
+          </label>
         ))}
       </div>
     );
