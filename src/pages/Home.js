@@ -9,15 +9,22 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      categories: '',
+      categoryID: '',
+      categories: [],
       loading: true,
     };
 
-    this.fetchCategoriesList = this.fetchCategoriesList.bind(this);
+    this.setCategory = this.setCategory.bind(this);
   }
 
   componentDidMount() {
     this.fetchCategoriesList();
+  }
+
+  setCategory(categoryID) {
+    this.setState({
+      categoryID,
+    });
   }
 
   fetchCategoriesList() {
@@ -30,15 +37,16 @@ class Home extends React.Component {
   }
 
   render() {
-    const { categories, loading } = this.state;
-
+    const { categories, loading, categoryID } = this.state;
+    console.log(categoryID);
     return (
       <div>
         <SearchBar />
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
-        { !loading && <CategoriesList categories={ categories } /> }
+        { !loading && (
+          <CategoriesList categories={ categories } setCategory={ this.setCategory } />) }
       </div>
     );
   }

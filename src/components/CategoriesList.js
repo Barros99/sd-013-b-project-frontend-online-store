@@ -3,20 +3,26 @@ import PropTypes from 'prop-types';
 
 export default class CategoriesList extends React.Component {
   render() {
-    const { categories } = this.props;
+    const { categories, setCategory } = this.props;
     return (
-      <ul>
+      <div>
         {
           categories.map((categorie) => (
             <div key={ categorie.id }>
               <label htmlFor={ categorie.id }>
-                <input id={ categorie.id } type="radio" data-testid="category" />
+                <input
+                  name="category"
+                  id={ categorie.id }
+                  type="radio"
+                  data-testid="category"
+                  onChange={ () => setCategory(categorie.id) }
+                />
                 { categorie.name }
               </label>
             </div>
           ))
         }
-      </ul>
+      </div>
     );
   }
 }
@@ -26,4 +32,5 @@ CategoriesList.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  setCategory: PropTypes.func.isRequired,
 };
