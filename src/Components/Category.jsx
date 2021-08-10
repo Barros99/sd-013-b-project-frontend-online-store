@@ -19,19 +19,16 @@ class Category extends Component {
 
   render() {
     const { categories } = this.state;
-    const { handleClick } = this.props;
     return (
       <div>
         <form>
-          {categories.map(({ id, name }) => (
-            <ComponentRadio
-              key={ id }
-              name={ name }
-              id={ id }
-              handleClick={ handleClick }
-            />
-          ))}
+          {
+            categories.map(({ id, name }) => (
+              <ComponentRadio key={ id } name={ name } id={ id } />
+            ))
+          }
         </form>
+
       </div>
     );
   }
