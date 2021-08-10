@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { getCategories } from '../services/api';
+
 import ComponentRadio from './ComponentRadio';
 
 class Category extends Component {
@@ -26,7 +29,7 @@ class Category extends Component {
           {categories.map(({ id, name }) => (
             <ComponentRadio
               key={ id }
-              name={ name}
+              name={ name }
               id={ id }
               handleClick={ handleClick }
             />
@@ -36,5 +39,9 @@ class Category extends Component {
     );
   }
 }
+
+Category.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Category;
