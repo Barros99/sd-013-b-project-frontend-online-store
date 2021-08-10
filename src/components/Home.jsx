@@ -26,7 +26,6 @@ class Home extends React.Component {
     const { inputText } = this.state;
     const id = 'MLB1196';
     const getListodProducts = await api.getProductsFromCategoryAndQuery(id, inputText);
-    console.log(getListodProducts);
     if (getListodProducts.results !== null) {
       this.setState({
         productsList: getListodProducts.results,
@@ -80,7 +79,7 @@ class Home extends React.Component {
             ))}
           </div>
         ) : (
-          <div clasName="text-main-page" data-testid="home-initial-message">
+          <div className="text-main-page" data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </div>
         ) }
