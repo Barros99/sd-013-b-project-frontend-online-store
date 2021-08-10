@@ -13,7 +13,7 @@ class Home extends Component {
       categories: [],
       catId: '',
       input: '',
-      send: '',
+      products: [],
     };
 
     this.fetchCategoriesList = this.fetchCategoriesList.bind(this);
@@ -33,20 +33,29 @@ class Home extends Component {
   }
 
   submitQuery() {
-    const { input } = this.state;
-    this.setState({ send: input });
+    this.fetchProducts();
   }
 
-  fetchCategoriesList() {
-    api.getCategories().then((categories) => {
+  async fetchProducts() {
+    const { catId, input } = this.state;
+    const fetch = await api.getProductsFromCategoryAndQuery(catId, input);
+    const results = await fetch.results;
+    this.setState({ products: results });
+  }
+
+  async fetchCategoriesList() {
+    try {
+      const fetch = await api.getCategories();
       this.setState({
-        categories,
+        categories: fetch,
       });
-    });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
-    const { catId, send, categories } = this.state;
+    const { products, categories } = this.state;
 
     return (
       <>
@@ -68,9 +77,7 @@ class Home extends Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
         <CategoriesList categories={ categories } />
-        <section>
-          <ProductList query={ send } catId={ catId } />
-        </section>
+        <ProductList products={ products } />
         <Link to="/shop" data-testid="shopping-cart-button">
           Carrinho de compras
           <RiShoppingCartLine />
