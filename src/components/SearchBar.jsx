@@ -12,26 +12,20 @@ export default class SearchBar extends React.Component {
     };
   }
 
-  onClick() {
-    const { searchText } = this.state;
-    const { getSearch } = this.props;
-    console.log(searchText);
-    getSearch({ searchText });
-  }
-
   captureValueText({ target }) {
     this.setState({ searchText: target.value });
   }
 
   render() {
     const { searchText } = this.state;
+    const { handleClick } = this.props;
     return (
       <div>
         <input type="text" onChange={ this.captureValueText } data-testid="query-input" />
         <button
           type="button"
           data-testid="query-button"
-          onClick={ this.onClick }
+          onClick={ handleClick }
           value={ searchText }
         >
           Pesquisar
@@ -44,7 +38,4 @@ export default class SearchBar extends React.Component {
   }
 }
 
-SearchBar.propTypes = {
-  captureValueText: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
-};
+SearchBar.propTypes = { getSearch: PropTypes.func.isRequired };
