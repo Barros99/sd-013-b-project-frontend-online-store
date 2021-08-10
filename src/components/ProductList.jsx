@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import FailResult from './FailResult';
 
 export default class ProductList extends React.Component {
   render() {
