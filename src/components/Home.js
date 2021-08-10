@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from './ShoppingCartIcon';
 
-class ShoppingCartLink extends React.Component {
+class Home extends React.Component {
   render() {
     return (
       <div>
@@ -17,4 +17,4 @@ class ShoppingCartLink extends React.Component {
   }
 }
 
-export default ShoppingCartLink;
+export default Home;
