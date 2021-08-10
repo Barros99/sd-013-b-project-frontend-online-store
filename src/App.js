@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart';
-import ProductList from './components/ProductList';
+import Home from './components/Home';
 import Categories from './components/Categories';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Link to="/shopping-cart" data-testid="shopping-cart-button">carrinho</Link>
         <Link to="/categories">Category</Link>
         <Switch>
-          <Route exact path="/" render={ () => <ProductList /> } />
+          <Route exact path="/" render={ () => <Home /> } />
           <Route path="/shopping-cart" render={ () => <ShoppingCart /> } />
           <Route path="/categories" render={ () => <Categories /> } />
         </Switch>
