@@ -6,7 +6,7 @@ class ListaCat extends React.Component {
   constructor() {
     super();
 
-    this.categoria = this.categoria.bind(this);
+    this.category = this.category.bind(this);
 
     this.state = {
       categories: [],
@@ -14,10 +14,10 @@ class ListaCat extends React.Component {
   }
 
   componentDidMount() {
-    this.categoria();
+    this.category();
   }
 
-  async categoria() {
+  async category() {
     const acessandoCat = await getCategories();
     this.setState({
       categories: acessandoCat,
