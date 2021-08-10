@@ -43,7 +43,7 @@ class ListaCat extends React.Component {
   }
 }
 
-ListaPro.propTypes = {
+ListaCat.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
