@@ -2,9 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.shoppingCart {
+  width: 50px;
 }
 
 @media ( prefers-reduced-motion : no-preference ) {
