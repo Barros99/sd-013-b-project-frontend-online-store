@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import * as api from '../services/api';
 import './initial.css';
@@ -62,6 +63,7 @@ class Initial extends Component {
 
   render() {
     const { categories, products } = this.state;
+    const { handleChangeOnCart } = this.props;
     return (
       <div className="main-content">
 
@@ -92,23 +94,32 @@ class Initial extends Component {
           <div>
             {
               products.map(({ id, title, price, thumbnail, attributes }) => (
-                <Link
-                  key={ id }
-                  data-testid="product-detail-link"
-                  to={ {
-                    pathname: `/product-detail/${id}`,
-                    title,
-                    price,
-                    thumbnail,
-                    attributes,
-                  } }
-                >
-                  <div data-testid="product">
-                    <img src={ thumbnail } alt={ title } />
-                    <p>{title}</p>
-                    <p>{price}</p>
-                  </div>
-                </Link>
+                <div key={ id }>
+                  <Link
+                    data-testid="product-detail-link"
+                    to={ {
+                      pathname: `/product-detail/${id}`,
+                      title,
+                      price,
+                      thumbnail,
+                      attributes,
+                      id,
+                    } }
+                  >
+                    <div data-testid="product">
+                      <img src={ thumbnail } alt={ title } />
+                      <p>{title}</p>
+                      <p>{price}</p>
+                    </div>
+                  </Link>
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ () => handleChangeOnCart({ title, thumbnail, price, id }) }
+                  >
+                    Add to cart
+                  </button>
+                </div>
               ))
             }
           </div>
@@ -118,5 +129,9 @@ class Initial extends Component {
     );
   }
 }
+
+Initial.propTypes = {
+  handleChange: PropTypes.func,
+}.isRequired;
 
 export default Initial;

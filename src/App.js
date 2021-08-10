@@ -5,18 +5,54 @@ import ShoppingCart from './Pages/ShoppingCart';
 import Initial from './Pages/Initial';
 import ProductDetail from './Pages/ProductDetail';
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={ Initial } />
-          <Route path="/cart" component={ ShoppingCart } />
-          <Route path="/product-detail/:id" component={ ProductDetail } />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      products: [],
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(product) {
+    const { products } = this.state;
+    products.push(product);
+    this.setState({
+      products,
+    });
+  }
+
+  render() {
+    const { products } = this.state;
+    console.log(products);
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={ () => <Initial handleChangeOnCart={ this.handleChange } /> }
+            />
+            <Route
+              path="/cart"
+              component={ () => <ShoppingCart products={ products } /> }
+            />
+            <Route
+              path="/product-detail/:id"
+              render={ (props) => (
+                <ProductDetail
+                  { ...props }
+                  handleChange={ this.handleChange }
+                />) }
+            />
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
