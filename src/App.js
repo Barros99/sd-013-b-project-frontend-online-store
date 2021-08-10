@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CategoriesList from './Components/CategoriesList';
 import { BrowserRouter, Route } from 'react-router-dom';
 import CartButton from './Components/CartButton';
 import SearchBar from './Components/SearchBar';
@@ -15,6 +16,7 @@ export default class App extends Component {
           </header>
           <Route exact path="/shoppingcart" component={ ShoppingCart } />
         </BrowserRouter>
+        <CategoriesList />
       </div>
     );
   }
