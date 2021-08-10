@@ -37,17 +37,13 @@ class Home extends Component {
     this.setState({ send: input });
   }
 
-  fetchCategoriesList() {
-    api.getCategories().then((categories) => {
-      this.setState({
-        categories,
-      });
-    });
+  async fetchCategoriesList() {
+    const response = await api.getCategories();
+    this.setState({ categories: response });
   }
 
   render() {
     const { catId, send, categories } = this.state;
-
     return (
       <>
         <input

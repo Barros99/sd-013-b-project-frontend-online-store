@@ -33,12 +33,13 @@ class ProductDetails extends Component {
 
   render() {
     const foundProduct = this.findProduct();
-    console.log(foundProduct);
     return (
       <div>
         {foundProduct.map((element) => (
           <section key={ element.id }>
-            <h1 data-testid="">{element.title}</h1>
+            <h1 data-testid="product-detail-name">{element.title}</h1>
+            <img src={ element.thumbnail } alt="imagem" />
+            <p>{element.price}</p>
           </section>
         ))}
         <Link to="/shop">Shopping Cart</Link>

@@ -15,12 +15,12 @@ class ProductList extends Component {
     this.fetchProducts();
   }
 
-  componentDidUpdate(prevProp) {
-    const { query } = this.props;
-    if (prevProp.query !== query) {
-      this.fetchProducts();
-    }
-  }
+  // componentDidUpdate(prevProp) {
+  //   const { query } = this.props;
+  //   if (prevProp.query !== query) {
+  //     this.fetchProducts();
+  //   }
+  // }
 
   async fetchProducts() {
     const { query, catId } = this.props;
