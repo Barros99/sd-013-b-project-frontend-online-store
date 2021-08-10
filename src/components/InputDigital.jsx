@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 class InputDigital extends React.Component {
@@ -50,3 +51,7 @@ class InputDigital extends React.Component {
 }
 
 export default InputDigital;
+
+InputDigital.propTypes = {
+  pegandoDaApi: PropTypes.func.isRequired,
+}
