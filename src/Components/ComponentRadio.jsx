@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class ComponentRadio extends Component {
   render() {
-    const { name, id } = this.props;
+    const { name, id, handleClick } = this.props;
     return (
       <label htmlFor={ id }>
         {name}
@@ -12,7 +12,7 @@ class ComponentRadio extends Component {
           name="category"
           id={ id }
           data-testid="category"
-          onClick={ (e) => { console.log(e.target.id); } }
+          onClick={ handleClick }
         />
       </label>
     );
@@ -24,4 +24,5 @@ export default ComponentRadio;
 ComponentRadio.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

@@ -6,6 +6,7 @@ class BarSearch extends Component {
     super(props);
     this.state = {
       searchText: '',
+
     };
     this.handleChange = this.handleChange.bind(this);
   }
