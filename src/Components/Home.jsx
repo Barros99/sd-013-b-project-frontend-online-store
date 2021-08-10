@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 export default class Home extends React.Component {
   constructor() {
     super();
-
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       categories: [],
       searchText: '',
