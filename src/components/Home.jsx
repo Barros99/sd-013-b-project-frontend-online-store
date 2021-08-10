@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import ProductCard from './ProductCard';
+import ProductList from './ProducList';
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="main-div">
+        <ProductList />
         <Search />
         <div data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
