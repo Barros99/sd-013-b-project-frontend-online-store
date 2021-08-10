@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../services/api';
 import SearchBar from './SearchBar';
 
