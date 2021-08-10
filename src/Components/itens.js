@@ -27,8 +27,8 @@ export default class Itens extends Component {
     const { itens: { results }, loading } = this.state;
     if (loading) return <h4>Loading</h4>;
     return (
-      <div className ="itens">
-        {results.map((item) =>  <Item item={ item } />)}
+      <div className="itens">
+        {results.map((item) => <Item key={ item.id } item={ item } />)}
       </div>
     );
   }
