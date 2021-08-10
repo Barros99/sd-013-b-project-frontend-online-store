@@ -6,12 +6,41 @@ import ProductDetails from './pages/ProductDetails';
 import './App.css';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      quantity: 0,
+    };
+
+    this.handleAddCartChange = this.handleAddCartChange.bind(this);
+  }
+
+  handleAddCartChange(event) {
+    this.setState({
+      title: event.target.value,
+      quantity: 1,
+    });
+  }
+
   render() {
+    const { title, quantity } = this.state;
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ ProductList } />
-          <Route exact path="/shopping-cart" component={ ShoppingCart } />
+          <Route
+            exact
+            path="/"
+            render={ (props) => (<ProductList
+              { ...props }
+              onClickButton={ this.handleAddCartChange }
+            />) }
+          />
+          <Route
+            exact
+            path="/shopping-cart"
+            render={ () => <ShoppingCart title={ title } quantity={ quantity } /> }
+          />
           <Route
             exact
             path="/product-details/:categoryId/:productName"

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getProductsFromCategoryAndQuery as ApiProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import CategoryFilter from '../components/CategoryFilter';
@@ -42,6 +43,7 @@ class ProductList extends React.Component {
 
   render() {
     const { products, searchInput } = this.state;
+    const { onClickButton } = this.props;
     return (
       <div>
         <input
@@ -65,11 +67,19 @@ class ProductList extends React.Component {
         </div>
         <div>
           {products
-            .map((product) => <ProductCard key={ product.id } product={ product } />)}
+            .map((product) => (<ProductCard
+              onClickButton={ onClickButton }
+              key={ product.id }
+              product={ product }
+            />))}
         </div>
       </div>
     );
   }
 }
+
+ProductList.propTypes = {
+  onClickButton: PropTypes.func.isRequired,
+};
 
 export default ProductList;
