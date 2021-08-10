@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import ProductList from './Components/ProductList';
 import Cart from './pages/Cart';
+
+import Header from './Components/Header';
+import Body from './Components/Body';
 
 export default class App extends React.Component {
   render() {
@@ -12,13 +14,8 @@ export default class App extends React.Component {
           <Route exact path="/" />
           <Route exact path="/carrinho" component={ Cart } />
         </Switch>
-        <ProductList />
-        <Link
-          to="/carrinho"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
+        <Header />
+        <Body />
       </BrowserRouter>
     );
   }
