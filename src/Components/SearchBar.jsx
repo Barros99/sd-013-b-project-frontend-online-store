@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // REQUISITO 2 FEITO POR TODOS VIA PAIR PROGRAMING;
 
@@ -29,3 +30,7 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onInputChange: PropTypes.func.isRequired,
+};
