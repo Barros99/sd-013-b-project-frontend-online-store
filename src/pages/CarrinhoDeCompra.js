@@ -2,11 +2,11 @@ import React from 'react';
 
 class CarrinhoDeCompra extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       mensagem: true,
-    }
+    };
   }
 
   render() {
@@ -14,7 +14,7 @@ class CarrinhoDeCompra extends React.Component {
     if (mensagem) {
       return (
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-      )
+      );
     }
 
     return (
