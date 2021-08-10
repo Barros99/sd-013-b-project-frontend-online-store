@@ -24,6 +24,7 @@ class CategoriesAside extends React.Component {
   }
 
   render() {
+    const { handleChange } = this.props;
     const { categories } = this.state;
     return (
       <div>
@@ -37,6 +38,7 @@ class CategoriesAside extends React.Component {
               type="radio"
               value={ name }
               name="category"
+              onClick={ handleChange }
             />
           </label>
         ))}

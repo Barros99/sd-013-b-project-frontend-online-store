@@ -1,21 +1,13 @@
 import React from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import RenderProducts from './RenderProducts';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
       query: '',
     };
-    this.fetchProducts = this.fetchProducts.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.renderProducts = this.renderProducts.bind(this);
-  }
-
-  handleClick() {
-    this.fetchProducts();
   }
 
   handleChange({ target }) {
@@ -24,32 +16,8 @@ class SearchBar extends React.Component {
     }));
   }
 
-  async fetchProducts() {
-    const { query } = this.state;
-    const products = await getProductsFromCategoryAndQuery(false, query);
-    this.setState(() => ({
-      products: products.results,
-    }));
-  }
-
-  renderProducts() {
-    const { products } = this.state;
-    return (
-      <div>
-        {products.map(({ id, title, thumbnail, price }) => (
-          <div key={ id } data-testid="product">
-            <p>{ title }</p>
-            <img src={ thumbnail } alt={ title } />
-            <p>{ price }</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   render() {
-    const { query, products } = this.state;
-    const noReturn = <span>Nenhum produto foi encontrado</span>;
+    const { query } = this.state;
     return (
       <div>
         <input
@@ -61,11 +29,13 @@ class SearchBar extends React.Component {
         <button
           type="submit"
           data-testid="query-button"
-          onClick={ this.handleClick }
+          onClick={ () => <RenderProducts query={ query } /> }
         >
           Pesquisar
         </button>
-        {(products.length > 0) ? this.renderProducts() : noReturn }
+        {/* <div>
+          { submit ? <RenderProducts query={ query } /> : noReturn }
+        </div> */}
       </div>
     );
   }
