@@ -22,3 +22,11 @@
 .home-message {
   text-align: center;
 }
+
+.category {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+}
