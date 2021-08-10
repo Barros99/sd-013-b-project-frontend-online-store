@@ -29,11 +29,16 @@ export default class Sidebar extends React.Component {
 
   render() {
     const { categories } = this.state;
+
     return (
-      <form onChange={ this.captureValue }>
+      <form>
         {
           categories.map((category) => (
-            <Categories key={ category.id } categories={ category } />
+            <Categories
+              key={ category.id }
+              categories={ category }
+              onChange={ this.captureValue }
+            />
           ))
         }
       </form>
