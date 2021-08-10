@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 class Product extends React.Component {
   render() {
     const { product } = this.props;

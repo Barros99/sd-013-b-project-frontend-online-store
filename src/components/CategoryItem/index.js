@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 class CategoryItem extends React.Component {
   render() {
     const { categoryName, categoryId, selectedCategory, onChange } = this.props;
