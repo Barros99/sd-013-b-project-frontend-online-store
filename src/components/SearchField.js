@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import ListaCat from '../Components/ListaCat';
+import ListItems from '../componentes/ListItems';
 
 class SearchField extends React.Component {
   render() {
@@ -13,6 +14,7 @@ class SearchField extends React.Component {
         </p>
         <Link to="/cart" data-testid="shopping-cart-button">Cart</Link>
         <ListaCat />
+        <ListItems />
       </div>
     );
   }
