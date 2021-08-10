@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class ShoppingCart extends Component {
   render() {
-    const { products } = this.props;
+    const { products, handleQuantity } = this.props;
     if (products.length === 0) {
       return (
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
@@ -20,7 +20,21 @@ class ShoppingCart extends Component {
               <p data-testid="shopping-cart-product-name">{ products[id].title }</p>
               <p>{ products[id].price }</p>
               <p data-testid="shopping-cart-product-quantity">
+                <button
+                  type="button"
+                  data-testid="product-decrease-quantity"
+                  onClick={ (event) => handleQuantity(event, id) }
+                >
+                  -
+                </button>
                 { products[id].quantity }
+                <button
+                  type="button"
+                  data-testid="product-increase-quantity"
+                  onClick={ (event) => handleQuantity(event, id) }
+                >
+                  +
+                </button>
               </p>
             </div>
           ))

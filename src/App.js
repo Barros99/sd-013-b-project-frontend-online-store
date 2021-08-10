@@ -14,6 +14,7 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleQuantity = this.handleQuantity.bind(this);
   }
 
   handleChange(product) {
@@ -26,6 +27,18 @@ class App extends React.Component {
     this.setState({
       products,
     });
+  }
+
+  handleQuantity(event, id) {
+    const { target } = event;
+    const { products } = this.state;
+    const operation = target.innerText;
+    if (operation === '+') {
+      products[id].quantity += 1;
+    } else {
+      products[id].quantity -= 1;
+    }
+    this.setState({ products });
   }
 
   render() {
@@ -41,7 +54,12 @@ class App extends React.Component {
             />
             <Route
               path="/cart"
-              component={ () => <ShoppingCart products={ products } /> }
+              component={ () => (
+                <ShoppingCart
+                  products={ products }
+                  handleQuantity={ this.handleQuantity }
+                />
+              ) }
             />
             <Route
               path="/product-detail/:id"
