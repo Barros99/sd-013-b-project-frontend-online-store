@@ -1,11 +1,12 @@
 import React from 'react';
 import Home from './pages/Home';
-import * as api from './services/api';
+// import * as api from './services/api';
 import './App.css';
 
 function App() {
-  api.getCategories().then((data) => console.log(data));
-  api.getProductsFromCategoryAndQuery().then((data) => console.log(data.results));
+  // api.getCategories().then((data) => console.log(data));
+  // api.getProductsFromCategoryAndQuery().then((data) => console.log(data.results));
+  // api.getProductsFromQuery('cabo').then((data) => console.log(data));
   return (
     <div className="App">
       <Home />
