@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RiShoppingCartLine } from 'react-icons/ri';
+import * as api from '../../services/api';
+import CategoriesList from '../CategoriesList';
 import ProductList from '../ProductList';
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      categories: [],
       catId: '',
       input: '',
       send: '',
     };
+
+    this.fetchCategoriesList = this.fetchCategoriesList.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitQuery = this.submitQuery.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchCategoriesList();
   }
 
   handleChange({ target }) {
@@ -28,8 +37,16 @@ class Home extends Component {
     this.setState({ send: input });
   }
 
+  fetchCategoriesList() {
+    api.getCategories().then((categories) => {
+      this.setState({
+        categories,
+      });
+    });
+  }
+
   render() {
-    const { catId, send } = this.state;
+    const { catId, send, categories } = this.state;
 
     return (
       <>
@@ -50,6 +67,7 @@ class Home extends Component {
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
+        <CategoriesList categories={ categories } />
         <section>
           <ProductList query={ send } catId={ catId } />
         </section>
