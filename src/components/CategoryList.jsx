@@ -12,3 +12,4 @@ export default class CategoryList extends Component {
     );
   }
 }
+// Commit Test
