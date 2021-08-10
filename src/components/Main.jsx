@@ -29,11 +29,12 @@ class Main extends React.Component {
     this.setState({ searchItemList: response.results });
   }
 
-  categoryClick(event) {
+  async categoryClick(event) {
     // console.log(event.target.value);
-    this.setState({
+    await this.setState({
       category: event.target.value,
     });
+    // this.handleClick();
   }
 
   render() {
