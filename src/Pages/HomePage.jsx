@@ -74,35 +74,39 @@ renderList = () => {
 render() {
   const { categorysLoaded, categorys, products, productsLoad } = this.state;
   return (
-    <div>
+    <div className="home-page">
       <p
+        className="home-page-title"
         data-testid="home-initial-message"
       >
         Digite algum termo de pesquisa ou escolha uma categoria.
       </p>
-      <ul>
-        { categorysLoaded ? categorys : <h2>Carregando</h2> }
-      </ul>
-      <div>
-        <input onChange={ this.updateItemText } data-testid="query-input" type="text" />
-        <button
-          onClick={ this.renderList }
-          data-testid="query-button"
-          type="button"
-        >
-          Buscar
-        </button>
-        <p>
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <Link
-          to="/cart"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
+      <div className="another-itens">
+        <ul>
+          <div className="buttons-div">
+            { categorysLoaded ? categorys : <h2>Carregando</h2> }
+          </div>
+        </ul>
+        <div>
+          <input onChange={ this.updateItemText } data-testid="query-input" type="text" />
+          <button
+            onClick={ this.renderList }
+            data-testid="query-button"
+            type="button"
+          >
+            Buscar
+          </button>
+          <Link
+            to="/cart"
+            data-testid="shopping-cart-button"
+          >
+            Carrinho
+          </Link>
+        </div>
+        <div className="products">
+          { productsLoad ? products : <h2>Nenhum produto encontrado</h2> }
+        </div>
       </div>
-      { productsLoad ? products : <h2>Carregando...</h2> }
     </div>
   );
 }
