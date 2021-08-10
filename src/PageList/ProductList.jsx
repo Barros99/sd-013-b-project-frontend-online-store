@@ -28,8 +28,8 @@ export default class ProductList extends React.Component {
 
   async clickChange() {
     const { inputValue } = this.state;
-    const returnFetch = await getProductsFromCategoryAndQuery(undefined, inputValue);
-    this.setState({ products: returnFetch.results, inputValue: '' });
+    const { results } = await getProductsFromCategoryAndQuery(undefined, inputValue);
+    this.setState({ products: results, inputValue: '' });
   }
 
   categoriesFetch() {
