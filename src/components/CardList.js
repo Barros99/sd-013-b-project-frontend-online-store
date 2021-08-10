@@ -5,9 +5,10 @@ import Card from './Card';
 
 class CardList extends React.Component {
   renderCardList() {
-    const { products } = this.props;
+    const { products, addToCart } = this.props;
     return products.map((product) => (
       <Card
+        addToCart={ addToCart }
         product={ product }
         key={ product.id }
       />
@@ -25,6 +26,7 @@ class CardList extends React.Component {
 
 CardList.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default CardList;

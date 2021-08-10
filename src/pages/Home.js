@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as api from '../services/api';
-
 import CartIcon from '../components/CartIcon';
 import SearchBar from '../components/SearchBar';
 import CardList from '../components/CardList';
@@ -65,6 +65,7 @@ class Home extends React.Component {
   }
 
   render() {
+    const { addToCart } = this.props;
     const { products, categories, loading } = this.state;
 
     const message = (
@@ -76,12 +77,17 @@ class Home extends React.Component {
       <div>
         <SearchBar onSubmit={ this.onSearchSubmit } />
         <CartIcon />
-        {products.length > 0 ? <CardList products={ products } /> : message}
+        {products.length > 0
+          ? <CardList addToCart={ addToCart } products={ products } /> : message}
         {!loading
         && <CategoriesList categories={ categories } setCategory={ this.setCategory } />}
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Home;
