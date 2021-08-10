@@ -24,8 +24,7 @@ class Home extends React.Component {
 
   async onClick() {
     const { inputText } = this.state;
-    const id = 'MLB1196';
-    const getListodProducts = await api.getProductsFromCategoryAndQuery(id, inputText);
+    const getListodProducts = await api.getProductsFromCategoryAndQuery(inputText);
     console.log(getListodProducts);
     if (getListodProducts.results !== null) {
       this.setState({
@@ -70,7 +69,7 @@ class Home extends React.Component {
         </div>
 
         <div className="main-content-list-cards">
-          <div clasName="category-list">
+          <div className="category-list">
             <CategoryList />
           </div>
 
@@ -85,7 +84,7 @@ class Home extends React.Component {
               ))}
             </div>
           ) : (
-            <div clasName="text-main-page" data-testid="home-initial-message">
+            <div className="text-main-page" data-testid="home-initial-message">
               Digite algum termo de pesquisa ou escolha uma categoria.
             </div>
           ) }
