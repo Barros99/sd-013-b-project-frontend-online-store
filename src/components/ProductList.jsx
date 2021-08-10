@@ -6,7 +6,6 @@ import ProductCard from './ProductCard';
 class ProductList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       products: [],
     };
@@ -31,13 +30,13 @@ class ProductList extends Component {
   }
 
   render() {
+    const { query } = this.props;
     const { products } = this.state;
-
     if (!products) return <div>Nenhum produto foi encontrado</div>;
     return (
       <div>
         {products.map((prod) => (
-          <ProductCard key={ prod.id } product={ prod } />
+          <ProductCard key={ prod.id } product={ prod } query={ query } />
         ))}
       </div>
     );

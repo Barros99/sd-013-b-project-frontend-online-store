@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/product" component={ ProductDetails } />
+        <Route exact path="/productDetails/:id" component={ ProductDetails } />
         <Route exact path="/shop" component={ ShoppingCart } />
         <Route path="/">
           <Home />
