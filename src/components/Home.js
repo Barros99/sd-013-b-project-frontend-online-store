@@ -40,6 +40,7 @@ class Home extends React.Component {
         <input
           type="text"
           data-testid="query-input"
+        //
         />
         <h3 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma
