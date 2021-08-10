@@ -27,7 +27,7 @@ export default class Sidebar extends React.Component {
     const { categories } = this.state;
     const { captureValueSelect } = this.props;
     return (
-      <form onChange={ captureValueSelect }>
+      <form onChange={ captureValueSelect } value={ captureValueSelect }>
         {
           categories.map((category) => (
             <Categories key={ category.id } categories={ category } />
