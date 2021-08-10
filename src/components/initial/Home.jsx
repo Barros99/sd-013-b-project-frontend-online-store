@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ProductList from '../ProductList';
 import { Link } from 'react-router-dom';
 import { RiShoppingCartLine } from 'react-icons/ri';
+import ProductList from '../ProductList';
 
 class Home extends Component {
   constructor() {
