@@ -20,6 +20,7 @@ export default class SearchBar extends React.Component {
   render() {
     const { searchText } = this.state;
     const { getSearch } = this.props;
+
     return (
       <section>
         <div className="search-bar">
@@ -32,7 +33,7 @@ export default class SearchBar extends React.Component {
           <button
             type="button"
             data-testid="query-button"
-            onClick={ handleClick }
+            onClick={ getSearch }
             value={ searchText }
           >
             Pesquisar
@@ -49,4 +50,4 @@ export default class SearchBar extends React.Component {
   }
 }
 
-SearchBar.propTypes = { handleClick: PropTypes.func.isRequired };
+SearchBar.propTypes = { getSearch: PropTypes.func.isRequired };
