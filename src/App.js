@@ -28,12 +28,20 @@ class App extends React.Component {
   }
 
   render() {
+    const { cart } = this.state;
+    console.log(cart);
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={ () => <Home addToCart={ this.addToCart } /> } />
           <Route exact path="/shopping-cart" component={ ShoppingCart } />
-          <Route exact path="/product-details" component={ ProductDetails } />
+          <Route
+            exact
+            path="/product-details"
+            render={ (props) => (
+              <ProductDetails addToCart={ this.addToCart } { ...props } />
+            ) }
+          />
         </Switch>
       </BrowserRouter>
     );

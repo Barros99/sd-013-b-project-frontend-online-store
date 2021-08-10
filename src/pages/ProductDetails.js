@@ -5,6 +5,7 @@ import CartIcon from '../components/CartIcon';
 export default class ProductDetails extends React.Component {
   render() {
     const { location: { product } } = this.props;
+    const { addToCart } = this.props;
     const { title, price, thumbnail, attributes } = product;
     return (
       <div>
@@ -18,6 +19,13 @@ export default class ProductDetails extends React.Component {
               {`${attribute.name}: ${attribute.value_name}`}
             </li>))}
         </ul>
+        <button
+          type="button"
+          onClick={ () => addToCart(product) }
+          data-testid="product-detail-add-to-cart"
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     );
   }
@@ -38,4 +46,5 @@ ProductDetails.propTypes = {
       ),
     }),
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
