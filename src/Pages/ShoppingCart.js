@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class ShoppingCart extends Component {
   render() {
     const { products, handleQuantity } = this.props;
-    if (products.length === 0) {
+    if (Object.keys(products).length === 0) {
       return (
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
       );
