@@ -13,6 +13,11 @@ export default class CategoriesList extends React.Component {
     this.getListCategories();
   }
 
+  onHandleClick({ target }) {
+    const { value } = target;
+    console.log(value);
+  }
+
   async getListCategories() {
     const categories = await getCategories();
     this.setState({
@@ -27,7 +32,13 @@ export default class CategoriesList extends React.Component {
         {products.map((product) => (
           <label data-testid="category" htmlFor={ product.name } key={ product.id }>
             {product.name}
-            <input type="radio" value={ product.name } name="categorias" />
+            <input
+              id={ product.name }
+              type="radio"
+              value={ product.id }
+              name="categorias"
+              onClick={ this.onHandleClick }
+            />
           </label>
         ))}
       </div>
