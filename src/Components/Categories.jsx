@@ -25,7 +25,7 @@ export default class Categories extends Component {
   render() {
     const { categories, loading } = this.state;
     if (loading) return <h4>Loading</h4>;
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         {categories.map(({ id, name }) => (
