@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 
-import { Link } from 'react-router-dom';
 import CartIcon from '../components/CartIcon';
 import SearchBar from '../components/SearchBar';
 import CategoriesList from '../components/CategoriesList';
