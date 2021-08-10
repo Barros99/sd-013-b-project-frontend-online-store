@@ -1,17 +1,29 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import CardList from '../components/CardList';
+import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 
+import CartIcon from '../components/CartIcon';
+import SearchBar from '../components/SearchBar';
+import CardList from '../components/CardList';
+import CategoriesList from '../components/CategoriesList';
+
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.setCategory = this.setCategory.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.fetchProducts = this.fetchProducts.bind(this);
     this.state = {
       products: [],
       search: '',
+      categoryID: '',
+      categories: [],
+      loading: true,
     };
+  }
+
+  componentDidMount() {
+    this.fetchCategoriesList();
   }
 
   onSearchSubmit(value) {
@@ -19,6 +31,21 @@ class Home extends React.Component {
     this.setState({
       search: value,
     }, () => this.fetchProducts(search));
+  }
+
+  setCategory(categoryID) {
+    this.setState({
+      categoryID,
+    });
+  }
+
+  fetchCategoriesList() {
+    api.getCategories().then((categories) => {
+      this.setState({
+        categories,
+        loading: false,
+      });
+    });
   }
 
   async fetchProducts(query) {
@@ -30,7 +57,8 @@ class Home extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, categories, loading, categoryID } = this.state;
+    console.log(categoryID);
 
     const message = (
       <h2 data-testid="home-initial-message">
@@ -40,8 +68,13 @@ class Home extends React.Component {
     return (
       <div>
         <SearchBar onSubmit={ this.onSearchSubmit } />
+        <Link to="/shopping-cart" data-testid="shopping-cart-button">
+          <CartIcon />
+        </Link>
         {products.length > 0
           ? <CardList products={ products } /> : message}
+        { !loading && (
+          <CategoriesList categories={ categories } setCategory={ this.setCategory } />) }
       </div>
     );
   }
