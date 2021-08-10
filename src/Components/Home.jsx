@@ -12,21 +12,23 @@ class Home extends Component {
     super(props);
     this.state = {
       products: [],
-      categorySelect: '$CATEGORY_ID',
+      categorySelect: undefined,
     };
     this.getProducts = this.getProducts.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   async handleClick({ target }) {
-    const response = await fetch(
-      `https://api.mercadolibre.com/sites/MLB/search?category=${target.id}`,
-    );
-    const { results } = await response.json();
-    console.log(results);
+    const items = await getProductsFromCategoryAndQuery(
+      target.id,
+      null,
+      true,
+    ).then((result) => result.results);
+
+    console.log(items);
     this.setState({
       categorySelect: target.id,
-      products: results,
+      products: items,
     });
   }
 
@@ -36,6 +38,7 @@ class Home extends Component {
       categorySelect,
       searchText,
     ).then((result) => result.results);
+
     this.setState({ products: items });
   }
 

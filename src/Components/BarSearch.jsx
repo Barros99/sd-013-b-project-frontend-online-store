@@ -38,7 +38,7 @@ class BarSearch extends Component {
           data-testid="query-button"
           type="button"
           name=""
-          onClick={ () => getProducts(searchText || '$QUERY') }
+          onClick={ () => getProducts(searchText) }
         />
       </form>
     );
