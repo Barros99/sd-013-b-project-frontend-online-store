@@ -30,10 +30,10 @@ class SearchBar extends React.Component {
         <Link to="ShoppingCart" data-testid="shopping-cart-button">
           Carrinho
         </Link>
+        <HomeFilter />
         <SearchByQuery
           onChange={ this.handleInput }
         />
-        <HomeFilter />
       </div>
     );
   }

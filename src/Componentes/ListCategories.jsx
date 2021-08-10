@@ -30,7 +30,6 @@ class ListCategories extends Component {
         <form onChange={ handleChange } name="category">
           { categories.map(({ name, id }) => (
             <div key={ id }>
-              <label htmlFor="category">
                 <input
                   type="radio"
                   id="category"
@@ -39,7 +38,6 @@ class ListCategories extends Component {
                   data-testid="category"
                 />
                 { name }
-              </label>
             </div>
           )) }
         </form>
