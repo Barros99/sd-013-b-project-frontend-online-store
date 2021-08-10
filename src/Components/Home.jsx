@@ -21,21 +21,23 @@ class Home extends Component {
   }
 
   async handleClick({ target }) {
-    const items = await getProductsFromCategoryAndQuery(
+    const response = await getProductsFromCategoryAndQuery(
       target.id,
       null,
       true,
-    ).then((result) => result.results);
+    );
 
-    console.log(items);
+    const { results } = await response;
+
     this.setState({
       categorySelect: target.id,
-      products: items,
+      products: results,
     });
   }
 
   async getProducts(searchText) {
-    const items = await getProductsFromCategoryAndQuery(undefined, searchText)
+    const { categorySelect } = this.state;
+    const items = await getProductsFromCategoryAndQuery(categorySelect, searchText)
       .then((result) => result.results);
     this.setState({ products: items });
   }
