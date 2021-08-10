@@ -7,7 +7,7 @@ import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   api.getCategories().then((data) => console.log(data));
-  api.getProductsFromCategoryAndQuery().then((data) => console.log(data.results));
+  // api.getProductsFromCategoryAndQuery().then((data) => console.log(data.results));
   return (
     <BrowserRouter>
       <Switch>
