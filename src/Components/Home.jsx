@@ -1,5 +1,6 @@
 import React from 'react';
 import { getCategories } from '../services/api';
+import SearchBar from './SearchBar';
 
 export default class Home extends React.Component {
   constructor() {
@@ -7,6 +8,8 @@ export default class Home extends React.Component {
 
     this.state = {
       categories: [],
+      searchText: '',
+      searchRadio: false,
     };
   }
 
@@ -14,16 +17,39 @@ export default class Home extends React.Component {
     getCategories().then((value) => this.setState({ categories: value }));
   }
 
+  handleChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'radio' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
-    const { categories } = this.state;
+    const { categories, searchText, searchRadio } = this.state;
     return (
-      <ul>
-        { categories.map((categorie) => (
-          <li key={ categorie.id }>
-            { categorie.name }
-          </li>
-        )) }
-      </ul>
+      <div>
+        <SearchBar
+          searchText={ searchText }
+          handleChange={ this.handleChange }
+        />
+        <section>
+          { categories.map(({ id, name }) => (
+            <div key={ id } data-testid="category">
+              {/* <label htmlFor="categories"> */}
+              <input
+                type="radio"
+                name="searchRadio"
+                id="categories"
+                value={ searchRadio }
+                onChange={ this.handleChange }
+              />
+              { name }
+              {/* </label> */}
+            </div>
+          )) }
+        </section>
+      </div>
     );
   }
 }
