@@ -1,3 +1,26 @@
 body {
   background-color: white;
 }
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.home-page-title {
+  text-align: center;
+}
+
+.another-itens {
+  display: flex;
+}
+
+img {
+  width: 200px;
+}
