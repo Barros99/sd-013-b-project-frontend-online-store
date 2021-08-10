@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { getCategories } from '../services/api';
 
 export default class Category extends Component {
-  constructor(pro) {
-    super(pro);
+  constructor(props) {
+    super(props);
     this.state = {
       categories: [],
     };
