@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoryList from '../components/CategoryList';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 
 class ProductList extends React.Component {
@@ -16,6 +17,7 @@ class ProductList extends React.Component {
           />
         </label>
         <ShoppingCartButton />
+        <CategoryList />
       </div>
 
     );
