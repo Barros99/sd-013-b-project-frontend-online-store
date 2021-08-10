@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CategoriesAside from './CategoriesAside';
+import SearchBar from './SearchBar';
 
 class Home extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <input type="text" data-testid="query-input" />
-          <button type="submit" data-testid="query-button" onClick="">Pesquisar</button>
-        </div>
+        <SearchBar />
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>

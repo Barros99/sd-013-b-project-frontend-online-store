@@ -10,6 +10,9 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
 
   if (!categoryId) {
     baseUrl = `${baseUrl}q=${query}`;
+    const requestProducts = await fetch(baseUrl);
+    const requestReturn = await requestProducts.json();
+    return requestReturn;
   }
 
   baseUrl = `${baseUrl}category=${categoryId}&q=${query}`;
