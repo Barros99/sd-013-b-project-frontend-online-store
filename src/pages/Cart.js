@@ -16,9 +16,10 @@ class Cart extends React.Component {
 
   addProductToCart = () => {
     const itemsList = localStorage.getItem('cartItems');
-    console.log(itemsList);
+
     if (itemsList) {
       const parsedItems = JSON.parse(itemsList);
+
       this.setState({
         cartItems: [...parsedItems],
       });
@@ -27,6 +28,7 @@ class Cart extends React.Component {
 
   render() {
     const { cartItems } = this.state;
+
     return (
       <div>
         { cartItems.length !== 0

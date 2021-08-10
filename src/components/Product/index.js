@@ -2,27 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import getItemsFromLocalStorage from '../../utils/getItemsFromLocalStorage';
+
 // import './style.css';
 
 class Product extends React.Component {
   saveProductToLocalStorage = () => {
     const { product } = this.props;
 
-    localStorage.setItem('product-details', JSON.stringify(product));
+    localStorage.setItem('productDetails', JSON.stringify(product));
   };
-
-  getItemsFromLocalStorage = () => {
-    const items = localStorage.getItem('cartItems');
-    if (items) {
-      return JSON.parse(items);
-    }
-    return [];
-  }
 
   handleClick = () => {
     const { product } = this.props;
-    const items = this.getItemsFromLocalStorage();
+
+    const items = getItemsFromLocalStorage();
     const newItems = [...items, { ...product, amount: 1 }];
+
     localStorage.setItem('cartItems', JSON.stringify(newItems));
   }
 
@@ -46,7 +42,7 @@ class Product extends React.Component {
           data-testid="product-add-to-cart"
           onClick={ this.handleClick }
         >
-          Adcionar ao Carrinho
+          Adicionar ao Carrinho
         </button>
       </div>
     );
