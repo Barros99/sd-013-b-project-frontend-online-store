@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../services/api';
 // import PropTypes from 'prop-types';
 
@@ -34,7 +35,9 @@ class Categories extends Component {
             category={ category.name }
             data-testid="category"
           >
-            { category.name }
+            <Link to={ `search?category=${category.id}&q=${category.name}` }>
+              { category.name }
+            </Link>
           </li>))}
       </div>
       // <li className="category" data-testid="category">
