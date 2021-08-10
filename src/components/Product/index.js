@@ -11,6 +11,21 @@ class Product extends React.Component {
     localStorage.setItem('product-details', JSON.stringify(product));
   };
 
+  getItemsFromLocalStorage = () => {
+    const items = localStorage.getItem('cartItems');
+    if (items) {
+      return JSON.parse(items);
+    }
+    return [];
+  }
+
+  handleClick = () => {
+    const { product } = this.props;
+    const items = this.getItemsFromLocalStorage();
+    const newItems = [...items, { ...product, amount: 1 }];
+    localStorage.setItem('cartItems', JSON.stringify(newItems));
+  }
+
   render() {
     const { product } = this.props;
 
@@ -26,6 +41,13 @@ class Product extends React.Component {
         >
           Detalhes
         </Link>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ this.handleClick }
+        >
+          Adcionar ao Carrinho
+        </button>
       </div>
     );
   }
