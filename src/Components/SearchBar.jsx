@@ -7,19 +7,12 @@ export default class SearchBar extends Component {
     super();
 
     this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      searchValue: '',
-    };
   }
 
   handleChange({ target }) {
     const { onInputChange } = this.props;
     const { value } = target;
-    this.setState({
-      searchValue: value,
-    });
-    onInputChange(this.state);
+    onInputChange(value);
   }
 
   render() {

@@ -16,16 +16,17 @@ export default class SearchButton extends Component {
     this.fetchProductsFromCategoryAndQuery();
   }
 
-  handleClick() {
+  async handleClick() {
+    await this.fetchProductsFromCategoryAndQuery();
     const { onButtonClick } = this.props;
     const { searchResult } = this.state;
-    onButtonClick(searchResult.results);
+    await onButtonClick(searchResult.results);
   }
 
   async fetchProductsFromCategoryAndQuery() {
     const { searchValueHome } = this.props;
     console.log(searchValueHome);
-    const response = await (await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${searchValueHome}`)).json();
+    const response = await (await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=$CATEGORY_ID&q=${searchValueHome}`)).json();
     // api.getProductsFromCategoryAndQuery('$CATEGORY_ID', searchValueHome);
     this.setState({
       searchResult: response,
