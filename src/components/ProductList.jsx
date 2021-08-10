@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import ProductCard from './ProductCard';
 
 import * as api from '../services/api';
@@ -6,10 +7,10 @@ import * as api from '../services/api';
 class ProductList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       products: [],
-      text: '',
+      category: '',
+      query: '',
     };
 
     this.getProducts = this.getProducts.bind(this);
@@ -17,19 +18,36 @@ class ProductList extends Component {
 
   componentDidMount() {
     this.getProducts();
+    const category = localStorage.getItem('categoryId');
+    const query = localStorage.getItem('filterText');
+    this.setState({
+      category,
+      query,
+    });
+  }
+
+  componentDidUpdate() {
+    // const category = localStorage.getItem('categoryId');
+    // const query = localStorage.getItem('filterText');
+    // this.setState({
+    //   category,
+    //   query,
+    // });
+    this.getProducts();
   }
 
   async getProducts() {
-    const { text } = this.state;
-    const products = await api.getProductsFromCategoryAndQuery(text);
-    console.log(text);
+    const { category, query } = this.state;
+    const products = await api.getProductsFromCategoryAndQuery(category, query);
+    // console.log(text);
     this.setState({
-      products: [products],
+      products: products.results,
     });
   }
 
   render() {
     const { products } = this.state;
+    console.log(products);
     return (
       <div data-testid="query-input" className="product-list">
         {products.map((product) => (
@@ -42,5 +60,9 @@ class ProductList extends Component {
     );
   }
 }
+
+// ProductList.propTypes = {
+//   category: PropTypes.string.isRequired,
+// };
 
 export default ProductList;

@@ -17,6 +17,11 @@ class Home extends React.Component {
     this.setState({ filterText: event.target.value });
   }
 
+  handleClick = () => {
+    const { filterText } = this.state;
+    localStorage.setItem('filterText', filterText);
+  }
+
   render() {
     const { filterText } = this.state;
     // const { text } = this.props;
@@ -31,12 +36,12 @@ class Home extends React.Component {
             onChange={ this.handleChange }
           />
           Digite algum termo de pesquisa ou escolha uma categoria.
-          <button type="button">pesquisar</button>
+          <button type="button" onClick={ this.handleClick }>pesquisar</button>
           <br />
           {/* <FontAwesomeIcon to="/shoppingcart" icon="fa-solid fa-cart-shopping" /> */}
           <Link data-testid="shopping-cart-button" to="/shoppingcart">Carrinho</Link>
           <Categories />
-          <ProductList text={ filterText } />
+          <ProductList />
         </label>
       </div>
     );
