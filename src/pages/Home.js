@@ -24,19 +24,28 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.fetchCategoriesList();
+    const cat = api.getCategories();
+    console.log(cat);
   }
 
   onSearchSubmit(value) {
     const { search } = this.state;
-    this.setState({
-      search: value,
-    }, () => this.fetchProducts(search));
+    this.setState(
+      {
+        search: value,
+      },
+      () => this.fetchProducts(search),
+    );
   }
 
   setCategory(categoryID) {
-    this.setState({
-      categoryID,
-    });
+    const { search } = this.state;
+    this.setState(
+      {
+        categoryID,
+      },
+      () => this.fetchProducts(search),
+    );
   }
 
   fetchCategoriesList() {
@@ -49,7 +58,8 @@ class Home extends React.Component {
   }
 
   async fetchProducts(query) {
-    const response = await api.getProductsFromCategoryAndQuery('', query);
+    const { categoryID } = this.state;
+    const response = await api.getProductsFromCategoryAndQuery(categoryID, query);
     const products = response.results;
     this.setState({
       products,
@@ -57,8 +67,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { products, categories, loading, categoryID } = this.state;
-    console.log(categoryID);
+    const { products, categories, loading } = this.state;
 
     const message = (
       <h2 data-testid="home-initial-message">
@@ -71,10 +80,9 @@ class Home extends React.Component {
         <Link to="/shopping-cart" data-testid="shopping-cart-button">
           <CartIcon />
         </Link>
-        {products.length > 0
-          ? <CardList products={ products } /> : message}
-        { !loading && (
-          <CategoriesList categories={ categories } setCategory={ this.setCategory } />) }
+        {products.length > 0 ? <CardList products={ products } /> : message}
+        {!loading
+        && <CategoriesList categories={ categories } setCategory={ this.setCategory } />}
       </div>
     );
   }
