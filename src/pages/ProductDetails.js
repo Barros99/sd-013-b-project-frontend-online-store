@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//
+
 class ProductDetails extends React.Component {
   constructor() {
     super();
