@@ -9,10 +9,11 @@ export default class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
       searchText: '',
       products: [],
     };
+
+    this.handleChangeCategory = this.handleChangeCategory.bind(this);
   }
 
   // async componentDidMount() {
@@ -23,15 +24,8 @@ export default class SearchBar extends Component {
   // updateState = (products) => this.setState({ products: products.results });
 
   handleClick = () => {
-    console.log('passei aqui');
-    const { category, searchText } = this.state;
-    if (category === '') {
-      return api.getProductsFromCategoryAndQuery('&CATEGORY_ID', searchText)
-        .then((products) => {
-          this.setState({ products: products.results });
-        });
-    }
-    return api.getProductsFromCategoryAndQuery(category, searchText)
+    const { searchText } = this.state;
+    return api.getProductsFromCategoryAndQuery('&CATEGORY_ID', searchText)
       .then((products) => {
         this.setState({ products: products.results });
       });
@@ -39,6 +33,13 @@ export default class SearchBar extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
+  }
+
+  handleChangeCategory(catego) {
+    return api.getProductsFromCategoryAndQuery(catego)
+      .then((products) => {
+        this.setState({ products: products.results });
+      });
   }
 
   render() {
@@ -68,7 +69,7 @@ export default class SearchBar extends Component {
         <Link to="shoppingcart" data-testid="shopping-cart-button">
           Carrinho
         </Link>
-        <Category />
+        <Category onChange={ this.handleChangeCategory } />
         <RenderCard products={ products } />
       </main>
     );
