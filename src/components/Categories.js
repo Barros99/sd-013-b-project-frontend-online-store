@@ -23,7 +23,10 @@ class Categories extends React.Component {
           <h2>Categorias</h2>
           <ul>
             {productCategories.map((category) => (
-              <li key={ category.id } data-testid="category">{ name }</li>
+              <li key={ category.id } data-testid="category">
+                <input type="checkbox" />
+                { name }
+              </li>
             ))}
           </ul>
         </section>
