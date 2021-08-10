@@ -7,13 +7,13 @@ export default class Categories extends React.Component {
     return (
       <label
         key={ id }
-        htmlFor={ name }
+        htmlFor={ id }
       >
         { name }
         <input
           type="radio"
           data-testid="category"
-          id={ name }
+          id={ id }
           key={ id }
           value={ name }
           name="category"
