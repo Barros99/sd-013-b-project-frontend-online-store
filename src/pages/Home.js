@@ -17,10 +17,6 @@ class Home extends React.Component {
     };
   }
 
-  componentDidMount() {
-    //
-  }
-
   handleSearchTermChange = ({ target }) => {
     this.setState({
       searchTerm: target.value,
@@ -40,11 +36,12 @@ class Home extends React.Component {
   listProducts = async (category, query) => {
     const response = await api.getProductsFromCategoryAndQuery(category, query);
 
-    const list = response.results.map((element) => ({
-      id: element.id,
-      title: element.title,
-      thumbnail: element.thumbnail,
-      price: element.price,
+    const list = response.results.map((product) => ({
+      id: product.id,
+      title: product.title,
+      thumbnail: product.thumbnail,
+      price: product.price,
+      attributes: product.attributes,
     }));
 
     this.setState({

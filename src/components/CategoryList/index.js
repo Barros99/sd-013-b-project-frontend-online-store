@@ -5,7 +5,7 @@ import CategoryItem from '../CategoryItem';
 
 import * as api from '../../services/api';
 
-import './style.css';
+// import './style.css';
 
 class CategoryList extends React.Component {
   constructor(props) {
