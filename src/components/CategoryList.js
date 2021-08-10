@@ -33,7 +33,8 @@ class CategoryList extends React.Component {
         {categories.map(({ id, name }) => (
           <CategoryItem
             key={ id }
-            category={ name }
+            categoryName={ name }
+            categoryId={ id }
             selectedCategory={ selectedCategory }
             onChange={ onChange }
           />

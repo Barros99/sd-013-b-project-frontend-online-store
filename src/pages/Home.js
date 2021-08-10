@@ -27,6 +27,16 @@ class Home extends React.Component {
     });
   };
 
+  handleCategoryChange = ({ target }) => {
+    if (target.value) {
+      this.listProducts(target.value, '');
+    }
+
+    this.setState({
+      selectedCategory: target.value,
+    });
+  };
+
   listProducts = async (category, query) => {
     const response = await api.getProductsFromCategoryAndQuery(category, query);
 
@@ -39,12 +49,6 @@ class Home extends React.Component {
 
     this.setState({
       productList: list,
-    });
-  }
-
-  handleCategoryChange = ({ target }) => {
-    this.setState({
-      selectedCategory: target.value,
     });
   };
 

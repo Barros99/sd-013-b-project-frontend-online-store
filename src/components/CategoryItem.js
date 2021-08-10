@@ -3,25 +3,29 @@ import PropTypes from 'prop-types';
 
 class CategoryItem extends React.Component {
   render() {
-    const { category, selectedCategory, onChange } = this.props;
+    const { categoryName, categoryId, selectedCategory, onChange } = this.props;
 
     return (
-      <div>
+      <li>
         <input
+          id="category"
           type="radio"
           name="category"
-          value={ category }
-          checked={ selectedCategory === category }
+          value={ categoryId }
+          checked={ selectedCategory === categoryId }
           onChange={ onChange }
         />
-        <p data-testid="category">{category}</p>
-      </div>
+        <label htmlFor="category" data-testid="category">
+          {categoryName}
+        </label>
+      </li>
     );
   }
 }
 
 CategoryItem.propTypes = {
-  category: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   selectedCategory: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
