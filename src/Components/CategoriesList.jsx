@@ -7,14 +7,14 @@ export default class CategoriesList extends Component {
     this.state = {
       category: [],
     };
-    this.teste = this.teste.bind(this);
+    this.handleState = this.handleState.bind(this);
   }
 
   componentDidMount() {
-    this.teste();
+    this.handleState();
   }
 
-  async teste() {
+  async handleState() {
     const categories = await getCategories();
     this.setState({
       category: categories,
