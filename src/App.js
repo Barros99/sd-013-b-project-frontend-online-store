@@ -25,8 +25,9 @@ export default App;
 */
 
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 import MainPage from './Components/MainPage';
+import ShoppingCart from './Components/ShoppingCart';
 import * as api from './services/api';
 
 export default class App extends Component {
@@ -40,9 +41,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Route path="/" component={ MainPage } />
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Route path="/" component={ MainPage } />
+          <Link data-testid="shopping-cart-button" to="shopping-cart">
+            cart-img
+          </Link>
+        </BrowserRouter>
+      </div>
     );
   }
 }
