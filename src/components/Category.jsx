@@ -22,7 +22,7 @@ export default class Category extends Component {
     return (
       <div onChange={ handleRadioButton }>
         {categories.map(({ name, id }) => (
-          <label key={ id } htmlFor="categories">
+          <label data-testid="category" key={ id } htmlFor="categories">
             <input type="radio" value={ id } name="categories" />
             {name}
           </label>
