@@ -29,7 +29,7 @@ export default class CategoryFilter extends React.Component {
       <div>
         {categories
           .map((category) => (
-            <li key={ category.id }>
+            <li className="category-li" key={ category.id }>
               <label htmlFor={ category.id }>
                 <input
                   id={ category.id }

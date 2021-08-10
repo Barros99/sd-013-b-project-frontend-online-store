@@ -26,7 +26,7 @@
   min-height: 100vh;
 }
 
-li {
+.category-li {
   list-style: none;
 }
 
@@ -43,4 +43,30 @@ li {
   to {
     transform: rotate(360deg);
   }
+}
+
+.div-productdetail-img {
+  border: 1px solid black;
+  min-width: 25%;
+  min-height: 250px;
+}
+
+.div-productdetail-specification {
+  border: 1px solid black;
+  min-width: 70%;
+  min-height: 250px;
+}
+
+.div-productdetail-central {
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-productdetail {
+  margin: 20px 3% 20px 3%;
+}
+
+.div-productdetail-link {
+  display: flex;
+  justify-content: space-between;
 }
