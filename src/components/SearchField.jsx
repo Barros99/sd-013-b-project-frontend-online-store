@@ -25,6 +25,7 @@ class SearchField extends Component {
 
   async handleClick() {
     const { searchField } = this.state;
+    console.log(searchField);
     const products = await getProductsFromCategoryAndQuery('MLB1196', searchField);
     this.setState({
       products: products.results,
