@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProductList from '../Components/ProdructList';
 import RadioButtons from '../Components/RadioButtons';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class MainScreen extends React.Component {
   constructor(props) {
@@ -9,25 +10,50 @@ class MainScreen extends React.Component {
 
     this.state = {
       categories: [],
+      products: [],
+      search: {
+        id: 0,
+        query: '',
+      },
     };
 
-    this.fetchAPI = this.fetchAPI.bind(this);
+    this.fetchCategories = this.fetchCategories.bind(this);
     // this.handleSelect = this.handleSelect.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
-    this.fetchAPI();
+    this.fetchCategories();
+    this.fetchProducts();
   }
 
-  async fetchAPI() {
+  handleInputChange(event) {
+    this.setState({
+      search: {
+        query: event.target.value,
+      },
+    });
+  }
+
+  // pega as categorias
+  async fetchCategories() {
     const getResponse = await getCategories();
     this.setState({
       categories: getResponse,
     });
   }
 
+  // pega os produtos
+  async fetchProducts() {
+    const { search: { id = 'MLB1403', query = 'cerveja' } } = this.state;
+    const getResponse = await getProductsFromCategoryAndQuery(id, query);
+    this.setState({
+      products: getResponse,
+    });
+  }
+
   render() {
-    const { categories } = this.state;
+    const { categories, products } = this.state;
     return (
       <div data-testid="home-initial-message">
         <label htmlFor="searchBar">
@@ -36,6 +62,8 @@ class MainScreen extends React.Component {
           <input
             type="text"
             name="searchBar"
+            data-testid="query-input"
+            onChange={ this.handleInputChange }
           />
         </label>
         <Link
@@ -44,10 +72,9 @@ class MainScreen extends React.Component {
         >
           Carrinho
         </Link>
-        <div>
-          {/* <ProductList products={ products } /> */}
-        </div>
         <RadioButtons categories={ categories } />
+        {products.results === undefined ? <div> sem produtos </div> : <ProductList products={ products } /> }
+
       </div>
     );
   }
