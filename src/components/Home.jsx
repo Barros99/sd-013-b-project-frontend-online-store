@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import shoppingCart from '../images/shopping-cart-svgrepo-com.svg';
+
 import Search from './Search';
 import ProductCard from './ProductCard';
 import * as api from '../services/api';
 import NotFound from './NotFound';
+import CategoryList from './CategoryList';
 
+import shoppingCart from '../images/shopping-cart-svgrepo-com.svg';
 import '../styles/home.css';
-import ProductList from './ProducList';
 
 class Home extends React.Component {
   constructor(props) {
@@ -47,14 +48,28 @@ class Home extends React.Component {
     const { productsList, haveProduct } = this.state;
     return (
       <div className="main-div">
+        <div className="top-section">
+          <Search
+            clasName="search-bar"
+            searchText={ this.searchText }
+            onClick={ this.onClick }
+          />
+          <div>
+            <Link
+              className="shopping-cart-button"
+              to="/cart"
+              data-testid="shopping-cart-button"
+            >
+              <img
+                className="cart-icon"
+                src={ shoppingCart }
+                alt="cart icon"
+              />
+            </Link>
+          </div>
+        </div>
 
-        <Search
-          clasName="search-bar"
-          searchText={ this.searchText }
-          onClick={ this.onClick }
-        />
-
-        {haveProduct ? (
+        { haveProduct ? (
           <div className="product-card">
             { productsList.map((product) => (
               <ProductCard
@@ -68,13 +83,12 @@ class Home extends React.Component {
           <div clasName="text-main-page" data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </div>
-        )}
+        ) }
 
-        <ProductList />
+        <div clasName="category-list">
+          <CategoryList />
+        </div>
 
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <img src={ shoppingCart } alt="cart icon" width="50" height="50" />
-        </Link>
       </div>
     );
   }

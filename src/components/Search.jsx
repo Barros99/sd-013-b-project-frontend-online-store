@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/search.css';
 
 class Search extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Search extends React.Component {
   render() {
     const { searchText, onClick } = this.props;
     return (
-      <form>
+      <form className="form">
         <fieldset>
 
           <label htmlFor="home-initial-message">
