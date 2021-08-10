@@ -6,7 +6,6 @@ class ProductCard extends Component {
   render() {
     const { product, query } = this.props;
     const { title, thumbnail, price } = product;
-
     return (
       <div data-testid="product" className="">
         Product Card
@@ -15,7 +14,7 @@ class ProductCard extends Component {
         <p>{ price }</p>
         <Link
           data-testid="product-detail-link"
-          to={ { pathname: `/productDetails/${product.id}`, state: { foo: query } } }
+          to={ { pathname: `/productDetails/${product.id} `, state: { foo: query } } }
         >
           Ver Detalhes
         </Link>
@@ -25,8 +24,12 @@ class ProductCard extends Component {
 }
 
 ProductCard.propTypes = {
-  product: PropTypes.objectOf(PropTypes.string).isRequired,
-  query: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductCard;
