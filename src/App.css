@@ -47,14 +47,14 @@
 
 .div-productdetail-img {
   border: 1px solid black;
-  min-width: 25%;
   min-height: 250px;
+  min-width: 25%;
 }
 
 .div-productdetail-specification {
   border: 1px solid black;
-  min-width: 70%;
   min-height: 250px;
+  min-width: 70%;
 }
 
 .div-productdetail-central {
@@ -63,7 +63,7 @@
 }
 
 .div-productdetail {
-  margin: 20px 3% 20px 3%;
+  margin: 20px 3%;
 }
 
 .div-productdetail-link {
