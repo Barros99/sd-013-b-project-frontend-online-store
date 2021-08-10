@@ -9,6 +9,7 @@ export default class CardLibrary extends React.Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.captureValueSelect = this.captureValueSelect.bind(this);
 
     this.state = {
       searchText: undefined,
@@ -29,7 +30,7 @@ export default class CardLibrary extends React.Component {
   }
 
   captureValueSelect({ target }) {
-    this.setState({ selectedCategory: target.value });
+    this.setState({ selectedCategory: target.id });
   }
 
   async fetchData() {
