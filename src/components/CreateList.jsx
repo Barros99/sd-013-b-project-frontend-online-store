@@ -5,7 +5,15 @@ class CreateList extends React.Component {
   render() {
     const { name } = this.props;
     return (
-      <li data-testid="category">{name}</li>
+      <label htmlFor="category">
+        <input
+          style={ { display: 'block' } }
+          name="category"
+          type="radio"
+          data-testid="category"
+        />
+        {name}
+      </label>
     );
   }
 }
