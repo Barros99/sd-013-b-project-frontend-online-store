@@ -13,6 +13,7 @@ class HomePage extends React.Component {
       selectCategory: '',
       products: [],
       productsLoad: false,
+      product: {},
     };
   }
 
@@ -54,6 +55,17 @@ updateSelectCategory = (id) => {
   });
 }
 
+updateProduct = (item) => {
+  this.setState({
+    product: item,
+  });
+}
+
+addCart = () => {
+  const { product } = this.state;
+  sessionStorage.setItem('products', JSON.stringify(product));
+}
+
 renderList = () => {
   const { itemText, selectCategory } = this.state;
   getProductsFromCategoryAndQuery(selectCategory, itemText)
@@ -65,6 +77,11 @@ renderList = () => {
             title={ item.title }
             price={ item.price }
             thumbnail={ item.thumbnail }
+            onClick={ async () => {
+              await this.updateProduct(item);
+              this.addCart();
+            } }
+            value={ item.id }
           />)),
         productsLoad: true,
       });
