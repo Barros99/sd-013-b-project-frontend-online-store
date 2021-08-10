@@ -40,6 +40,7 @@ export default class ProductDetails extends Component {
     );
   }
 }
+
 ProductDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
