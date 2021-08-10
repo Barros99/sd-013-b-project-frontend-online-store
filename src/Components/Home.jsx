@@ -7,6 +7,8 @@ import BarSearch from './BarSearch';
 import Category from './Category';
 import ProductList from './ProductList';
 
+// piru de conflito
+
 class Home extends Component {
   constructor(props) {
     super(props);
