@@ -1,10 +1,12 @@
 import React from 'react';
+import CategoriesList from '../components/CategoriesList';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 
 class ProductList extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main-container">
+        <CategoriesList />
         <section>
           <input type="text" />
           <ShoppingCartButton />
