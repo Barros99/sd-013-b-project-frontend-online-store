@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import * as api from '../services/api';
 import './initial.css';
@@ -8,7 +9,7 @@ class Initial extends Component {
     super();
     this.state = {
       categories: [],
-      categoryId: 'MLB5672',
+      categoryId: '',
       query: '',
       products: [],
     };
@@ -90,12 +91,24 @@ class Initial extends Component {
           </p>
           <div>
             {
-              products.map(({ id, title, price, thumbnail }) => (
-                <div key={ id } data-testid="product">
-                  <img src={ thumbnail } alt={ title } />
-                  <p>{title}</p>
-                  <p>{price}</p>
-                </div>
+              products.map(({ id, title, price, thumbnail, attributes }) => (
+                <Link
+                  key={ id }
+                  data-testid="product-detail-link"
+                  to={ {
+                    pathname: `/product-detail/${id}`,
+                    title,
+                    price,
+                    thumbnail,
+                    attributes,
+                  } }
+                >
+                  <div data-testid="product">
+                    <img src={ thumbnail } alt={ title } />
+                    <p>{title}</p>
+                    <p>{price}</p>
+                  </div>
+                </Link>
               ))
             }
           </div>
