@@ -19,11 +19,18 @@ class Home extends Component {
 
   fetchProducts = async () => {
     const { categoryId, query } = this.state;
+    console.log(categoryId, query);
     const products = await getProductsFromCategoryAndQuery(categoryId, query);
     console.log(products);
     this.setState({
       products: products.results,
     });
+  }
+
+  handleCategorieChange = (categoryId) => {
+    this.setState({
+      categoryId,
+    }, this.fetchProducts);
   }
 
   handleInputChange = (event) => {
@@ -66,7 +73,7 @@ class Home extends Component {
           categoria.
         </h1>
         <Link to="/Cart" data-testid="shopping-cart-button">Carrinho</Link>
-        <Categories />
+        <Categories onChange={ this.handleCategorieChange } />
         <div>
           {products.map((product) => (
             <Card
@@ -74,6 +81,7 @@ class Home extends Component {
               title={ product.title }
               image={ product.thumbnail }
               price={ product.price }
+              id={ product.id }
             />
           ))}
         </div>

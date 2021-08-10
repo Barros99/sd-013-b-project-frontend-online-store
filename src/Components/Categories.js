@@ -26,19 +26,23 @@ class Categories extends Component {
   render() {
     // const { categorie, checked, onChange } = this.props;
     // const { id, name } = categorie;
+    const { onChange } = this.props;
     const { categories } = this.state;
     return (
       <div>
         {categories.map((category) => (
-          <li
-            key={ category.id }
-            category={ category.name }
-            data-testid="category"
-          >
-            <Link to={ `search?category=${category.id}&q=${category.name}` }>
-              { category.name }
-            </Link>
-          </li>))}
+          <label key={ category.id } htmlFor={ category.id }>
+            <input
+              type="radio"
+              name="category"
+              id={ category.id }
+              category={ category.name }
+              data-testid="category"
+              value={ category.id }
+              onClick={ () => onChange(category.id) }
+            />
+            { category.name }
+          </label>))}
       </div>
       // <li className="category" data-testid="category">
       //   <label htmlFor={ id }>
