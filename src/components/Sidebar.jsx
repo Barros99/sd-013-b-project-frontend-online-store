@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 import Categories from './Categories';
 
@@ -8,18 +9,13 @@ export default class Sidebar extends React.Component {
 
     this.state = {
       categories: [],
-      selected: undefined,
     };
 
-    this.captureValue = this.captureValue.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
     this.fetchData();
-  }
-
-  captureValue(event) {
-    this.setState({ selected: event.target.value });
   }
 
   async fetchData() {
@@ -29,19 +25,19 @@ export default class Sidebar extends React.Component {
 
   render() {
     const { categories } = this.state;
-
+    const { captureValueSelect } = this.props;
     return (
-      <form>
+      <form onChange={ captureValueSelect }>
         {
           categories.map((category) => (
-            <Categories
-              key={ category.id }
-              categories={ category }
-              onChange={ this.captureValue }
-            />
+            <Categories key={ category.id } categories={ category } />
           ))
         }
       </form>
     );
   }
 }
+
+Sidebar.propTypes = {
+  captureValueSelect: PropTypes.func.isRequired,
+};

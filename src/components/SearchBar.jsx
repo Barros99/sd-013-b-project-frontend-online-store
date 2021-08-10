@@ -1,42 +1,50 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.captureValueText = this.captureValueText.bind(this);
+
     this.state = {
       searchText: undefined,
     };
-
-    this.captureValue = this.captureValue.bind(this);
   }
 
-  captureValue(event) {
-    this.setState({ searchText: event.target.value });
+  onClick() {
+    const { searchText } = this.state;
+    const { getSearch } = this.props;
+    console.log(searchText);
+    getSearch({ searchText });
+  }
+
+  captureValueText({ target }) {
+    this.setState({ searchText: target.value });
   }
 
   render() {
     const { searchText } = this.state;
-
     return (
-      <section>
-        <div className="search-bar">
-          <input
-            type="text"
-            value={ searchText }
-            className="search-bar-input"
-            placeholder="Busque por um produto"
-            onChange={ this.captureValue }
-          />
-          <Link data-testid="shopping-cart-button" to="/cart">Carrinho</Link>
-        </div>
-        <div className="home-message">
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-        </div>
-      </section>
+      <div>
+        <input type="text" onChange={ this.captureValueText } data-testid="query-input" />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.onClick }
+          value={ searchText }
+        >
+          Pesquisar
+        </button>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
+      </div>
     );
   }
 }
+
+SearchBar.propTypes = {
+  captureValueText: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
