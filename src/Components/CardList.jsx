@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 
 export default class CardList extends Component {
@@ -9,7 +10,6 @@ export default class CardList extends Component {
 
     this.state = {
       loading: true,
-      productsList: [],
     };
   }
 
@@ -53,3 +53,7 @@ export default class CardList extends Component {
     );
   }
 }
+
+CardList.propTypes = {
+  productsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
