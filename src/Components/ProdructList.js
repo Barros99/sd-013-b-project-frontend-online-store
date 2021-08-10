@@ -4,11 +4,10 @@ import ProdructCard from './ProductCard';
 
 class ProductList extends React.Component {
   render() {
-    const { products } = this.props;
-    console.log(this.props);
+    const { products: { results } } = this.props;
     return (
       <div>
-        Product List test
+        {results.map((product) => <ProdructCard key={ product.id } product={ product } />)}
       </div>
     );
   }

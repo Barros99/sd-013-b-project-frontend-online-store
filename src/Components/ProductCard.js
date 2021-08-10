@@ -9,7 +9,7 @@ class ProdructCard extends React.Component {
         <p>
           { title }
         </p>
-        <image src={ thumbnail } />
+        <img src={ thumbnail } alt="test" />
         <h2>
           { price }
         </h2>
