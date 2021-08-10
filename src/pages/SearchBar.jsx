@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchByQuery from '../Componentes/SearchByQuery';
+import HomeFilter from '../Componentes/HomeFilter';
 
 class SearchBar extends React.Component {
   constructor() {
@@ -32,6 +33,7 @@ class SearchBar extends React.Component {
         <SearchByQuery
           onChange={ this.handleInput }
         />
+        <HomeFilter />
       </div>
     );
   }
