@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import DetailedProduct from './DetailedProduct';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       category: '',
       searchResult: [],
     };
@@ -20,17 +22,22 @@ export default class ProductDetails extends React.Component {
   async handleRequisitionById() {
     const { match: { params: { id } } } = this.props;
     const { category } = this.state;
-    const result = await getProductsFromCategoryAndQuery(category, id);
-    this.setState({
-      searchResult: result.results[0],
+    this.setState({ loading: true }, async () => {
+      const result = await getProductsFromCategoryAndQuery(category, id);
+      this.setState({
+        loading: false,
+        searchResult: result.results[0],
+      });
     });
-    console.log(result);
   }
 
   render() {
-    const { searchResult } = this.state;
+    const { searchResult, loading } = this.state;
+    const displayLoading = <span>Loading...</span>;
     return (
-      <div data-testid="product-detail-name">{searchResult.title}</div>
+      <div data-testid="product-detail-name">
+        {loading ? displayLoading : <DetailedProduct item={ searchResult } />}
+      </div>
     );
   }
 }

@@ -9,8 +9,8 @@ class ListItems extends React.Component {
       <div>
         { items.length === 0 ? 'Nenhum produto foi encontrado'
           : items.map(({ thumbnail, price, title, id }) => (
-            <div data-testid="product-detail-link" key={ id }>
-              <Link to={ `/product-details/${title}` }>
+            <div key={ id }>
+              <Link data-testid="product-detail-link" to={ `/product-details/${title}` }>
                 <div data-testid="product">
                   <h3>{ title }</h3>
                   <img src={ thumbnail } alt="Produto" />
