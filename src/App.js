@@ -14,8 +14,6 @@ function App() {
           <Route exact path="/Cart" component={ Carts } />
         </Switch>
       </BrowserRouter>
-      {/* <Categories /> */}
-
     </div>
   );
 }

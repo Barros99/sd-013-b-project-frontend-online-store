@@ -1,14 +1,42 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Home from '../Pages/Home';
+import { getCategories } from '../services/api';
+// import PropTypes from 'prop-types';
 
 class Categories extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: [],
+    };
+  }
+
+  componentDidMount() {
+    this.fetchCategories();
+  }
+
+  fetchCategories = async () => {
+    const categories = await getCategories();
+    this.setState({
+      categories,
+    });
+  }
+
   render() {
     // const { categorie, checked, onChange } = this.props;
     // const { id, name } = categorie;
-    const { categories } = this.props;
-
+    const { categories } = this.state;
     return (
+      <div>
+        {categories.map((category) => (
+          <li
+            key={ category.id }
+            category={ category.name }
+            data-testid="category"
+          >
+            { category.name }
+          </li>))}
+      </div>
       // <li className="category" data-testid="category">
       //   <label htmlFor={ id }>
       //     <input
@@ -22,18 +50,15 @@ class Categories extends Component {
       //     { name }
       //   </label>
       // </li>
-      <div>
-        {/* {categories.map((categorie) => <Home key={ categorie.id } categorie={ categorie.name } />)} */}
-      </div>
     );
   }
 }
 
-Categories.propTypes = {
-  categories: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-  }).isRequired,
-};
+// Categories.propTypes = {
+//   categories: PropTypes.shape({
+//     id: PropTypes.string,
+//     name: PropTypes.string,
+//   }).isRequired,
+// };
 
 export default Categories;
