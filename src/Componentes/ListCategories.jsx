@@ -29,17 +29,17 @@ class ListCategories extends Component {
       <div>
         <form onChange={ handleChange } name="category">
           { categories.map(({ name, id }) => (
-            <label htmlFor="categoryLabel">
-            <div id="categoryLabel">
-              <input 
-              type="radio" 
-              id="category" 
-              key={ id }
-              value={ id }
-              />
-              { name }
+            <div key={ id }>
+              <label htmlFor="category">
+                <input
+                  type="radio"
+                  id="category"
+                  value={ id }
+                  key={ id }
+                />
+                { name }
+              </label>
             </div>
-            </label>
           )) }
         </form>
       </div>
