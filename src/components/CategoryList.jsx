@@ -1,7 +1,8 @@
 import React from 'react';
 import * as api from '../services/api';
+import '../styles/categoryList.css';
 
-class ProductList extends React.Component {
+class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = (
@@ -24,7 +25,7 @@ class ProductList extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <ul>
+      <ul className="list-content">
         {categories.map((category) => (
           <li key={ category.id } data-testid="category">{ category.name }</li>))}
       </ul>
@@ -32,4 +33,4 @@ class ProductList extends React.Component {
   }
 }
 
-export default ProductList;
+export default CategoryList;
