@@ -29,6 +29,7 @@ export default class Home extends React.Component {
     const { categories, searchText, searchRadio } = this.state;
     return (
       <div>
+        <Link to="/cart" data-testid="shopping-cart-button" />
         <SearchBar
           searchText={ searchText }
           handleChange={ this.handleChange }
