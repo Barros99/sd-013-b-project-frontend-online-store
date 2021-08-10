@@ -44,7 +44,10 @@ class App extends React.Component {
           <Route
             exact
             path="/product-details/:categoryId/:productName"
-            render={ (props) => <ProductDetails { ...props } /> }
+            render={ (props) => (<ProductDetails
+              { ...props }
+              onClickButton={ this.handleAddCartChange }
+            />) }
           />
         </Switch>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CartButton from '../components/CartButton';
 import { getProductsFromCategoryAndQuery as ApiProducts } from '../services/api';
 
@@ -28,11 +29,12 @@ class ProductDetails extends React.Component {
   }
 
   render() {
+    const { onClickButton } = this.props;
     const { title } = this.state;
     return (
       <div className="div-productdetail">
-        <div className="div-productdetail-link">
-          <button type="button">Retornar</button>
+        <div className="div-productdetail-nav">
+          <Link to="/">Retornar</Link>
           <CartButton />
         </div>
         <h2 data-testid="product-detail-name">{ title }</h2>
@@ -49,12 +51,23 @@ class ProductDetails extends React.Component {
             </ul>
           </div>
         </div>
+        <div>
+          <button
+            onClick={ onClickButton }
+            type="button"
+            value={ title }
+            data-testid="product-detail-add-to-cart"
+          >
+            Adicionar ao carrinho
+          </button>
+        </div>
       </div>
     );
   }
 }
 
 ProductDetails.propTypes = {
+  onClickButton: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       productName: PropTypes.string,
