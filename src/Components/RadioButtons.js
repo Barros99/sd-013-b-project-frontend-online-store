@@ -3,31 +3,8 @@ import { getCategories } from '../services/api';
 // import CategoryRadios from './ScreensComponents/CategoryRadios';
 
 class CategoryList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      categories: [],
-    };
-
-    this.fecthAPI = this.fecthAPI.bind(this);
-  }
-
-  componentDidMount() {
-    this.fecthAPI();
-  }
-
-  async fecthAPI() {
-    const getResponse = await getCategories();
-    this.setState({
-      categories: getResponse,
-      loading: true,
-    });
-  }
-
   render() {
-    const { categories, loading } = this.state;
-    console.log(loading);
+    const { categories, handleSelect } = this.props;
     return (
       <form>
         { categories.map((category, index) => (
