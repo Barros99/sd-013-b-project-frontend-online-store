@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Components/Home';
-import cart from './Components/Cart';
+import Cart from './Components/Cart';
 
 class App extends React.Component {
   render() {
