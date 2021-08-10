@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
@@ -27,7 +28,6 @@ class Home extends React.Component {
 
   async handleCategoriesList({ target }) {
     const { results } = await getProductsFromCategoryAndQuery(target.value, '');
-    console.log(results, target.value);
     this.setState({
       results,
       showCard: true,
@@ -44,16 +44,21 @@ class Home extends React.Component {
   }
 
   render() {
+    const { addToCart } = this.props;
     const { results, showCard } = this.state;
     return (
       <div>
         <Search onClick={ this.handleClick } onChange={ this.handleChange } />
         <CartButton />
-        { (showCard && <ProductCard results={ results } />) }
+        { (showCard && <ProductCard results={ results } addToCart={ addToCart } />) }
         <CategoriesList onClick={ this.handleCategoriesList } />
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Home;
