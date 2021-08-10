@@ -28,21 +28,14 @@ export default class ProductList extends React.Component {
 
   async clickChange() {
     const { inputValue } = this.state;
-    const returnFetch = await getProductsFromCategoryAndQuery(undefined, inputValue);
-    this.setState({ products: returnFetch.results, inputValue: '' });
+    const { results } = await getProductsFromCategoryAndQuery(undefined, inputValue);
+    this.setState({ products: results, inputValue: '' });
   }
 
   categoriesFetch() {
     this.setState({ loading: true }, async () => {
       const categories = await getCategories();
       this.setState({ loading: false, categories });
-    });
-  }
-
-  queryFetch(search) {
-    this.setState({ loading: true }, async () => {
-      const products = await getProductsFromCategoryAndQuery(undefined, search);
-      this.setState({ loading: false, products });
     });
   }
 
@@ -54,7 +47,6 @@ export default class ProductList extends React.Component {
         <h1 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
-        { loading ? loadingComp : <Categories categories={ categories } /> }
         <input
           data-testid="query-input"
           value={ inputValue }
@@ -65,9 +57,10 @@ export default class ProductList extends React.Component {
           data-testid="query-button"
           onClick={ this.clickChange }
         >
-          🔎
+          <span role="img" aria-label="lupa">🔎</span>
         </button>
         <Search product={ products } />
+        { loading ? loadingComp : <Categories categories={ categories } /> }
       </div>
     );
   }
