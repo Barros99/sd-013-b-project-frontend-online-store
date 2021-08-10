@@ -9,7 +9,6 @@ export default class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
       searchText: '',
       products: [],
     };
@@ -25,7 +24,6 @@ export default class SearchBar extends Component {
   // updateState = (products) => this.setState({ products: products.results });
 
   handleClick = () => {
-    this.setState({ category: '' });
     const { searchText } = this.state;
     return api.getProductsFromCategoryAndQuery('&CATEGORY_ID', searchText)
       .then((products) => {
@@ -38,9 +36,7 @@ export default class SearchBar extends Component {
   }
 
   handleChangeCategory(catego) {
-    this.setState({ category: catego });
-    const { category } = this.state;
-    return api.getProductsFromCategoryAndQuery(category)
+    return api.getProductsFromCategoryAndQuery(catego)
       .then((products) => {
         this.setState({ products: products.results });
       });
