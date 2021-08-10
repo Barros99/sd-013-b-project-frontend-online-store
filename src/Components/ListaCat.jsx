@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 
-class ListaPro extends React.Component {
+class ListaCat extends React.Component {
   constructor() {
     super();
+
+    this.categoria = this.categoria.bind(this);
 
     this.state = {
       categories: [],
     };
-    this.categoria = this.categoria.bind(this);
   }
 
   componentDidMount() {
@@ -46,4 +47,4 @@ ListaPro.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
-export default ListaPro;
+export default ListaCat;
