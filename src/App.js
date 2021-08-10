@@ -12,6 +12,7 @@ function App() {
         <Route exact path="/" component={ Home } />
         <Route exact path="/shoppingKart" component={ ShoppingKart } />
         {/* <Route component={ NotFound } /> */}
+        {/* ahds */}
       </Switch>
     </Router>
   );
