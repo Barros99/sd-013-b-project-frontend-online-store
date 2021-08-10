@@ -7,21 +7,29 @@ class BarSearch extends Component {
     this.state = {
       searchText: '',
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   }
 
-  render() {
+  handleSubmit = (event) => {
+    event.preventDefault();
+
     const { searchText } = this.state;
     const { getProducts } = this.props;
+
+    getProducts(searchText);
+  }
+
+  render() {
+    const { searchText } = this.state;
+
     return (
-      <form>
+      <form onSubmit={ this.handleSubmit }>
         <input
           type="text"
           placeholder="Digite algum termo de pesquisa ou escolha uma categoria."
@@ -33,12 +41,7 @@ class BarSearch extends Component {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <input
-          data-testid="query-button"
-          type="button"
-          name=""
-          onClick={ () => getProducts(searchText) }
-        />
+        <button data-testid="query-button" type="submit">🔎</button>
       </form>
     );
   }
