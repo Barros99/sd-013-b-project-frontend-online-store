@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import Card from '../Components/Card';
 
@@ -56,6 +57,7 @@ updateSelectCategory = (id) => {
 
 renderList = () => {
   const { itemText, selectCategory } = this.state;
+  const { setSearch, setCategory } = this.props;
   getProductsFromCategoryAndQuery(selectCategory, itemText)
     .then((list) => {
       this.setState({
@@ -65,9 +67,14 @@ renderList = () => {
             title={ item.title }
             price={ item.price }
             thumbnail={ item.thumbnail }
+            id={ item.id }
           />)),
         productsLoad: true,
       });
+    })
+    .then(() => {
+      setSearch(itemText);
+      setCategory(selectCategory);
     });
 }
 
@@ -111,5 +118,10 @@ render() {
   );
 }
 }
+
+HomePage.propTypes = {
+  setSearch: PropTypes.func.isRequired,
+  setCategory: PropTypes.func.isRequired,
+};
 
 export default HomePage;
