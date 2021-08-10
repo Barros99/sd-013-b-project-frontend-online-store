@@ -20,13 +20,14 @@ class Home extends Component {
   }
 
   async handleClick({ target }) {
-    const items = await getProductsFromCategoryAndQuery(
+    const response = await getProductsFromCategoryAndQuery(
       target.id,
       null,
       true,
-    ).then((result) => result.results);
+    );
 
-    console.log(items);
+    const items = await response.json();
+
     this.setState({
       categorySelect: target.id,
       products: items,
@@ -45,10 +46,12 @@ class Home extends Component {
 
   async getProducts(searchText) {
     const { categorySelect } = this.state;
-    const items = await getProductsFromCategoryAndQuery(
+    const response = await getProductsFromCategoryAndQuery(
       categorySelect,
       searchText,
-    ).then((result) => result.results);
+    );
+
+    const items = await response.json();
 
     this.setState({ products: items });
   }
