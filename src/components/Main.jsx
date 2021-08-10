@@ -34,7 +34,7 @@ class Main extends React.Component {
     await this.setState({
       category: event.target.value,
     });
-    // this.handleClick();
+    this.handleClick();
   }
 
   render() {
