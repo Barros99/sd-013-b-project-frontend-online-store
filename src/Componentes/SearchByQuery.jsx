@@ -16,8 +16,7 @@ class SearchByQuery extends React.Component {
   }
 
   async getProducts() {
-    const object = await getProductsFromCategoryAndQuery('', 'livros');
-    console.log(object);
+    const object = await getProductsFromCategoryAndQuery('roupas', 'harry potter');
     const products = object.results;
     this.setState({
       produtos: products,
