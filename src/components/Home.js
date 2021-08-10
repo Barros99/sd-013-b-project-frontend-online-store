@@ -73,15 +73,22 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma
           categoria.
         </h3>
-        <ul>
+        <div>
+          <p>Categorias:</p>
           {categories.map((categorie) => (
-            <li
-              key={ categorie.id }
-              data-testid="category"
-            >
-              { categorie.name }
-            </li>))}
-        </ul>
+            <li key={ categorie.id }>
+              <label
+                htmlFor="categorie"
+                name="categorie"
+                key={ categorie.id }
+                data-testid="category"
+              >
+                <input type="radio" name="categorie" />
+                { categorie.name }
+              </label>
+            </li>
+          ))}
+        </div>
         <ProductList productList={ productList } />
       </div>
     );
