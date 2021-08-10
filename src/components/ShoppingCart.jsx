@@ -6,18 +6,18 @@ class ShoppingCart extends Component {
     super(props);
 
     this.state = {
-      // products: [],
+      products: [],
       isEmpty: true,
     };
   }
 
+  addToCart(result) {
+    this.setState((oldState) => ({ products: [...oldState.products, itemId] }));
+  }
+
   render() {
     const { isEmpty } = this.state;
-    return (
-      <div>
-        {isEmpty && <Empty />}
-      </div>
-    );
+    return <div>{isEmpty && <Empty />}</div>;
   }
 }
 

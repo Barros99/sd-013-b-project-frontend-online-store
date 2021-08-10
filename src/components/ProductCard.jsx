@@ -20,17 +20,23 @@ class ProductCard extends React.Component {
 
   updateState = (results) => {
     this.setState({ results });
-  }
+  };
 
   showResults() {
     const { results } = this.state;
     const card = results.map((result) => {
       const { title, thumbnail, price } = result;
       return (
-        <div key={ title } data-testid="product">
-          <p>{ title }</p>
-          <img src={ thumbnail } alt={ title } />
-          <p>{ price }</p>
+        <div key={title} data-testid='product'>
+          <p>{title}</p>
+          <img src={thumbnail} alt={title} />
+          <p>{price}</p>
+          <button
+            data-testid='product-add-to-cart'
+            onClick={() => addToCart(result)}
+          >
+            Add to Cart
+          </button>
         </div>
       );
     });
@@ -39,9 +45,9 @@ class ProductCard extends React.Component {
 
   render() {
     const { results } = this.state;
-    return (
-      results.length === 0 ? 'Nenhum produto foi encontrado' : this.showResults()
-    );
+    return results.length === 0
+      ? 'Nenhum produto foi encontrado'
+      : this.showResults();
   }
 }
 
