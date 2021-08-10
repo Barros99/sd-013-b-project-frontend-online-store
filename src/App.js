@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
+import { getCategories } from './services/api';
 import ShoppingCart from './components/ShoppingCart';
 import Home from './components/Home';
 import ProductDetails from './components/ProductDetails';
