@@ -10,10 +10,12 @@ class ProductList extends React.Component {
     this.state = {
       products: [],
       searchInput: '',
+      categoryId: '',
     };
 
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.handleSearchButton = this.handleSearchButton.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
 
   handleSearchInput(event) {
@@ -24,17 +26,22 @@ class ProductList extends React.Component {
   }
 
   async handleSearchButton() {
-    const { searchInput } = this.state;
-    const products = await ApiProducts('categoryId', searchInput);
+    const { searchInput, categoryId } = this.state;
+    const products = await ApiProducts(categoryId, searchInput);
     this.setState({
       products: products.results,
       searchInput: '',
     });
   }
 
+  handleCategoryChange(event) {
+    this.setState({
+      categoryId: event.target.id,
+    }, () => this.handleSearchButton());
+  }
+
   render() {
     const { products, searchInput } = this.state;
-
     return (
       <div>
         <input
@@ -49,16 +56,16 @@ class ProductList extends React.Component {
         >
           Pesquisar
         </button>
+        <CartButton />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>
         <div>
-          {products
-            .map((product) => <ProductCard key={ product.id } product={ product } />)}
+          <CategoryFilter onChange={ this.handleCategoryChange } />
         </div>
         <div>
-          <CartButton />
-          <CategoryFilter />
+          {products
+            .map((product) => <ProductCard key={ product.id } product={ product } />)}
         </div>
       </div>
     );

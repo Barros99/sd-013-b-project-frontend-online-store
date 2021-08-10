@@ -26,6 +26,10 @@
   min-height: 100vh;
 }
 
+li {
+  list-style: none;
+}
+
 .App-link {
   color: #61dafb;
 }
