@@ -28,6 +28,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import MainPage from './Components/MainPage';
 import * as api from './services/api';
+import Home from './components/Home';
 
 export default class App extends Component {
   componentDidMount() {
@@ -42,6 +43,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Route path="/" component={ MainPage } />
+        <Route exact path="/" component={ () => <Home /> } />
       </BrowserRouter>
     );
   }
