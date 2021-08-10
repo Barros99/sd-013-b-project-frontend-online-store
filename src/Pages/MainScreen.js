@@ -47,7 +47,7 @@ class MainScreen extends React.Component {
         <div>
           {/* <ProductList products={ products } /> */}
         </div>
-        <RadioButtons categories={ categories } handleSelect={ handleSelect } />
+        <RadioButtons categories={ categories } />
       </div>
     );
   }
