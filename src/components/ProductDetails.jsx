@@ -1,34 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getProductsFromCategoryAndQuery as ApiProduct } from '../services/api';
 
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = { product: {} };
-    this.fetchProduct = this.fetchProduct.bind(this);
+    this.state = {
+      product: {},
+      loading: true,
+    };
   }
 
   componentDidMount() {
-    this.fetchProduct();
+    this.getProduct();
   }
 
-  fetchProduct = async () => {
-    const product = await getProductsFromCategoryAndQuery();
-    this.setState({ product });
+  getProduct = async () => {
+    const { match } = this.props;
+    const { params } = match;
+    const { id } = params;
+    const requestProduct = await ApiProduct('', '', id);
+    this.setState({
+      product: requestProduct,
+      loading: false,
+    });
   }
 
   render() {
-    const { product } = this.state;
-    const { title, price, thumbnail, id } = product;
+    const { product, loading } = this.state;
+    const { title, price, thumbnail } = product;
+    if (loading) {
+      return <p>Carregando</p>;
+    }
+    console.log(title);
     return (
-      <Link to={ `/product/${id}` }>
-        <img alt="Product img" src={ thumbnail } />
-        <h1>{ title }</h1>
+      <div>
+        <img alt={ title } src={ thumbnail } />
+        <h1
+          data-testid="product-detail-name"
+        >
+          { title }
+        </h1>
         <p>{ price }</p>
-      </Link>
+      </div>
     );
   }
 }
@@ -36,7 +51,7 @@ class ProductDetails extends Component {
 ProductDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };
