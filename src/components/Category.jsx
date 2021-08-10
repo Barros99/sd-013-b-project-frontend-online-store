@@ -20,10 +20,16 @@ export default class Category extends Component {
     const { handleRadioButton } = this.props;
     const { categories } = this.state;
     return (
-      <div onChange={ handleRadioButton }>
+      <div>
         {categories.map(({ name, id }) => (
-          <label data-testid="category" key={ id } htmlFor="categories">
-            <input type="radio" value={ id } name="categories" />
+          <label key={ id } htmlFor="categories">
+            <input
+              data-testid="category"
+              onClick={ handleRadioButton }
+              type="radio"
+              value={ id }
+              name="categories"
+            />
             {name}
           </label>
         ))}
