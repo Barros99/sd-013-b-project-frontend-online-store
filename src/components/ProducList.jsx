@@ -8,9 +8,11 @@ class ProductList extends React.Component {
       { categories:[] }
     );
   }
-  async componentDidMount() {
-   await getCategoriesApi();
+
+  componentDidMount() {
+    this.getCategoriesApi();
   }
+
   async getCategoriesApi() {
     const list = await api.getCategories();
     this.setState({
