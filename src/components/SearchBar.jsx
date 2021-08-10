@@ -13,6 +13,8 @@ export default class SearchBar extends Component {
       searchText: '',
       products: [],
     };
+
+    this.handleChangeCategory = this.handleChangeCategory.bind(this);
   }
 
   // async componentDidMount() {
@@ -31,14 +33,18 @@ export default class SearchBar extends Component {
           this.setState({ products: products.results });
         });
     }
-    return api.getProductsFromCategoryAndQuery(category, searchText)
-      .then((products) => {
-        this.setState({ products: products.results });
-      });
   }
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
+  }
+
+  handleChangeCategory(catego) {
+    this.setState({ category: catego });
+    return api.getProductsFromCategoryAndQuery(category)
+      .then((products) => {
+        this.setState({ products: products.results });
+      });
   }
 
   render() {
@@ -68,7 +74,7 @@ export default class SearchBar extends Component {
         <Link to="shoppingcart" data-testid="shopping-cart-button">
           Carrinho
         </Link>
-        <Category />
+        <Category onChange={ this.handleChangeCategory } />
         <RenderCard products={ products } />
       </main>
     );
