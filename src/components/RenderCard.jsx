@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Fazer o loading...
 export default class RenderCard extends Component {
@@ -9,9 +10,14 @@ export default class RenderCard extends Component {
       <div>
         {products.map(((product) => (
           <div key={ product.id } data-testid="product">
-            <h3>{product.title}</h3>
-            <img src={ product.thumbnail } alt="" />
-            <p>{product.price}</p>
+            <Link
+              to={ `/details/${product.id}` }
+              data-testid="product-detail-link"
+            >
+              <h3>{product.title}</h3>
+              <img src={ product.thumbnail } alt="" />
+              <p>{product.price}</p>
+            </Link>
           </div>
         )))}
       </div>
