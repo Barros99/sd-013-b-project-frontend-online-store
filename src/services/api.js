@@ -1,7 +1,6 @@
 // Participacao: Lucas T Franca, Lucas Cardim
 
 export async function getCategories() {
-
   const url = 'https://api.mercadolibre.com/sites/MLB/categories';
   const data = await fetch(url);
   const categories = await data.json();

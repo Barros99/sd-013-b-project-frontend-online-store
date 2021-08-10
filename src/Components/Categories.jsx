@@ -42,7 +42,7 @@ export default class Categories extends React.Component {
                   id={ id }
                   type="radio"
                   name="categories"
-                  onChange={ this.handleChange } 
+                  onChange={ this.handleChange }
                 />
                 {name}
               </label>
