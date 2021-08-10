@@ -25,14 +25,12 @@ export default class SearchBar extends Component {
   // updateState = (products) => this.setState({ products: products.results });
 
   handleClick = () => {
-    console.log('passei aqui');
-    const { category, searchText } = this.state;
-    if (category === '') {
-      return api.getProductsFromCategoryAndQuery('&CATEGORY_ID', searchText)
-        .then((products) => {
-          this.setState({ products: products.results });
-        });
-    }
+    this.setState({ category: '' });
+    const { searchText } = this.state;
+    return api.getProductsFromCategoryAndQuery('&CATEGORY_ID', searchText)
+      .then((products) => {
+        this.setState({ products: products.results });
+      });
   }
 
   handleChange = ({ target }) => {
@@ -41,7 +39,8 @@ export default class SearchBar extends Component {
 
   handleChangeCategory(catego) {
     this.setState({ category: catego });
-    return api.getProductsFromCategoryAndQuery(catego)
+    const { category } = this.state;
+    return api.getProductsFromCategoryAndQuery(category)
       .then((products) => {
         this.setState({ products: products.results });
       });
