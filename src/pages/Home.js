@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 
 import CartIcon from '../components/CartIcon';
@@ -24,8 +23,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.fetchCategoriesList();
-    const cat = api.getCategories();
-    console.log(cat);
+    api.getCategories();
   }
 
   onSearchSubmit(value) {
@@ -77,9 +75,7 @@ class Home extends React.Component {
     return (
       <div>
         <SearchBar onSubmit={ this.onSearchSubmit } />
-        <Link to="/shopping-cart" data-testid="shopping-cart-button">
-          <CartIcon />
-        </Link>
+        <CartIcon />
         {products.length > 0 ? <CardList products={ products } /> : message}
         {!loading
         && <CategoriesList categories={ categories } setCategory={ this.setCategory } />}

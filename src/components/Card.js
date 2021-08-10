@@ -1,29 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Card extends React.Component {
   render() {
-    const p = this.props;
+    const { product } = this.props;
+    const { title, price, thumbnail } = product;
+
     return (
-      <div data-testid="product">
-        <div>
-          <img src={ p.thumbnail } alt="product" />
+      <Link
+        to={ { pathname: '/product-details', product } }
+        data-testid="product-detail-link"
+      >
+        <div data-testid="product">
+          <div>
+            <img src={ thumbnail } alt="product" />
+          </div>
+          <div>
+            { title }
+          </div>
+          <div>
+            { price }
+          </div>
         </div>
-        <div>
-          { p.title }
-        </div>
-        <div>
-          { p.price }
-        </div>
-      </div>
+      </Link>
     );
   }
 }
 
 Card.propTypes = {
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  thumbnail: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string,
+    price: PropTypes.number,
+    thumbnail: PropTypes.string,
+  }).isRequired,
 };
 
 export default Card;

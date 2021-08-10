@@ -8,9 +8,7 @@ class CardList extends React.Component {
     const { products } = this.props;
     return products.map((product) => (
       <Card
-        title={ product.title }
-        price={ product.price }
-        thumbnail={ product.thumbnail }
+        product={ product }
         key={ product.id }
       />
     ));
