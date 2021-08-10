@@ -1,34 +1,11 @@
 import React from 'react';
-import { getCategories } from '../services/api';
-// import CategoryRadios from './ScreensComponents/CategoryRadios';
+import PropTypes from 'prop-types';
 
 class CategoryList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      categories: [],
-    };
-
-    this.fecthAPI = this.fecthAPI.bind(this);
-  }
-
-  componentDidMount() {
-    this.fecthAPI();
-  }
-
-  async fecthAPI() {
-    const getResponse = await getCategories();
-    this.setState({
-      categories: getResponse,
-      loading: true,
-    });
-  }
-
   render() {
-    const { categories, loading } = this.state;
-    console.log(loading);
+    const { categories } = this.props;
     return (
+
       <form>
         { categories.map((category, index) => (
           <div key={ index }>
@@ -50,3 +27,13 @@ class CategoryList extends React.Component {
   }
 }
 export default CategoryList;
+
+CategoryList.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      query: PropTypes.string,
+    }),
+
+  ).isRequired,
+};
