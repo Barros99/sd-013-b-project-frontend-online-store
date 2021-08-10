@@ -1,36 +1,64 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { getCategories } from '../services/api';
+// import PropTypes from 'prop-types';
 
-class Categorie extends Component {
+class Categories extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: [],
+    };
+  }
+
+  componentDidMount() {
+    this.fetchCategories();
+  }
+
+  fetchCategories = async () => {
+    const categories = await getCategories();
+    this.setState({
+      categories,
+    });
+  }
+
   render() {
-    const { categorie, checked, onChange } = this.props;
-    const { id, name } = categorie;
-
+    // const { categorie, checked, onChange } = this.props;
+    // const { id, name } = categorie;
+    const { categories } = this.state;
     return (
-      <li className="category" data-testid="category">
-        <label htmlFor={ id }>
-          <input
-            type="radio"
-            value={ id }
-            id={ id }
-            className="category-radio"
-            checked={ checked === id }
-            onChange={ onChange }
-          />
-          { name }
-        </label>
-      </li>
+      <div>
+        {categories.map((category) => (
+          <li
+            key={ category.id }
+            category={ category.name }
+            data-testid="category"
+          >
+            { category.name }
+          </li>))}
+      </div>
+      // <li className="category" data-testid="category">
+      //   <label htmlFor={ id }>
+      //     <input
+      //       type="radio"
+      //       value={ id }
+      //       id={ id }
+      //       className="category-radio"
+      //       checked={ checked === id }
+      //       onChange={ onChange }
+      //     />
+      //     { name }
+      //   </label>
+      // </li>
     );
   }
 }
 
-Categorie.propTypes = {
-  categorie: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-  }).isRequired,
-  checked: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+// Categories.propTypes = {
+//   categories: PropTypes.shape({
+//     id: PropTypes.string,
+//     name: PropTypes.string,
+//   }).isRequired,
+// };
 
-export default Categorie;
+export default Categories;
