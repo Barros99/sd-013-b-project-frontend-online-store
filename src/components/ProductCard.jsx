@@ -8,7 +8,7 @@ class ProductCard extends Component {
       <div data-testid="product">
         <h4>{ product.title }</h4>
         <img src={ product.thumbnail } alt="Imagem" />
-        <p className="movie-card-storyline">{ product.price }</p>
+        <p>{ product.price }</p>
       </div>
     );
   }
