@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CartButton from '../components/CartButton';
 import { getProductsFromCategoryAndQuery as ApiProducts } from '../services/api';
+import CostumerEvaluation from '../components/CostumerEvaluation';
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -47,6 +48,9 @@ class ProductDetails extends React.Component {
                 Ul com a lista de especificações
               </li>
             </ul>
+          </div>
+          <div>
+            <CostumerEvaluation title={ title } />
           </div>
         </div>
       </div>
