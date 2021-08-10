@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import ShoppingCartIcon from './ShoppingCartIcon';
+import ProductList from './ProductList';
 
 class Home extends React.Component {
   constructor(props) {
@@ -10,13 +11,32 @@ class Home extends React.Component {
 
     this.state = {
       categories: [],
+      searchBar: '',
+      productList: [],
     };
 
     this.fetchCategories = this.fetchCategories.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
     await this.fetchCategories();
+  }
+
+  handleChange(event) {
+    this.setState({
+      searchBar: event.target.value,
+    });
+  }
+
+  async handleClick() {
+    const { searchBar } = this.state;
+    const productList = await getProductsFromCategoryAndQuery('', searchBar);
+    const productsInfo = productList.results;
+    this.setState({
+      productList: productsInfo,
+    });
   }
 
   async fetchCategories() {
@@ -27,7 +47,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { categories } = this.state;
+    const { categories, productList } = this.state;
     return (
       <div>
         <Link
@@ -40,8 +60,15 @@ class Home extends React.Component {
         <input
           type="text"
           data-testid="query-input"
-        //
+          onChange={ this.handleChange }
         />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.handleClick }
+        >
+          Buscar
+        </button>
         <h3 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma
           categoria.
@@ -55,6 +82,7 @@ class Home extends React.Component {
               { categorie.name }
             </li>))}
         </ul>
+        <ProductList productList={ productList } />
       </div>
     );
   }
