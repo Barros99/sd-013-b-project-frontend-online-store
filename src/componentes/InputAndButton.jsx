@@ -10,8 +10,7 @@ export default class InputAndButton extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
   }
 
-  handleOnChange(e) {
-    const { target } = e;
+  handleOnChange({ target }) {
     this.setState({ searchTerm: target.value });
   }
 

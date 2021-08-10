@@ -8,13 +8,12 @@ class SearchField extends React.Component {
   render() {
     return (
       <div className="search">
-        <input type="text" />
+        <ListItems />
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <Link to="/cart" data-testid="shopping-cart-button">Cart</Link>
         <ListaCat />
-        <ListItems />
       </div>
     );
   }
