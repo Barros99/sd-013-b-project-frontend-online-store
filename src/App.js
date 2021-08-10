@@ -29,19 +29,54 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import MainPage from './Components/MainPage';
 import * as api from './services/api';
 
+import './App.css';
+
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loadingCategories: true,
+      categories: [],
+      inputSearch: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentDidMount() {
     api.getCategories()
-      .then((data) => console.log(data));
+      .then(
+        (result) => this.setState({
+          loadingCategories: false,
+          categories: result,
+        }),
+      );
 
-    api.getProductsFromCategoryAndQuery('MLB5672', 'computador')
-      .then((data) => console.log(data));
+    // api.getProductsFromCategoryAndQuery('MLB5672', 'computador')
+    //   .then((data) => console.log(data));
+  }
+
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value,
+    });
   }
 
   render() {
+    const { categories, loadingCategories, inputSearch } = this.state;
+
     return (
       <BrowserRouter>
-        <Route path="/" component={ MainPage } />
+        <Route
+          path="/"
+          render={
+            () => (<MainPage
+              categories={ categories }
+              loadingCategories={ loadingCategories }
+              handleChange={ this.handleChange }
+              inputSearch={ inputSearch }
+            />)
+          }
+        />
       </BrowserRouter>
     );
   }
