@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import * as api from '/home/rafael/Área de Trabalho/Projetos Trybe/Projetos Front-End-Trybe/sd-013-b-project-frontend-online-store/src/services'
+import React, { Component } from 'react';
+import * as api from '../../services/api';
 
 class ProductDetails extends Component {
   constructor() {
     super();
     this.state = {
-      categories:[],
-      idAndQuery:[],
+      categories: [],
+      idAndQuery: [],
     };
   }
 
@@ -16,7 +16,7 @@ class ProductDetails extends Component {
 
   async fetchApi() {
     const returnApiCategories = await api.getCategories();
-    this.setState({categories: returnApiCategories});
+    this.setState({ categories: returnApiCategories });
   }
 
   render() {
