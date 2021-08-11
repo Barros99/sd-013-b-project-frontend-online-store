@@ -1,38 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      products: [],
-    };
-  }
-
-  componentDidMount() {
-    this.fetchProducts();
-  }
-
-  componentDidUpdate(prevProp) {
-    const { query } = this.props;
-    if (prevProp.query !== query) {
-      this.fetchProducts();
-    }
-  }
-
-  async fetchProducts() {
-    const { query, catId } = this.props;
-    const fetch = await api.getProductsFromCategoryAndQuery(catId, query);
-    const results = await fetch.results;
-    this.setState({ products: results });
-  }
-
   render() {
-    const { products } = this.state;
-
+    const { products } = this.props;
     if (!products) return <div>Nenhum produto foi encontrado</div>;
     return (
       <div>
@@ -45,8 +17,7 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  query: PropTypes.string.isRequired,
-  catId: PropTypes.string.isRequired,
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ProductList;

@@ -18,7 +18,11 @@ class ProductCard extends Component {
 }
 
 ProductCard.propTypes = {
-  product: PropTypes.objectOf(PropTypes.string).isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default ProductCard;

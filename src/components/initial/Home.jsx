@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { RiShoppingCartLine } from 'react-icons/ri';
+import * as api from '../../services/api';
+import CategoriesList from '../CategoriesList';
 import ProductList from '../ProductList';
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      categories: [],
       catId: '',
       input: '',
-      send: '',
+      products: [],
     };
+
+    this.fetchCategoriesList = this.fetchCategoriesList.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitQuery = this.submitQuery.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchCategoriesList();
   }
 
   handleChange({ target }) {
@@ -22,12 +33,29 @@ class Home extends Component {
   }
 
   submitQuery() {
-    const { input } = this.state;
-    this.setState({ send: input });
+    this.fetchProducts();
+  }
+
+  async fetchProducts() {
+    const { catId, input } = this.state;
+    const fetch = await api.getProductsFromCategoryAndQuery(catId, input);
+    const results = await fetch.results;
+    this.setState({ products: results });
+  }
+
+  async fetchCategoriesList() {
+    try {
+      const fetch = await api.getCategories();
+      this.setState({
+        categories: fetch,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
-    const { catId, send } = this.state;
+    const { products, categories } = this.state;
 
     return (
       <>
@@ -48,9 +76,12 @@ class Home extends Component {
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
-        <section>
-          <ProductList query={ send } catId={ catId } />
-        </section>
+        <CategoriesList categories={ categories } />
+        <ProductList products={ products } />
+        <Link to="/shop" data-testid="shopping-cart-button">
+          Carrinho de compras
+          <RiShoppingCartLine />
+        </Link>
       </>
     );
   }
