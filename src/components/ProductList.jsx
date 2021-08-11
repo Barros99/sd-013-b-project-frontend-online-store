@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export default class ProductList extends React.Component {
   render() {
-
     const { title, thumbnail, price } = this.props;
 
     return (
