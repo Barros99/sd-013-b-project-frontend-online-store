@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchBar extends React.Component {
@@ -10,11 +11,13 @@ class SearchBar extends React.Component {
       inputValue: '',
       listProducts: {},
       selectCategory: '',
+      cartProducts: [],
     };
 
     this.getQuery = this.getQuery.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +32,18 @@ class SearchBar extends React.Component {
     this.setState({
       inputValue: valueInput,
     });
+  }
+
+  async handleClick(event) {
+    const { listProducts } = this.state;
+    console.log(event.target.name);
+    console.log(listProducts);
+    const filterProduct = listProducts
+      .filter((element) => element.id === event.target.name);
+    console.log(filterProduct);
+    const { match: { params: { id } } } = this.props;
+    const product = await getProductsFromCategoryAndQuery(id);
+    console.log(product);
   }
 
   handleCategory(event) {
@@ -67,7 +82,6 @@ class SearchBar extends React.Component {
 
   render() {
     const { categories, listProducts } = this.state;
-    // console.log(listProducts);
 
     return (
       <section>
@@ -116,6 +130,15 @@ class SearchBar extends React.Component {
                   <p>{ product.title }</p>
                   <img src={ product.thumbnail } alt="foto" width="100px" />
                   <p>{ product.price }</p>
+                  <button
+                    name={ product.id }
+                    onClick={ this
+                      .handleClick }
+                    type="button"
+                    data-testid="product-add-to-cart"
+                  >
+                    ADICINAR AO CARRINHO
+                  </button>
                 </div>
               )) : <p>Nenhum produto foi encontrado</p>
             }
