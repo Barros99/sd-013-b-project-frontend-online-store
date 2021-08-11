@@ -7,7 +7,6 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
-import './App.css';
 
 function App() {
   return (
