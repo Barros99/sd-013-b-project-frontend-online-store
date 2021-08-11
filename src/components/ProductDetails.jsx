@@ -18,7 +18,7 @@ class ProductDetails extends Component {
   fetchProduct = async () => {
     const product = await getProductsFromCategoryAndQuery();
     this.setState({ product });
-  }
+  };
 
   render() {
     const { product } = this.state;

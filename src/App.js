@@ -30,15 +30,15 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path='/'
-              render={(props) => <Home {...props} addToCart={this.addToCart} />}
+              path="/"
+              render={ (props) => <Home { ...props } addToCart={ this.addToCart } /> }
             />
             <Route
               exact
-              path='/shoppingcart'
-              render={(props) => (
-                <ShoppingCart {...props} cartItems={cartItems} />
-              )}
+              path="/shoppingcart"
+              render={ (props) => (
+                <ShoppingCart { ...props } cartItems={ cartItems } />
+              ) }
             />
           </Switch>
         </BrowserRouter>
