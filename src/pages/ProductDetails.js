@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//
+import getItemsFromLocalStorage from '../utils/getItemsFromLocalStorage';
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -18,12 +18,21 @@ class ProductDetails extends React.Component {
   }
 
   getProductFromLocalStorage = () => {
-    const savedProduct = localStorage.getItem('product-details');
+    const savedProduct = localStorage.getItem('productDetails');
 
     if (savedProduct) {
       this.setState({ loading: false, product: JSON.parse(savedProduct) });
     }
   };
+
+  handleClick = () => {
+    const { product } = this.state;
+
+    const items = getItemsFromLocalStorage();
+    const newItems = [...items, { ...product, amount: 1 }];
+
+    localStorage.setItem('cartItems', JSON.stringify(newItems));
+  }
 
   render() {
     const { loading, product } = this.state;
@@ -42,6 +51,13 @@ class ProductDetails extends React.Component {
             <p>{`${attribute.name}: ${attribute.value_name}`}</p>
           </div>
         ))}
+        <button
+          data-testid="product-detail-add-to-cart"
+          type="button"
+          onClick={ this.handleClick }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }
