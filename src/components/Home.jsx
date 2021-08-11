@@ -19,7 +19,7 @@ class Home extends React.Component {
       haveProduct: false,
     };
     this.searchText = this.searchText.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.categorieSelected = this.categorieSelected.bind(this);
   }
 
   async onClick() {
