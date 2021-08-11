@@ -25,7 +25,7 @@ export default class CategoriesList extends Component {
     const { category } = this.state;
     const categories = category.map(({ name, id }) => (
       <label htmlFor={ id } key={ id }>
-        <input data-testid="category" type="radio" />
+        <input data-testid="category" type="radio" id={ id } name="categories" />
         { name }
       </label>
     ));
