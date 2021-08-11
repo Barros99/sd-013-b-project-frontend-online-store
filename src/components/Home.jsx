@@ -19,7 +19,7 @@ class Home extends React.Component {
       haveProduct: false,
     };
     this.searchText = this.searchText.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.categorieSelected = this.categorieSelected.bind(this);
   }
 
   async onClick() {
@@ -35,6 +35,10 @@ class Home extends React.Component {
     } else {
       return <NotFound />;
     }
+  }
+
+  categorieSelected(categoryId) {
+    console.log(categoryId);
   }
 
   searchText(event) {
@@ -86,7 +90,7 @@ class Home extends React.Component {
         ) }
 
         <div clasName="category-list">
-          <CategoryList />
+          <CategoryList categorieSelected={ this.categorieSelected } />
         </div>
 
       </div>
