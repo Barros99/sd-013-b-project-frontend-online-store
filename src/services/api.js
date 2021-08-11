@@ -37,9 +37,10 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
   }
   if (query === null) {
     return getProductForCategory(categoryId);
-  } else {
-    getProductsCategoryQuery(categoryId, query);
   }
+
+  getProductsCategoryQuery(categoryId, query);
+  
 }
 
 export async function getCategories() {
