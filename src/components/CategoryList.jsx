@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as api from '../services/api';
 import '../styles/categoryList.css';
 
@@ -53,5 +54,9 @@ class CategoryList extends React.Component {
     );
   }
 }
+
+CategoryList.propTypes = {
+  categorieSelected: PropTypes.func.isRequired,
+};
 
 export default CategoryList;
