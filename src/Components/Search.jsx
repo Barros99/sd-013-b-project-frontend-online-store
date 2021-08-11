@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class Search extends React.Component {
   render() {
@@ -11,7 +12,12 @@ export default class Search extends React.Component {
             <h2>{ title }</h2>
           </div>
           <img src={ thumbnail } alt={ title } />
-          <h2>{ price }</h2>
+          <h2>{`R$ ${price}`}</h2>
+          <h3>
+            <Link data-testid="product-detail-link" to={ `/product/${id}` }>
+              Mais detalhes
+            </Link>
+          </h3>
         </div>
       ))
     );

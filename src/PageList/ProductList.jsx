@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Categories from '../Components/Categories';
 import Search from '../Components/Search';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
@@ -9,12 +10,14 @@ export default class ProductList extends React.Component {
     this.categoriesFetch = this.categoriesFetch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clickChange = this.clickChange.bind(this);
+    this.categorieUpdater = this.categorieUpdater.bind(this);
 
     this.state = {
       loading: true,
       categories: {},
       products: [],
       inputValue: '',
+      categorie: '',
     };
   }
 
@@ -27,9 +30,11 @@ export default class ProductList extends React.Component {
   }
 
   async clickChange() {
-    const { inputValue } = this.state;
-    const { results } = await getProductsFromCategoryAndQuery(undefined, inputValue);
+    const { updateState } = this.props;
+    const { inputValue, categorie } = this.state;
+    const { results } = await getProductsFromCategoryAndQuery(categorie, inputValue);
     this.setState({ products: results, inputValue: '' });
+    updateState(results);
   }
 
   categoriesFetch() {
@@ -37,6 +42,11 @@ export default class ProductList extends React.Component {
       const categories = await getCategories();
       this.setState({ loading: false, categories });
     });
+  }
+
+  async categorieUpdater(categorie) {
+    await this.setState({ categorie });
+    this.clickChange();
   }
 
   render() {
@@ -59,9 +69,16 @@ export default class ProductList extends React.Component {
         >
           <span role="img" aria-label="lupa">🔎</span>
         </button>
+        { loading ? loadingComp : <Categories
+          categorieUpdater={ this.categorieUpdater }
+          categories={ categories }
+        />}
         <Search product={ products } />
-        { loading ? loadingComp : <Categories categories={ categories } /> }
       </div>
     );
   }
 }
+
+ProductList.propTypes = {
+  updateState: PropTypes.fun,
+}.isRequired;
