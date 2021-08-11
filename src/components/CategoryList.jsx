@@ -1,18 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CreateList from './CreateList';
+import ListItems from './ListItems';
 
 class CategoryList extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       categories: [],
+      filtredItems: [],
+      selectedQry: '',
     };
+    this.handleSelectedCategory = this.handleSelectedCategory.bind(this);
+    this.fetchSelectedCategory = this.fetchSelectedCategory.bind(this);
   }
 
   componentDidMount() {
     this.fetchAPI();
+  }
+
+  handleSelectedCategory({ target }) {
+    this.fetchSelectedCategory(target.value);
+  }
+
+  async fetchSelectedCategory(param) {
+    const { selectedQry } = this.state;
+    const response = await getProductsFromCategoryAndQuery(param, selectedQry);
+    this.setState({
+      filtredItems: response.results,
+    });
   }
 
   async fetchAPI() {
@@ -27,8 +44,8 @@ class CategoryList extends React.Component {
   }
 
   render() {
-    const { categories } = this.state;
     const { categoryClick } = this.props;
+    const { categories, filtredItems } = this.state;
     return (
       <div>
         <ul>
@@ -41,6 +58,7 @@ class CategoryList extends React.Component {
             />
           ))}
         </ul>
+        <ListItems items={ filtredItems } />
       </div>
     );
   }

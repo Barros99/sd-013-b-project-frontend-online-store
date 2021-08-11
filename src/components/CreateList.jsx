@@ -9,6 +9,7 @@ class CreateList extends React.Component {
         <input
           style={ { display: 'block' } }
           name="category"
+          value={ id }
           type="radio"
           data-testid="category"
           value={ id }
