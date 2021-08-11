@@ -13,7 +13,12 @@ class ProductCard extends React.Component {
     const { product } = this.props;
     const { title, price, thumbnail, id } = product;
     return (
-      <Link to={ `/details/${id}` }>
+      <Link
+        to={ {
+          pathname: `/details/${id}`,
+          state: product,
+        } }
+      >
         <div
           data-testid="product"
           className="main-card-product"

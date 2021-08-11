@@ -6,6 +6,7 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
 
+    const { location: { state } } = this.props;
     this.state = {
 
     };
@@ -18,10 +19,8 @@ class ProductDetails extends React.Component {
   async getProductDetails() {
     const { match } = this.props;
     const { params } = match;
-    console.log(params.id);
 
-    const product = await api.getProduct(params.id);
-    console.log(product);
+    const product = await api.getProductsFromCategoryAndQuery(params.id);
   }
 
   render() {
