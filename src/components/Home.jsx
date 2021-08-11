@@ -24,8 +24,7 @@ class Home extends React.Component {
 
   async onClick() {
     const { inputText } = this.state;
-    const id = 'MLB1196';
-    const getListodProducts = await api.getProductsFromCategoryAndQuery(id, inputText);
+    const getListodProducts = await api.getProductsFromCategoryAndQuery(inputText);
     console.log(getListodProducts);
     if (getListodProducts.results !== null) {
       this.setState({

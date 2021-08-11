@@ -11,13 +11,14 @@ class Search extends React.Component {
   render() {
     const { searchText, onClick } = this.props;
     return (
-      <form className="form">
-        <fieldset>
+      <form className="form-search">
+        <fieldset className="search-and-button">
 
           <label htmlFor="home-initial-message">
             <input
+              className="input-search"
               data-testid="query-input"
-              placeholder="Digite algum termo"
+              placeholder="Pesquise aqui"
               type="text"
               onChange={ searchText }
             />
@@ -27,6 +28,7 @@ class Search extends React.Component {
             data-testid="query-button"
             type="button"
             id="buton"
+            className="search-button"
             onClick={ onClick }
           >
             Pesquisar
