@@ -18,11 +18,8 @@ class ProductDetails extends React.Component {
   }
 
   async getProductDetails() {
-    const { productCategoryId, productName } = this.state;
-
-    const product = await api
-      .getProductsFromCategoryAndQuery(productCategoryId, productName);
-    console.log(product);
+    const { match: { params: { id } } } = this.props;
+    console.log(await api.getProductsFromCategoryAndQuery({ id }));
   }
 
   render() {

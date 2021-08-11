@@ -5,6 +5,13 @@ export async function getCategories() {
 }
 
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
+  if (typeof (categoryId) === 'object') {
+    const product = await fetch(
+      `https://api.mercadolibre.com/items/${categoryId.id}`,
+    );
+    return product.json();
+  }
+
   if (!query) {
     const response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
     const json = await response.json();
