@@ -10,6 +10,9 @@ class ProductDetails extends React.Component {
       title: '',
       price: 0,
       thumbnail: '',
+      email: 'Email',
+      text: 'Mensagem(opcional)',
+      num: '',
     };
   }
 
@@ -34,8 +37,17 @@ class ProductDetails extends React.Component {
       });
   }
 
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleClick = () => {
+  }
+
   render() {
-    const { title, price, thumbnail, loaded } = this.state;
+    const { title, price, thumbnail, loaded, email, text, num } = this.state;
     const success = (
       <div>
         <h1 data-testid="product-detail-name">{ title }</h1>
@@ -46,6 +58,34 @@ class ProductDetails extends React.Component {
     return (
       <div>
         {loaded ? success : <h1>Carregando..</h1> }
+
+        <form>
+          <fieldset>
+            <legend>Avaliações</legend>
+            <input
+              type="email"
+              name="email"
+              value={ email }
+              onChange={ this.handleInputChange }
+            />
+            <select name="num" value={ num } onChange={ this.handleInputChange }>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <br />
+            <textarea
+              name="text"
+              value={ text }
+              data-testid="product-detail-evaluation"
+              onChange={ this.handleInputChange }
+            />
+            <br />
+            <button type="submit">Avaliar</button>
+          </fieldset>
+        </form>
       </div>
     );
   }
