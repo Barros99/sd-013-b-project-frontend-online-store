@@ -20,10 +20,12 @@ export default class ProductDetails extends React.Component {
   }
 
   async handleRequisitionById() {
-    const { match: { params: { id } } } = this.props;
+    // Feito através de consulta no stack overflow : https://stackoverflow.com/questions/45598854/passing-values-through-react-router-v4-link
+    // const { nameTitle } = this.props.location.state;
+    const { location: { state: { nameTitle } } } = this.props;
     const { category } = this.state;
     this.setState({ loading: true }, async () => {
-      const result = await getProductsFromCategoryAndQuery(category, id);
+      const result = await getProductsFromCategoryAndQuery(category, nameTitle);
       this.setState({
         loading: false,
         searchResult: result.results[0],
@@ -43,9 +45,9 @@ export default class ProductDetails extends React.Component {
 }
 
 ProductDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      nameTitle: PropTypes.string,
     }),
   }).isRequired,
 };
