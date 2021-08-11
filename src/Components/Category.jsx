@@ -45,3 +45,7 @@ Category.propTypes = {
 };
 
 export default Category;
+
+Category.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};

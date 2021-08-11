@@ -5,13 +5,35 @@ import Home from './Components/Home';
 import Cart from './Components/Cart';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { card: [] };
+    this.getCardItem = this.getCardItem.bind(this);
+  }
+
+  getCardItem(newCard) {
+    this.setState({ card: newCard });
+  }
+
   render() {
+    const { card } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={ Home } />
-            <Route path="/cart" component={ Cart } />
+            <Route
+              exact
+              path="/"
+              render={ () => (
+                <Home getCardItem={ this.getCardItem } />
+              ) }
+            />
+            <Route
+              path="/cart"
+              render={ () => (
+                <Cart card={ card } />
+              ) }
+            />
           </Switch>
         </div>
       </BrowserRouter>
