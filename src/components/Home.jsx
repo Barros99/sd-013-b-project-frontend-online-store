@@ -24,8 +24,7 @@ class Home extends React.Component {
 
   async onClick() {
     const { inputText } = this.state;
-    const id = 'MLB1196';
-    const getListodProducts = await api.getProductsFromCategoryAndQuery(id, inputText);
+    const getListodProducts = await api.getProductsFromCategoryAndQuery(inputText);
     console.log(getListodProducts);
     if (getListodProducts.results !== null) {
       this.setState({
@@ -37,15 +36,15 @@ class Home extends React.Component {
     }
   }
 
-  categorieSelected(categoryId) {
-    console.log(categoryId);
-  }
-
   searchText(event) {
     const { target } = event;
     this.setState({
       inputText: target.value,
     });
+  }
+
+  categorieSelected(categorie) {
+    console.log(categorie);
   }
 
   render() {
@@ -73,24 +72,27 @@ class Home extends React.Component {
           </div>
         </div>
 
-        { haveProduct ? (
-          <div className="product-card">
-            { productsList.map((product) => (
-              <ProductCard
-                className="card"
-                key={ product.id }
-                product={ product }
-              />
-            ))}
+        <div className="main-content-list-cards">
+          <div className="category-list">
+            <CategoryList categorieSelected={ this.categorieSelected } />
           </div>
-        ) : (
-          <div clasName="text-main-page" data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </div>
-        ) }
 
-        <div clasName="category-list">
-          <CategoryList categorieSelected={ this.categorieSelected } />
+          { haveProduct ? (
+            <div className="product-card">
+              { productsList.map((product) => (
+                <ProductCard
+                  className="card"
+                  key={ product.id }
+                  product={ product }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-main-page" data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </div>
+          ) }
+
         </div>
 
       </div>
