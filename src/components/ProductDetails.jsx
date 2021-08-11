@@ -8,7 +8,8 @@ class ProductDetails extends React.Component {
 
     const { location: { state } } = this.props;
     this.state = {
-
+      productCategoryId: state.category_id,
+      productName: state.name,
     };
   }
 
@@ -17,15 +18,15 @@ class ProductDetails extends React.Component {
   }
 
   async getProductDetails() {
-    const { match } = this.props;
-    const { params } = match;
+    const { productCategoryId, productName } = this.state;
 
-    const product = await api.getProductsFromCategoryAndQuery(params.id);
+    const product = await api.getProductsFromCategoryAndQuery(productCategoryId, productName);
+    console.log(product);
   }
 
   render() {
     return (
-      <div>
+      <div data-testid="product-detail-name">
         Ola
       </div>
     );

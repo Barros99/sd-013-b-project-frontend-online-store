@@ -75,6 +75,7 @@ class Home extends React.Component {
                 className="card"
                 key={ product.id }
                 product={ product }
+                
               />
             ))}
           </div>
