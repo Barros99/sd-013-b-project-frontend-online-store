@@ -12,7 +12,6 @@ class CreateList extends React.Component {
           value={ id }
           type="radio"
           data-testid="category"
-          value={ id }
           onClick={ funcClick }
         />
         {name}
