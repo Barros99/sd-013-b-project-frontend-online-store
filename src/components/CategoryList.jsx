@@ -10,21 +10,11 @@ class CategoryList extends React.Component {
       { categories: [] }
     );
     this.getCategoriesApi = this.getCategoriesApi.bind(this);
-    // this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
     this.getCategoriesApi();
   }
-
-  // onClick(event) {
-  //   const { target } = event;
-  //   const { categories } = this.state;
-  //   const { categoryClick } = this.props;
-  //   const filtred = categories.find((category) => category
-  //     .name.includes(target.innerText));
-  //   return categoryClick(filtred.id);
-  // }
 
   async getCategoriesApi() {
     const list = await api.getCategories();

@@ -14,18 +14,23 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      category: '',
       inputText: '',
       productsList: [],
       haveProduct: false,
     };
     this.searchText = this.searchText.bind(this);
     this.categorieSelected = this.categorieSelected.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  componentDidMount() {
   }
 
   async onClick() {
-    const { inputText } = this.state;
-    const id = 'MLB1196';
-    const getListodProducts = await api.getProductsFromCategoryAndQuery(id, inputText);
+    const { inputText, category } = this.state;
+    const getListodProducts = await api
+      .getProductsFromCategoryAndQuery(category, inputText);
     if (getListodProducts.results !== null) {
       this.setState({
         productsList: getListodProducts.results,
@@ -43,8 +48,13 @@ class Home extends React.Component {
     });
   }
 
-  categorieSelected(categorie) {
-    console.log(categorie);
+  async categorieSelected(category) {
+    const getproducts = await api.getProductsFromCategoryAndQuery(category);
+    this.setState({
+      category,
+      productsList: getproducts.results,
+      haveProduct: true,
+    });
   }
 
   render() {
