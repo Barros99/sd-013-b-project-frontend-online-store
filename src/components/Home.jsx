@@ -43,6 +43,10 @@ class Home extends React.Component {
     });
   }
 
+  categorieSelected(categorie) {
+    console.log(categorie);
+  }
+
   render() {
     const { productsList, haveProduct } = this.state;
     return (
@@ -70,7 +74,11 @@ class Home extends React.Component {
 
         <div className="main-content-list-cards">
           <div className="category-list">
+<<<<<<< HEAD
             <CategoryList />
+=======
+            <CategoryList categorieSelected={ this.categorieSelected } />
+>>>>>>> main-group-7
           </div>
 
           { haveProduct ? (
