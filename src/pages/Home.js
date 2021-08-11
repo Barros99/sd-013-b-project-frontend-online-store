@@ -48,12 +48,12 @@ class Home extends React.Component {
         {
           resultadoQuery.length === 0 && message === true ? 'Produto não encontrado'
             : resultadoQuery.map(({ id, title, price, thumbnail }) => (
-            <ProductList
-              key={ id }
-              title={ title }
-              price={ price }
-              thumbnail={ thumbnail }
-            />))
+              <ProductList
+                key={ id }
+                title={ title }
+                price={ price }
+                thumbnail={ thumbnail }
+              />))
         }
       </div>
     );
