@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CreateList from './CreateList';
 import ListItems from './ListItems';
@@ -43,16 +44,17 @@ class CategoryList extends React.Component {
   }
 
   render() {
+    const { categoryClick } = this.props;
     const { categories, filtredItems } = this.state;
     return (
       <div>
         <ul>
           {categories.map((category) => (
             <CreateList
-              onChange={ this.handleSelectedCategory }
               key={ category.id }
               name={ category.name }
               id={ category.id }
+              funcClick={ categoryClick }
             />
           ))}
         </ul>
@@ -61,5 +63,9 @@ class CategoryList extends React.Component {
     );
   }
 }
+
+CategoryList.propTypes = {
+  categoryClick: PropTypes.func.isRequired,
+};
 
 export default CategoryList;
