@@ -34,16 +34,13 @@ class SearchBar extends React.Component {
     });
   }
 
-  async handleClick(event) {
+  handleClick(event) {
     const { listProducts } = this.state;
     console.log(event.target.name);
     console.log(listProducts);
     const filterProduct = listProducts
       .filter((element) => element.id === event.target.name);
     console.log(filterProduct);
-    const { match: { params: { id } } } = this.props;
-    const product = await getProductsFromCategoryAndQuery(id);
-    console.log(product);
   }
 
   handleCategory(event) {
@@ -130,15 +127,28 @@ class SearchBar extends React.Component {
                   <p>{ product.title }</p>
                   <img src={ product.thumbnail } alt="foto" width="100px" />
                   <p>{ product.price }</p>
-                  <button
-                    name={ product.id }
-                    onClick={ this
-                      .handleClick }
-                    type="button"
+                  <Link
+                    to={ {
+                      pathname: `/product-details/${product.id}`,
+                      state: {
+                        product: { product },
+                      },
+                    } }
+                    data-testid="product-detail-link"
+                  >
+                    Detalhes
+                  </Link>
+                  <Link
+                    to={ {
+                      pathname: '/shopping-cart',
+                      state: {
+                        product: { product },
+                      },
+                    } }
                     data-testid="product-add-to-cart"
                   >
-                    ADICINAR AO CARRINHO
-                  </button>
+                    Adicionar
+                  </Link>
                 </div>
               )) : <p>Nenhum produto foi encontrado</p>
             }
