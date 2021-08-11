@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ProductDetail extends Component {
   render() {
-    const detalhes = this.props.info.history.location.state.returnTo;
+    const { info: { history: { location: { state:
+      { returnTo: detalhes } } } } } = this.props;
     return (
       <div data-testid="product-detail-name">
         <p>{detalhes.title}</p>
@@ -12,5 +14,21 @@ class ProductDetail extends Component {
     );
   }
 }
+
+ProductDetail.propTypes = {
+  info: PropTypes.shape({
+    history: PropTypes.shape({
+      location: PropTypes.shape({
+        state: PropTypes.shape({
+          returnTo: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            image: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default ProductDetail;

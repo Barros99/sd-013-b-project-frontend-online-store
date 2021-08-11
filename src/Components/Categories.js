@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
-// import PropTypes from 'prop-types';
 
 class Categories extends Component {
   constructor(props) {
@@ -60,11 +60,8 @@ class Categories extends Component {
   }
 }
 
-// Categories.propTypes = {
-//   categories: PropTypes.shape({
-//     id: PropTypes.string,
-//     name: PropTypes.string,
-//   }).isRequired,
-// };
+Categories.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Categories;

@@ -10,7 +10,6 @@ class Cart extends Component {
 
   render() {
     const { hasItems } = this.state;
-    console.log(hasItems);
     return (
       <p data-testid="shopping-cart-empty-message">
         {hasItems ? 'Tem items' : 'Seu carrinho está vazio'}
