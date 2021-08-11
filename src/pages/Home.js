@@ -15,7 +15,7 @@ class Home extends React.Component {
       resultadoQuery: [],
       message: false,
     };
-    
+
     this.pegandoDaApi = this.pegandoDaApi.bind(this);
   }
 
@@ -46,15 +46,13 @@ class Home extends React.Component {
         <InputDigital pegandoDaApi={ this.pegandoDaApi } />
 
         {
-          resultadoQuery.length === 0 && message === true ? 'Produto não encontrado' :
-            resultadoQuery.map(({ id, title, price, thumbnail }) =>
-              <ProductList
+          resultadoQuery.length === 0 && message === true ? 'Produto não encontrado'
+            : resultadoQuery.map(({ id, title, price, thumbnail }) => <ProductList
                 key={ id }
                 title={ title }
                 price={ price }
                 thumbnail={ thumbnail }
-              />
-            )
+              />,)
         }
       </div>
     );
