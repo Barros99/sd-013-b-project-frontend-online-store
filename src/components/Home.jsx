@@ -44,6 +44,10 @@ class Home extends React.Component {
     });
   }
 
+  categorieSelected(categorie) {
+    console.log(categorie);
+  }
+
   render() {
     const { productsList, haveProduct } = this.state;
     return (
@@ -69,24 +73,27 @@ class Home extends React.Component {
           </div>
         </div>
 
-        { haveProduct ? (
-          <div className="product-card">
-            { productsList.map((product) => (
-              <ProductCard
-                className="card"
-                key={ product.id }
-                product={ product }
-              />
-            ))}
+        <div className="main-content-list-cards">
+          <div className="category-list">
+            <CategoryList categorieSelected={ this.categorieSelected } />
           </div>
-        ) : (
-          <div clasName="text-main-page" data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </div>
-        ) }
 
-        <div clasName="category-list">
-          <CategoryList />
+          { haveProduct ? (
+            <div className="product-card">
+              { productsList.map((product) => (
+                <ProductCard
+                  className="card"
+                  key={ product.id }
+                  product={ product }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-main-page" data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </div>
+          ) }
+
         </div>
 
       </div>

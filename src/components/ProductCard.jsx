@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/productCard.css';
+import '../styles/home.css';
 import PropTypes from 'prop-types';
 
 class ProductCard extends React.Component {
