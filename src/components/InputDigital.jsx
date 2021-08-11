@@ -32,6 +32,7 @@ class InputDigital extends React.Component {
         />
 
         <button
+          type="button"
           data-testid="query-button"
           onClick={ (event) => {
             pegandoDaApi(queryValue);
