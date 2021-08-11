@@ -34,7 +34,8 @@ async function getProductsCategoryQuery(categoryId, query) {
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
   if (categoryId === null) {
     return getProductForQuery(query);
-  } else if (query === null) {
+  }
+  if (query === null) {
     return getProductForCategory(categoryId);
   } else {
     getProductsCategoryQuery(categoryId, query);
