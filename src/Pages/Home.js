@@ -19,9 +19,7 @@ class Home extends Component {
 
   fetchProducts = async () => {
     const { categoryId, query } = this.state;
-    console.log(categoryId, query);
     const products = await getProductsFromCategoryAndQuery(categoryId, query);
-    console.log(products);
     this.setState({
       products: products.results,
     });
@@ -82,6 +80,7 @@ class Home extends Component {
               image={ product.thumbnail }
               price={ product.price }
               id={ product.id }
+              freeShipping={ product.shipping.free_shipping }
             />
           ))}
         </div>

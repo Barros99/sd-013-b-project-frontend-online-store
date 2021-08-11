@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Card extends Component {
   render() {
-    const { id, title, image, price } = this.props;
+    const { id, title, image, price, freeShipping } = this.props;
     return (
       <Link
         to={ {
@@ -13,11 +13,11 @@ class Card extends Component {
         } }
         data-testid="product-detail-link"
       >
-        {/* { console.log(this.props)} */}
         <div data-testid="product">
           <h2>{title}</h2>
           <img src={ image } alt={ title } width="200" />
           <h3>{price}</h3>
+          {freeShipping ? <h4 data-testid="free-shipping">Frete Grátis</h4> : ''}
         </div>
       </Link>
     );
@@ -29,6 +29,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  freeShipping: PropTypes.bool.isRequired,
 };
 
 export default Card;
