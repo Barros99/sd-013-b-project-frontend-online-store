@@ -40,7 +40,6 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
   }
 
   getProductsCategoryQuery(categoryId, query);
-  
 }
 
 export async function getCategories() {
