@@ -24,15 +24,15 @@ class Cart extends React.Component {
         cartItems: [...parsedItems],
       });
     }
-  }
+  };
 
   render() {
     const { cartItems } = this.state;
 
     return (
       <div>
-        { cartItems.length !== 0
-          ? cartItems.map((element) => (
+        {cartItems.length !== 0 ? (
+          cartItems.map((element) => (
             <CartItem
               key={ element.id }
               title={ element.title }
@@ -40,7 +40,11 @@ class Cart extends React.Component {
               amount={ element.amount }
             />
           ))
-          : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p> }
+        ) : (
+          <p data-testid="shopping-cart-empty-message">
+            Seu carrinho está vazio
+          </p>
+        )}
       </div>
     );
   }
