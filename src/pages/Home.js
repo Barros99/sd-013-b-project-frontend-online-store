@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import InputDigital from '../components/InputDigital';
 import ProductList from '../components/ProductList';
-import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
-import InputDigital from '../components/InputDigital';
+
 import * as api from './../services/api';
 
 class Home extends React.Component {
@@ -40,7 +41,7 @@ class Home extends React.Component {
           data-testid="shopping-cart-button"
           to="/carrinhodecompra"
         >
-          carrinho de compra
+          Carrinho de compra
         </Link>
         <InputDigital pegandoDaApi={ this.pegandoDaApi } />
 

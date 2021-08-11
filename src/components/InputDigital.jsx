@@ -7,7 +7,7 @@ class InputDigital extends React.Component {
 
     this.state = {
       queryValue: '',
-    }
+    };
 
     this.searchValue = this.searchValue.bind(this);
   }
@@ -21,16 +21,16 @@ class InputDigital extends React.Component {
   render() {
     const { queryValue } = this.state;
     const { pegandoDaApi } = this.props;
-   
+
     return (
       <form>
         <input
           type="text"
           data-testid="query-input"
           value={ queryValue }
-          onChange= { this.searchValue }
-        />        
-        
+          onChange={ this.searchValue }
+        />
+
         <button
           data-testid="query-button"
           onClick={ (event) => {
@@ -53,4 +53,4 @@ export default InputDigital;
 
 InputDigital.propTypes = {
   pegandoDaApi: PropTypes.func.isRequired,
-}
+};
